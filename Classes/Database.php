@@ -1,4 +1,5 @@
 <?php
+namespace AZCMS
 ///////////////////////////////////////
 //                                   //
 // Kriminalistik Tədqiqatlar İdarəsi //
@@ -10,7 +11,7 @@
 ///////////////////////////////////////
 //        DEFINE Security            //
 ///////////////////////////////////////
- defined('SECURITY') or die('Error');
+// defined('SECURITY') or die('Error');
 ///////////////////////////////////////
 class DatabaseException extends Exception
 {
@@ -23,19 +24,11 @@ class DatabaseException extends Exception
 class Database
 {
 
-    private $sql;
-    private $mysql;
-    private $result;
-    private $result_rows;
-    private $database_name;
-    private static $instance;
-
-    /**
+   /**
      * Query history
      *
      * @var array
      */
-    static $queries = array();
 
     /**
      * Database() constructor
@@ -44,18 +37,14 @@ class Database
      * @param string $username
      * @param string $password
      * @param string $host
-     * @throws DatabaseException
      */
     function __construct($database_name, $username, $password, $host = 'localhost')
     {
-        self::$instance = $this;
-
-        $this->database_name = $database_name;
-        $this->mysql = mysqli_connect($host, $username, $password, $database_name);
-        $this->mysql->set_charset('utf8');
-
-        if (!$this->mysql) {
-            throw new DatabaseException('Database connection error: ' . mysqli_connect_error());
+        try {
+        $this->conn = new PDO("mysql:host=$host;dbname=$database_name", $username, $password);
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
         }
     }
 
@@ -401,54 +390,23 @@ class Database
     }
 
     /* Insert/update functions */
-
-    /**
-     * Insert a row in a table
-     *
-     * @param $table
-     * @param array $fields
-     * @param bool|false $appendix
-     * @param bool|false $ret
-     * @return bool|Database
-     * @throws Exception
-     */
-    function insert($table, $fields = array(), $appendix = false, $ret = false)
+    function insert($table,$data = array())
     {
-        $this->result = null;
-        $this->sql = null;
-
-        $query = 'INSERT INTO';
-        $query .= ' `' . $this->escape($table) . "`";
-
-        if (is_array($fields)) {
-            $query .= ' (';
-            $num = 0;
-            foreach ($fields as $key => $value) {
-                $query .= ' `' . $key . '`';
-                $num++;
-                if ($num != count($fields)) {
-                    $query .= ',';
-                }
+        $col = array_keys($data);
+        $columns = implode(', ', $col);  
+        $toImplode=array();
+        foreach($col as $colss) {
+            $toImplode[]= ":$colss";
             }
-            $query .= ' ) VALUES ( ' . $this->join_array($fields) . ' )';
-        } else {
-            $query .= ' ' . $fields;
+        $wcolumn = implode(',', $toImplode);
+        $sql = "insert into $table ($columns) values ($wcolumn)";
+        $smtp = $this->conn->prepare($sql);
+        foreach($data as $key=>$value)
+        {
+            $smtp ->bindParam(':'.$key.'', $$key);
+               $$key = ''.$value.'';
         }
-        if ($appendix) {
-            $query .= ' ' . $appendix;
-        }
-        if ($ret) {
-            return $query;
-        }
-        $this->sql = $query;
-        $this->result = mysqli_query($this->mysql, $query);
-        if (mysqli_error($this->mysql) != '') {
-            $this->_error(mysqli_error($this->mysql));
-            $this->result = null;
-            return false;
-        } else {
-            return $this;
-        }
+        $smtp->execute();
     }
 
     /**
