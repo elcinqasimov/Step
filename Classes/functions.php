@@ -7,6 +7,40 @@
 //                                    //
 ////////////////////////////////////////  
 
+#region Sifreleme
+function elcrypt( $string, $action = 'e' ) {
+    // you may change these values to your own
+    $secret_key = 'elcin1990';
+    $secret_iv = 'elcin650';
+  
+    $output = false;
+    $encrypt_method = "AES-256-CBC";
+    $key = hash( 'sha256', $secret_key );
+    $iv = substr( hash( 'sha256', $secret_iv ), 0, 16 );
+  
+    if( $action == 'e' ) {
+        $output = base64_encode( openssl_encrypt( $string, $encrypt_method, $key, 0, $iv ) );
+    }
+    else if( $action == 'd' ){
+        $output = openssl_decrypt( base64_decode( $string ), $encrypt_method, $key, 0, $iv );
+    }
+  
+    return $output;
+  }
+  function sifrele($data)
+{
+    static $map = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $hash = bcadd(sprintf('%u',crc32($data)) , 0x100000000);
+    $str = "";
+    do
+    {
+        $str = $map[bcmod($hash, 62) ] . $str;
+        $hash = bcdiv($hash, 62);
+    }
+    while ($hash >= 1);
+    return $str;
+}
+  #endregion
 
 #region Nomre yazan
 function nomre($nomre,$say){
@@ -14,12 +48,15 @@ function nomre($nomre,$say){
 }
 #endregion
 
+#region Qovluq gosterme
 function listAllFiles($dir) {
     $array = array_diff(scandir($dir), array('.', '..', 'ok', 'error'));
     
   
     return $array;
   }
+#endregion
+
 function objectToArray($d)
 {
     if (is_object($d)) {
@@ -40,6 +77,8 @@ function objectToArray($d)
         return $d;
     }
 }
+
+#region Tarix
 function tarix($tarix){
     $newDate = date("d.m.Y", strtotime($tarix));
     return $newDate;
@@ -52,20 +91,9 @@ function ekstarix($tarix){
     $newDate = date("Y-m-d", strtotime($tarix));
     return $newDate;
 }
+#endregion
 
-function sifrele($data)
-{
-    static $map = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $hash = bcadd(sprintf('%u',crc32($data)) , 0x100000000);
-    $str = "";
-    do
-    {
-        $str = $map[bcmod($hash, 62) ] . $str;
-        $hash = bcdiv($hash, 62);
-    }
-    while ($hash >= 1);
-    return $str;
-}
+
 
 function Olcu($bytes)
 {

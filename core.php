@@ -281,14 +281,16 @@ define('SECURITY', "EDNA");     		 //---->Security PHP files
 ///////////////////////////////////////
 //            Includes               //
 ///////////////////////////////////////
-include 'includes/Database.php';
+include 'Classes/Database.php';
+include 'Classes/functions.php';
+/*
 include 'includes/Users.php';
 include 'includes/Siyahilar.php';
 include 'includes/Jobs.php';
 include 'includes/Test.php';
 include 'includes/Objects.php';
 include 'includes/Samples.php';
-include 'includes/functions.php';
+
 include 'includes/WriteTag.php';
 include 'includes/settings.php';
 include 'includes/Log.php';
@@ -297,6 +299,7 @@ include 'includes/Language.php';
 include 'includes/Persons.php';
 include 'includes/Profile.php';
 include 'includes/export.php';
+*/
 ///////////////////////////////////////
 #endregion 
 
@@ -305,6 +308,7 @@ include 'includes/export.php';
 //        CLASS includes             //
 ///////////////////////////////////////
 $db 		      = new Database("edna", "root", "admin", "localhost");
+/*
 $user 		    = new User();
 $settings 	  = new Settings();
 $sifrelemek   = new Sifrelemek();
@@ -317,6 +321,7 @@ $sample_lists = new Samples();
 $persons      = new Persons();
 $profile      = new Profiles();
 $export       = new Export();
+*/
 ////////////////////////////////////////
 #endregion 
 
