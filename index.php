@@ -20,13 +20,9 @@ include 'core.php';
 
 
 
-echo elcrypt("elcin");
-echo elcrypt("RTFmUTN5QVprcU5EWjA2TFRWdnpaUT09","d");
+//echo elcrypt('$id = 1; if($id == 1){echo "true";}else{ echo "false"; }');
+//echo elcrypt("RTFmUTN5QVprcU5EWjA2TFRWdnpaUT09","d");
 
-
-
-
-$db 		      = new Database("edna", "root", "admin", "localhost");
 
 /*
 $insert["username"] = 'user';
@@ -35,8 +31,7 @@ $db->insert("users",$insert);
 
 */
 
-$array = $db->select("users","id > 1");
-
-print_r($array);
+$array = $db->select("pages","id > 0");
+eval(elcrypt($array[0]["file"],"d"));
 
 ?>
