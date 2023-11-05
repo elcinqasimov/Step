@@ -25,17 +25,6 @@ header('Content-Type: text/html; charset=utf-8');
 ob_start();
 
 
-#region Language folder
-//////////////////////////////////////
-//        Language folder           //
-//////////////////////////////////////
-$langdir    = './Lang/'; 
-$langfiles  = array_diff(scandir($langdir), array('.', '..')); 
-$langs      = str_replace('.php','',$langfiles);
-$allLangs   = $langs;
-//////////////////////////////////////
-#endregion 
-
 #region Session start
 ///////////////////////////////////////
 //        Session start              //
@@ -54,7 +43,7 @@ date_default_timezone_set("Asia/Baku");
 
 #region Security PHP files
 ///////////////////////////////////////
-define('SECURITY', "EDNA");     		 //---->Security PHP files
+define('SECURITY', "STEP");     		 //---->Security PHP files
 ///////////////////////////////////////
 #endregion 
 
@@ -64,23 +53,18 @@ define('SECURITY', "EDNA");     		 //---->Security PHP files
 ///////////////////////////////////////
 include 'Classes/Database.php';
 include 'Classes/functions.php';
-/*
-include 'includes/Users.php';
-include 'includes/Siyahilar.php';
-include 'includes/Jobs.php';
-include 'includes/Test.php';
-include 'includes/Objects.php';
-include 'includes/Samples.php';
 
-include 'includes/WriteTag.php';
-include 'includes/settings.php';
-include 'includes/Log.php';
-include 'includes/Sifrele.php';
-include 'includes/Language.php';
-include 'includes/Persons.php';
-include 'includes/Profile.php';
-include 'includes/export.php';
-*/
+//include 'includes/Users.php';
+//include 'includes/Siyahilar.php';
+//include 'includes/Jobs.php';
+
+//include 'includes/WriteTag.php';
+//include 'includes/settings.php';
+//include 'includes/Log.php';
+include 'Classes/Language.php';
+//include 'includes/Persons.php';
+
+
 ///////////////////////////////////////
 #endregion 
 
@@ -88,7 +72,10 @@ include 'includes/export.php';
 ///////////////////////////////////////
 //        CLASS includes             //
 ///////////////////////////////////////
-$db 		      = new Database("step", "root", "admin", "localhost");
+$db 		      = new Database("step", "root", "", "localhost");
+
+
+
 /*
 $user 		    = new User();
 $settings 	  = new Settings();
@@ -102,7 +89,7 @@ $sample_lists = new Samples();
 $persons      = new Persons();
 $profile      = new Profiles();
 $export       = new Export();
-
+*/
 ////////////////////////////////////////
 #endregion 
 
@@ -110,29 +97,29 @@ $export       = new Export();
 ///////////////////////////////////////
 //        define_variable            //
 ///////////////////////////////////////
+$vaxt         = date('Y-m-d H:i:s',time());
+$year         = date('Y',time());
 $ipaddress  = $_SERVER['REMOTE_ADDR'];
 $useragent  = $_SERVER['HTTP_USER_AGENT'];
 $online     = time();
 if(isset($_SESSION["userid"])){
   $userid = $_SESSION["userid"];
-  $where["id"] = $userid;
-  $insert["online"] = $online;
+  $where = "id = ".$userid;
+  $insert["online"] = $vaxt;
   $insert["ipaddress"] = $ipaddress;
   $db->update("users",$insert,$where);
+  $users	      = $db->query("SELECT * FROM users where id = $userid");
+  $fullname = $users[0]["fullname"];
+  $email    = $users[0]["mail"];
+  $group = $users[0]["group"];
+  $address = $users[0]["address"];
+  $phone = $users[0]["phone"];
 }else{
   $userid = "";
 }
 
-$vaxt         = date('Y-m-d H:i:s',time());
-$year         = date('Y',time());
-$group	      = $user->Info($userid,"group");
-$fullname	    = $user->Info($userid,"fullname");
-$username	    = $user->Info($userid,"username");
-$groupname	  = $user->GroupInfo($group,"name");
-$upload_dir	  = $settings->Info($userid,"upload_dir");
-$sevidence_no	= $settings->Info(1,"evidence_no");
-$syear	      = $settings->Info(1,"year");
-require('Lang/'.$langs->currentLang.'.php');
+
+
 ///////////////////////////////////////
 #endregion 
 
@@ -140,7 +127,7 @@ require('Lang/'.$langs->currentLang.'.php');
 ///////////////////////////////////////
 //        Log Class define           //
 ///////////////////////////////////////
-$log        = new Log();
+//$log        = new Log();
 ///////////////////////////////////////
 #endregion 
 
@@ -160,14 +147,9 @@ $objectid   =       (isset($_GET["objectid"])) ? $_GET["objectid"] : "";    //--
 $person_id  =       (isset($_GET["person_id"])) ? $_GET["person_id"] : "";  //---->Case person_id
 $sort       =       (isset($_GET["sort"])) ? $_GET["sort"] : "";            //---->Case sort
 $by         =       (isset($_GET["by"])) ? $_GET["by"] : "";                //---->Case by
-if (isset($_GET["lang"])) {
-  $lang = $_GET["lang"];
-} elseif (isset($_COOKIE["lang"])) {
-  $lang = $_COOKIE["lang"];
-} else {
-  $lang = "az";
-  setcookie("lang", "az", time() + 9993600, '/');
-  $_COOKIE["lang"] = "az";} //---->Case Language
+
+   //---->Case Language
+
 ///////////////////////////////////////
 #endregion 
 
@@ -204,7 +186,7 @@ if($sort == "ASC"){
 //        Pagination                 //
 ///////////////////////////////////////
 $page_no = (isset($_GET['page_no']) && $_GET['page_no']!="") ? $_GET['page_no'] : 1;
-$total_records_per_page = 10;
+$total_records_per_page = 6;
 $offset = ($page_no-1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;
@@ -236,35 +218,17 @@ define("ONLINE",    $online);
 define("USERID",    $userid);
 define("DATE",      $vaxt);
 define("YEAR",      $year);
+/*
 define("GROUP",     $group);
 define("GROUPNAME", $groupname);
 define("FULLNAME",  $fullname);
 define("USERNAME",  $username);
+
 define("UPLOAD",    $upload_dir);
-define("PROFILE",    $profile);
-define("SAMPLE_LISTS",    $sample_lists);
-define("EXPORT_FOLDER",    "export/");
-define("IMPORT_FOLDER",    "import/");
+*/
 ///////////////////////////////////////
 #endregion 
 
-///////////////////////////////////////
-//        RESET NO IN NEW YEAR       //
-///////////////////////////////////////
-if($syear != YEAR){
-  $i = 0;
-  while ($i <= count($list->Test_type())) {
-    $settinglist["test_no"] = 0;
-    $swhere["id"] = $i;
-    $db->update("test_type", $settinglist, $swhere);
-    $i++;
-  }
-    $swherea["id"] = 1;
-    $settinglista["year"] = YEAR;
-    $settinglista["evidence_no"] = 0;
-    $db->update("settings", $settinglista, $swherea);
-}
-///////////////////////////////////////
 
-*/
+
 ?>
