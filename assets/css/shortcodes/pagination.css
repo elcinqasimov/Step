@@ -87,7 +87,7 @@
 	float:right;
 }
 .pagination-bx .pagination{
-	width:100%;
+	width:fit-content;
 }
 .pagination-bx.gray .pagination > li > a, 
 .pagination-bx.gray .pagination > li > span{

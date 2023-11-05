@@ -66,48 +66,7 @@ Theme Version:	1.0.0
 		}
 				
 				
-		var contactForm = function()	{
-			if(!checkSelectorExistence('.ajax-form')){return;}
-			window.verifyRecaptchaCallback = function (response) {
-				$('input[data-recaptcha]').val(response).trigger('change');
-			}
 
-			window.expiredRecaptchaCallback = function () {
-				$('input[data-recaptcha]').val("").trigger('change');
-			}
-						
-			jQuery('.ajax-form').on('submit', function( event ) {
-				event.preventDefault();
-				var response		=	'<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
-				jQuery(this).find(".ajax-message").html(response).show('slow');
-				var formData 		= 	new FormData(this);
-				var formAction		=	jQuery(this).attr('action');
-				jQuery.ajax({
-					type: 'POST',
-					url: formAction,
-					data: formData,
-					contentType: false,
-					cache: false,
-					processData:false,
-					dataType: 'json',
-					success : function(data)
-					{
-						if(data.status == 1){
-							response = '<div class="gen alert alert-success">'+data.message+'</div>';
-						}else{
-							response = '<div class="err alert alert-danger">'+data.message+'</div>';
-						}
-						$('.ajax-form .ajax-message').html(response).delay(5000).hide('slow');
-						$('.ajax-form')[0].reset();
-						grecaptcha.reset();
-					},
-					error : function(data){
-						alert('There is something wrong. Please wait or submit again.');
-					},
-					
-				});
-			});			
-		}
 				
 		var subscriptionForm = function()	{
 			if(!checkSelectorExistence('.subscription-form')){return;}
@@ -148,7 +107,6 @@ Theme Version:	1.0.0
 		/* Functions Calling */
 		return {
 			afterLoadThePage:function(){
-				contactForm();
 				subscriptionForm();
 				validateInteger();
 				validateCharacter();

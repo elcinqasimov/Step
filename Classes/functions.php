@@ -93,7 +93,82 @@ function ekstarix($tarix){
 }
 #endregion
 
+function pagination($total_records){
+    global $total_records_per_page;
+    global $page_no;
+    global $second_last;
+    global $next_page;
+    global $previous_page;
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+    echo '<div class="col-lg-12 m-b20"><div class="pagination-bx rounded-sm gray clearfix">';
+    echo '<center><ul class="pagination">';
+    if($page_no < 2){ echo '<li class="previous"><a href="javascript:;"><i class="ti-arrow-left"></i> Previous</a>'; }
+	if($page_no > 1){ echo "<li class='previous'><a href=".$_SERVER['REQUEST_URI']."&page_no=$previous_page'><i class='ti-arrow-left'></i> Previous</a>"; }
+	echo '</li>';
+    if ($total_no_of_pages <= 10){  	 
+		for ($counter = 1; $counter <= $total_no_of_pages; $counter++){
+			if ($counter == $page_no) {
+		   echo "<li class='active'><a>$counter</a></li>";	
+				}else{
+           echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
+				}
+        }
+	}
+	elseif($total_no_of_pages > 10){
+		
+	if($page_no <= 4) {			
+	 for ($counter = 1; $counter < 8; $counter++){		 
+			if ($counter == $page_no) {
+		   echo "<li class='active'><a>$counter</a></li>";	
+				}else{
+           echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
+				}
+        }
+		echo "<li><a>...</a></li>";
+		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$second_last'>$second_last</a></li>";
+		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
+		}
 
+	 elseif($page_no > 4 && $page_no < $total_no_of_pages - 4) {		 
+		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=1'>1</a></li>";
+		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=2'>2</a></li>";
+        echo "<li><a>...</a></li>";
+        for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {			
+           if ($counter == $page_no) {
+		   echo "<li class='active'><a>$counter</a></li>";	
+				}else{
+           echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
+				}                  
+       }
+       echo "<li><a>...</a></li>";
+	   echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$second_last'>$second_last</a></li>";
+	   echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";      
+            }
+		
+		else {
+        echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=1'>1</a></li>";
+		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=2'>2</a></li>";
+        echo "<li><a>...</a></li>";
+
+        for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
+          if ($counter == $page_no) {
+		   echo "<li class='active'><a>$counter</a></li>";	
+				}else{
+           echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
+				}                   
+                }
+            }
+	}
+    echo '<li class"next">';
+	if($page_no < $total_no_of_pages) { echo "<a href='".$_SERVER['REQUEST_URI']."&page_no=$next_page'>Next <i class='ti-arrow-right'></i>"; }else{
+        echo "<a href='javascript:;'>Next <i class='ti-arrow-right'></i>";
+    } 
+	echo '</li>';
+    if($page_no < $total_no_of_pages){
+		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
+		}
+    echo '</ul></center></div></div>';
+}
 
 function Olcu($bytes)
 {

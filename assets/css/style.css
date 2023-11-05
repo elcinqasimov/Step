@@ -321,9 +321,7 @@
     vertical-align: middle;
 }
 .menu-logo img{
-    max-height: 60px;
-	width: auto;
-	max-width: 140px;
+	max-width: 200px;
 	
 }
 .menu-logo span{
@@ -408,7 +406,7 @@
     font-weight: 400;
     text-transform: uppercase;
     position: relative;
-	font-family: Rubik;
+	font-family: 'Poppins';
 }
 .menu-links .nav > li > a {
     border-radius: 0px;
@@ -2422,7 +2420,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
     line-height: 55px;
 }
 .event-info .event-title{
-	font-family:rubik;
+	font-family:'Poppins';
 	font-weight:500;
 	margin-bottom:5px;
 	font-size:24px;
@@ -2438,7 +2436,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
 .event-info p{
 	color: #454545;
     margin-bottom: 0;
-    font-family: rubik;
+    font-family: 'Poppins';
     font-size: 15px;
     font-weight: 400;
     line-height: 24px;
@@ -2546,7 +2544,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
 	margin-bottom: 15px;
 }
 .testimonial-bx .testimonial-info:after {
-    content: "\f10e";
+  /*  content: "\f10e"; */
     position: absolute;
     font-family: fontawesome;
     font-size: 50px;

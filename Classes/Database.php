@@ -46,7 +46,6 @@ class Database
         if ($cond!='') {
             $sql .= " WHERE $cond ";
         }
-    
         try {
              $stmt = $this->conn->prepare($sql);
             $result = $stmt->execute();
@@ -120,7 +119,10 @@ class Database
 
     public function id()
     {
-        return $this->$conn->insert_id;
+        $stmt = $this->conn->prepare("select LAST_INSERT_ID()");
+        $stmt->execute();
+        $rows = $stmt->fetchAll(); // assuming $result == true
+        return $rows[0]["LAST_INSERT_ID()"];
     }
 
     public function close(){

@@ -1,19 +1,20 @@
 <?php
 
-/*
-$servername = "localhost";
-$username = "root";
-$password = "admin";
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=edna", $username, $password);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}
-*/
 
 include 'core.php';
+
+
+//include_once 'head.php';
+if($do != '' && file_exists('views/'.$do.'.php')){
+  include 'views/header.php';
+  include 'views/'.$do.'.php';
+  include 'views/footer.php';
+}else{
+  include 'main.php';
+}
+
+
+//include_once 'footer.php';
 
 
 //Encryption:
@@ -30,8 +31,8 @@ $insert["password"] = 'pass';
 $db->insert("users",$insert);
 
 */
-
+/*
 $array = $db->select("pages","id > 0");
 eval(elcrypt($array[0]["file"],"d"));
-
+*/
 ?>

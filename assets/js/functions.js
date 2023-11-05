@@ -54,7 +54,7 @@ Theme Version:	1.0.0
 					margin:0,
 					center:true,
 					stagePadding: 50,
-					nav:true,
+					nav:false,
 					dots: true,
 					navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
 					responsive:{
@@ -228,11 +228,7 @@ Theme Version:	1.0.0
 				jQuery("#search-remove").on('click',function() {jQuery('.nav-search-bar').fadeOut(500).removeClass('On');});	
 			}
 				
-			/* Control One Page Layout */
-			var scrollPageLayout = function() {
-				if(!checkSelectorExistence('.scroll-page')){return;}
-				$('.scroll-page').scroller();
-			}
+
 				
 			/* Set Header Height (Call On Resize Event Also) */
 			var setHeaderHeight = function(){
@@ -299,25 +295,7 @@ Theme Version:	1.0.0
 				}
 			}
 				
-				
-			/* Page Scroll To Top ============ */
-			var pageScrollToTop = function (){
-				/* page scroll top on click function */	
-				jQuery("button.back-to-top").on('click',function() { 
-					jQuery('html').animate({ scrollTop: 0 }, 500);
-					return false;
-				})
 
-				jQuery(window).on("scroll", function() {
-					var scrollWindowHeight = jQuery(window).scrollTop();
-					if (scrollWindowHeight > 900) {
-						jQuery("button.back-to-top").slideDown(1000).fadeIn(1000);
-					} else {
-						jQuery("button.back-to-top").slideUp(1000).fadeOut(1000);
-					}
-				});
-				/* page scroll top on click function end*/
-			}
 			
 			/* Set Sticky Header */
 			var setStickyheader = function(){
@@ -475,11 +453,9 @@ Theme Version:	1.0.0
 			/* Function ============ */
 			return {
 				initialHelper:function(){
-					scrollPageLayout();
 					setHeaderHeight();
 					searchBar();
 					magnificPopupImageView();
-					pageScrollToTop();
 					managePlaceholderStyle();
 					setStickyheader();
 					setCountDown();

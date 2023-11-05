@@ -1,33 +1,52 @@
+<?php
+include_once 'core.php';
+$text = "";
+if(isset($_POST["submit"]) && $_POST["submit"] == "login"){
+	$pass = $_POST["password"] = hash('sha256', $_POST["password"]);
+	$login = $_POST["mail"];
+	$query = "SELECT * from users WHERE mail = '$login' AND `password` = '$pass'";
+	$login = $db->query($query);
+	
+	if(count($login) > 0){
+		$_SESSION["userid"] 	= $login[0]["id"];
+		$_SESSION["mail"] 		= $login[0]["mail"];
+		$_SESSION["fullname"] 	= $login[0]["fullname"];
+		header('Location: index.php?do=camps');
+	}else{
+		$text = "E-Mail və ya şifrə səhvdir.";
+	}
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from educhamp.themetrades.com/html/demo/forget-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Oct 2023 09:21:53 GMT -->
 <head>
 
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="canonical" href="index.html" />
+	<link rel="canonical" href="index.php" />
 	<!-- OG -->
 	<meta name="robots" content="index, follow">
 	
-	<meta name="keywords" content="Web Design, Education, Institute, Study" />
-	<meta name="author" content="ThemeTrades" />
-	<meta name="description" content="EduChamp is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for University, College, School, Training centre or other educational institute." />
+	<meta name="keywords" content="INTCDC - International Child Development Center" />
+	<meta name="author" content="INTCDC" />
+	<meta name="description" content="INTCDC - International Child Development Center" />
 	
-	<meta property="og:url" content="index.html" />
-	<meta property="og:site_name" content="EduChamp : Education HTML Template"/>
+	<meta property="og:url" content="index.php" />
+	<meta property="og:site_name" content="INTCDC - International Child Development Center"/>
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="en_us" />
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
-	<meta property="og:description" content="EduChamp is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for University, College, School, Training center or other educational institute." />
+	<meta property="og:title" content="INTCDC - International Child Development Center" />
+	<meta property="og:description" content="INTCDC - International Child Development Center" />
 	<meta property="og:image" content="preview.png"/>
 	
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:url" content="index.html">
 	<meta name="twitter:creator" content="@themetrades">
-	<meta name="twitter:title" content="EduChamp : Education HTML Template">
-	<meta name="twitter:description" content="EduChamp is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for University, College, School, Training centre or other educational institute.">
+	<meta name="twitter:title" content="INTCDC - International Child Development Center">
+	<meta name="twitter:description" content="INTCDC - International Child Development Center">
 	
 	<meta name="format-detection" content="telephone=no">
 	
@@ -36,7 +55,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>INTCDC - International Child Development Center</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,27 +83,47 @@
 <div class="page-wraper">
 	<div id="loading-icon-bx"></div>
 	<div class="account-form">
-		<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
-			<a href="index-2.html"><img src="assets/images/logo-white-2.png" alt=""></a>
+		<div class="account-head" style="background-image:url(assets/images/gallery/1.jpg);">
+			<a href="index-2.html"><img src="assets/images/logo-white-3.png" alt=""></a>
 		</div>
 		<div class="account-form-inner">
 			<div class="account-container">
 				<div class="heading-bx left">
-					<h2 class="title-head">Forget <span>Password</span></h2>
-					<p>Login Your Account <a href="login.html">Click here</a></p>
+					<h2 class="title-head"><?=$lang["login_header"]?></h2>
+					<p><?=$lang["login_label"]?></p>
 				</div>	
-				<form class="contact-bx">
+				<?php if($text != ""){ ?>
+				<div style="background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding-left:10px;"><?=$text?></div>
+				<?php } ?>
+				<form class="contact-bx" action="" method="POST">
 					<div class="row placeani">
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
-									<label>Your Email Address</label>
-									<input name="name" type="email" required="" class="form-control">
+									<label><?=$lang["mail"]?></label>
+									<input name="mail" type="text" required="" class="form-control">
 								</div>
 							</div>
 						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<div class="input-group"> 
+									<label><?=$lang["password"]?></label>
+									<input name="password" type="password" class="form-control" required="">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group form-forget">
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+									<label class="custom-control-label" for="customControlAutosizing"><?=$lang["remember_me"]?></label>
+								</div>
+								<?=$lang["forget_password"]?>
+							</div>
+						</div>
 						<div class="col-lg-12 m-b30">
-							<button name="submit" type="submit" value="Submit" class="btn button-md">Submit</button>
+							<button name="submit" type="submit" value="login" class="btn button-md"><?=$lang["login_enter"]?></button>
 						</div>
 					</div>
 				</form>
@@ -107,8 +146,6 @@
 <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
 <script src="assets/js/functions.js"></script>
 <script src="assets/js/contact.js"></script>
-<script src='assets/vendors/switcher/switcher.js'></script>
 </body>
 
-<!-- Mirrored from educhamp.themetrades.com/html/demo/forget-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Oct 2023 09:21:53 GMT -->
 </html>
