@@ -38,4 +38,5 @@ $lang = array(
     'countries'                => "Countries",
     'register_camp_h'                => "Register camp",
     'register_camp'                => "Register <span>camp</span>",
+    'last_camps'                => "Last camps",
 );

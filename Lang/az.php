@@ -39,5 +39,6 @@ $lang = array(
     'countries'                => "Ölkələr",
     'register_camp_h'                => "Düşərgənin qeydiyyatı",
     'register_camp'                => "Düşərgənin <span>qeydiyyatı</span>",
+    'last_camps'                => "Düşərgənlərin siyahısı",
     
 );

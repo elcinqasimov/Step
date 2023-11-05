@@ -111,7 +111,7 @@
 				<div class="container-fluid">	
 					<div class="row">
 						<div class="col-md-12 heading-bx style1 text-center">
-							<h2 class="title-head">Last camps</h2>
+							<h2 class="title-head"><?=$lang["last_camps"]?></h2>
 						</div>
 					</div>
 					<div class="row">
