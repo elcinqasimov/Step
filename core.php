@@ -72,7 +72,7 @@ include 'Classes/Language.php';
 ///////////////////////////////////////
 //        CLASS includes             //
 ///////////////////////////////////////
-$db 		      = new Database("step", "root", "", "localhost");
+$db 		      = new Database("u146572988_step", "u146572988_step", "Qasimov@1455", "localhost");
 
 
 
