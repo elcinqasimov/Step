@@ -4,7 +4,7 @@ $lang = array(
     "our_services"          => "Xidmətlərimiz",
     "imready"               => "HAZIRAM",
     "ready_with_us"         => "Bizimlə <text style=\"color:red\">addımlamağa</text><br/> hazırsınız?",
-    "welcome"               => "Beynəlxalq 2 Uşaq İnkişaf<br/>Mərkəzinə xoş gəlmisiniz",
+    "welcome"               => "Beynəlxalq Uşaq İnkişaf<br/>Mərkəzinə xoş gəlmisiniz",
     "learn_more"            => "Ətraflı",
     "psychologists"         => "Psixoloqlar",
     "view_all"              => "Hamısına baxın",
