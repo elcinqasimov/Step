@@ -5,7 +5,7 @@
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="canonical" href="index.html" />
+	<link rel="canonical" href="index.php" />
 	<!-- OG -->
 	<meta name="robots" content="index, follow">
 	
@@ -22,8 +22,8 @@
 	<meta property="og:image" content="preview.png"/>
 	
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:url" content="index.html">
-	<meta name="twitter:creator" content="@themetrades">
+	<meta name="twitter:url" content="index.php">
+	<meta name="twitter:creator" content="@intcdc">
 	<meta name="twitter:title" content="INTCDC - International Child Development Center">
 	<meta name="twitter:description" content="INTCDC - International Child Development Center">
 	
@@ -185,7 +185,7 @@
 				</div>
 			</div>
 			<!-- Popular Courses END -->
-			
+			<?php if($userid == ""){ ?>
 			<!-- Form -->
 			<div class="section-area section-sp3 ovpr-dark bg-fix appointment-box" style="background-image:url(assets/images/background/bg1.jpg);">
 				<div class="container">
@@ -253,6 +253,7 @@
 				</div>
 				<img src="assets/images/background/appointment-bg.png" class="appoint-bg" alt=""/>
 			</div>
+			<?php } ?>
 			<!-- Form END -->
 			<div class="section-area section-sp2" style="background-image:url(assets/images/background/bg4.jpg); background-size:cover;">
 				<div class="container">

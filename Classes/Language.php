@@ -44,5 +44,5 @@
           default:
           $lang_file = 'en.php';
     }
-    include_once 'Lang/'.$lang_file;
+    include './Lang/'.$lang_file;
 ?>

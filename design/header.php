@@ -26,9 +26,14 @@
 								<?php }else{ ?>
 									<li><a href="<?=$_SERVER["REQUEST_URI"]?>&lang=az" >&nbsp;&nbsp;<img width="30px" src="assets/images/az.png"/></a></li>
 								<?php } ?>
-
-								<!-- Search Button ==== -->
-				
+									&nbsp; | &nbsp;
+								<!-- Search Button ==== -->	
+								<?php if($userid == ""){ ?>
+							<li><a href="login.php" class="btn" style="padding:5px;">Login</a></li>
+							<?php }else{ ?>
+							<li><a href="?do=users&profile=<?=$userid?>" class="btn" style="padding:5px;"><?=$fullname?></a></li>
+							<li><a href="logout.php" class="btn" style="padding:5px;background:orange;"><?=$lang["logout"]?></a></li>
+							<?php } ?>
 							</ul>
 							
 						</div>

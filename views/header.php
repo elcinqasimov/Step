@@ -89,6 +89,7 @@
 							<li><a href="?do=register">Register</a></li>
 							<?php }else{ ?>
 							<li><a href="?do=users&profile=<?=$userid?>"><?=$fullname?></a></li>
+							<li><a href="logout.php"><?=$lang["logout"]?></a></li>
 							<?php } ?>
 						</ul>
 					</div>
@@ -133,7 +134,7 @@
 							<a href="index-2.html"><img src="assets/images/logo.png" alt=""></a>
 						</div>
 						<ul class="nav navbar-nav">	
-
+						<li><a href="index.php"><?=$lang["home_page"]?></a></li>
 
 <?php
 $sehife = $db->select("pages","isnull(subid)");
@@ -153,6 +154,7 @@ $sehife = $db->select("pages","isnull(subid)");
 <li <?=$active?>><a href="<?=$href?>"><?=$sehife[$i]['name_'.$l.'']?> <?=$drop?></a>
 	<?php if($counts > 0){ ?>
 		<ul class="sub-menu">
+
 			<?php for($a=0;$a<$counts;$a++){?>
 				<li><a href="?do=<?=$subsehife[$a]['url']?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
 			<?php } ?>

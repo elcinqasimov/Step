@@ -7,7 +7,7 @@ $sehife = $db->select("pages","isnull(subid)");
 						</div>
                         <ul class="nav navbar-nav">	
 
-
+						<li><a href="index.php"><?=$lang["home_page"]?></a></li>
 							<?php
 								$count = count($sehife);
 								for($i = 0;$i<$count;$i++){
@@ -32,7 +32,7 @@ $sehife = $db->select("pages","isnull(subid)");
 								<?php } ?>
 							</li>
 							<?php } ?>
-							
+						
 						</ul>
 						<div class="nav-social-link">
 							<a href="javascript:;"><i class="fa fa-facebook"></i></a>

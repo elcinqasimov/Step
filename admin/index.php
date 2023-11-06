@@ -1,7 +1,12 @@
+<?php 
+include_once '../core.php';
+	if($group < 1){
+		header('Location: ../index.php');
+	 }
+	 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from educhamp.themetrades.com/html/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Oct 2023 09:04:33 GMT -->
 <head>
 
 	<!-- META ============================================= -->
@@ -25,7 +30,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>INTCDC - International Child Development Center</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,8 +71,8 @@
 			<div class="ttr-logo-box">
 				<div>
 					<a href="index.html" class="ttr-logo">
-						<img class="ttr-logo-mobile" alt="" src="assets/images/logo-mobile.png" width="30" height="30">
-						<img class="ttr-logo-desktop" alt="" src="assets/images/logo-white.png" width="160" height="27">
+						<img class="ttr-logo-mobile" alt="" src="../assets/images/logo-white-3.png" width="30" height="30">
+						<img class="ttr-logo-desktop" alt="" src="../assets/images/logo-white-3.png" width="160" height="27">
 					</a>
 				</div>
 			</div>
@@ -76,17 +81,7 @@
 				<!-- header left menu start -->
 				<ul class="ttr-header-navigation">
 					<li>
-						<a href="../index-2.html" class="ttr-material-button ttr-submenu-toggle">HOME</a>
-					</li>
-					<li>
-						<a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
-						<div class="ttr-header-submenu">
-							<ul>
-								<li><a href="../courses.html">Our Courses</a></li>
-								<li><a href="../event.html">New Event</a></li>
-								<li><a href="../membership.html">Membership</a></li>
-							</ul>
-						</div>
+						<a href="javascript:;" class="ttr-material-button ttr-submenu-toggle"><?=$fullname?></a>
 					</li>
 				</ul>
 				<!-- header left menu end -->
@@ -94,122 +89,17 @@
 			<div class="ttr-header-right ttr-with-seperator">
 				<!-- header right menu start -->
 				<ul class="ttr-header-navigation">
-					<li>
-						<a href="#" class="ttr-material-button ttr-search-toggle"><i class="fa fa-search"></i></a>
-					</li>
-					<li>
-						<a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i></a>
-						<div class="ttr-header-submenu noti-menu">
-							<div class="ttr-notify-header">
-								<span class="ttr-notify-text-top">9 New</span>
-								<span class="ttr-notify-text">User Notifications</span>
-							</div>
-							<div class="noti-box-list">
-								<ul>
-									<li>
-										<span class="notification-icon dashbg-gray">
-											<i class="fa fa-check"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 02:14</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-yellow">
-											<i class="fa fa-shopping-cart"></i>
-										</span>
-										<span class="notification-text">
-											<a href="#">Your order is placed</a> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 7 Min</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-red">
-											<i class="fa fa-bullhorn"></i>
-										</span>
-										<span class="notification-text">
-											<span>Your item is shipped</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 2 May</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-green">
-											<i class="fa fa-comments-o"></i>
-										</span>
-										<span class="notification-text">
-											<a href="#">Sneha Jogi</a> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 14 July</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-primary">
-											<i class="fa fa-file-word-o"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 15 Min</span>
-										</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</li>
+					
 					<li>
 						<a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
 						<div class="ttr-header-submenu">
 							<ul>
-								<li><a href="user-profile.html">My profile</a></li>
-								<li><a href="list-view-calendar.html">Activity</a></li>
-								<li><a href="mailbox.html">Messages</a></li>
-								<li><a href="../login.html">Logout</a></li>
+								<li><a href="?do=profile">My profile</a></li>
+								<li><a href="../logout.php">Logout</a></li>
 							</ul>
 						</div>
 					</li>
-					<li class="ttr-hide-on-mobile">
-						<a href="#" class="ttr-material-button"><i class="ti-layout-grid3-alt"></i></a>
-						<div class="ttr-header-submenu ttr-extra-menu">
-							<a href="#">
-								<i class="fa fa-music"></i>
-								<span>Musics</span>
-							</a>
-							<a href="#">
-								<i class="fa fa-youtube-play"></i>
-								<span>Videos</span>
-							</a>
-							<a href="#">
-								<i class="fa fa-envelope"></i>
-								<span>Emails</span>
-							</a>
-							<a href="#">
-								<i class="fa fa-book"></i>
-								<span>Reports</span>
-							</a>
-							<a href="#">
-								<i class="fa fa-smile-o"></i>
-								<span>Persons</span>
-							</a>
-							<a href="#">
-								<i class="fa fa-picture-o"></i>
-								<span>Pictures</span>
-							</a>
-						</div>
-					</li>
+					
 				</ul>
 				<!-- header right menu end -->
 			</div>
@@ -232,17 +122,7 @@
 	<!-- Left sidebar menu start -->
 	<div class="ttr-sidebar">
 		<div class="ttr-sidebar-wrapper content-scroll">
-			<!-- side menu logo start -->
-			<div class="ttr-sidebar-logo">
-				<a href="#"><img alt="" src="assets/images/logo.png" width="122" height="27"></a>
-				<!-- <div class="ttr-sidebar-pin-button" title="Pin/Unpin Menu">
-					<i class="material-icons ttr-fixed-icon">gps_fixed</i>
-					<i class="material-icons ttr-not-fixed-icon">gps_not_fixed</i>
-				</div> -->
-				<div class="ttr-sidebar-toggle-button">
-					<i class="ti-arrow-left"></i>
-				</div>
-			</div>
+
 			<!-- side menu logo end -->
 			<!-- sidebar menu start -->
 			<nav class="ttr-sidebar-navi">
@@ -254,76 +134,45 @@
 		                </a>
 		            </li>
 					<li>
-						<a href="courses.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-book"></i></span>
-		                	<span class="ttr-label">Courses</span>
-		                </a>
-		            </li>
-					<li>
 						<a href="#" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-email"></i></span>
-		                	<span class="ttr-label">Mailbox</span>
+							<span class="ttr-icon"><i class="ti-user"></i></span>
+		                	<span class="ttr-label">İstifadəçilər</span>
 		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
 		                </a>
 		                <ul>
 		                	<li>
-		                		<a href="mailbox.html" class="ttr-material-button"><span class="ttr-label">Mail Box</span></a>
-		                	</li>
-		                	<li>
-		                		<a href="mailbox-compose.html" class="ttr-material-button"><span class="ttr-label">Compose</span></a>
+		                		<a href="?do=users" class="ttr-material-button"><span class="ttr-label">İstifadəçilər</span></a>
 		                	</li>
 							<li>
-		                		<a href="mailbox-read.html" class="ttr-material-button"><span class="ttr-label">Mail Read</span></a>
+		                		<a href="?do=groups" class="ttr-material-button"><span class="ttr-label">İstifadəçi qrupları</span></a>
 		                	</li>
 		                </ul>
 		            </li>
 					<li>
 						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-calendar"></i></span>
-		                	<span class="ttr-label">Calendar</span>
+		                	<span class="ttr-label">Düşərgə</span>
 		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
 		                </a>
 		                <ul>
 		                	<li>
-		                		<a href="basic-calendar.html" class="ttr-material-button"><span class="ttr-label">Basic Calendar</span></a>
+		                		<a href="?do=camps" class="ttr-material-button"><span class="ttr-label">Düşərgə siyahıları</span></a>
 		                	</li>
 		                	<li>
-		                		<a href="list-view-calendar.html" class="ttr-material-button"><span class="ttr-label">List View</span></a>
+		                		<a href="?do=camp_registers" class="ttr-material-button"><span class="ttr-label">Düşərgə qeydiyyatları</span></a>
+		                	</li>
+							<li>
+		                		<a href="?do=camp_group" class="ttr-material-button"><span class="ttr-label">Düşərgə qrupları</span></a>
+		                	</li>
+							<li>
+		                		<a href="?do=countries" class="ttr-material-button"><span class="ttr-label">Ölkələr</span></a>
+		                	</li>
+							<li>
+		                		<a href="?do=cities" class="ttr-material-button"><span class="ttr-label">Şəhərlər</span></a>
 		                	</li>
 		                </ul>
 		            </li>
-					<li>
-						<a href="bookmark.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-bookmark-alt"></i></span>
-		                	<span class="ttr-label">Bookmarks</span>
-		                </a>
-		            </li>
-					<li>
-						<a href="review.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-comments"></i></span>
-		                	<span class="ttr-label">Review</span>
-		                </a>
-		            </li>
-					<li>
-						<a href="add-listing.html" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
-		                	<span class="ttr-label">Add listing</span>
-		                </a>
-		            </li>
-					<li>
-						<a href="#" class="ttr-material-button">
-							<span class="ttr-icon"><i class="ti-user"></i></span>
-		                	<span class="ttr-label">My Profile</span>
-		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-		                </a>
-		                <ul>
-		                	<li>
-		                		<a href="user-profile.html" class="ttr-material-button"><span class="ttr-label">User Profile</span></a>
-		                	</li>
-		                	<li>
-		                		<a href="teacher-profile.html" class="ttr-material-button"><span class="ttr-label">Teacher Profile</span></a>
-		                	</li>
-		                </ul>
+					
 		            </li>
 		            <li class="ttr-seperate"></li>
 				</ul>
@@ -337,13 +186,6 @@
 	<!--Main container start -->
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
-			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Dashboard</h4>
-				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Dashboard</li>
-				</ul>
-			</div>	
 			<!-- Card -->
 			<div class="row">
 				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
@@ -454,7 +296,7 @@
 			<!-- Card END -->
 			<div class="row">
 				<!-- Your Profile Views Chart -->
-				<div class="col-lg-8 m-b30">
+				<div class="col-lg-12 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
 							<h4>Your Profile Views</h4>
@@ -465,79 +307,6 @@
 					</div>
 				</div>
 				<!-- Your Profile Views Chart END-->
-				<div class="col-lg-4 m-b30">
-					<div class="widget-box">
-						<div class="wc-title">
-							<h4>Notifications</h4>
-						</div>
-						<div class="widget-inner">
-							<div class="noti-box-list">
-								<ul>
-									<li>
-										<span class="notification-icon dashbg-gray">
-											<i class="fa fa-check"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 02:14</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-yellow">
-											<i class="fa fa-shopping-cart"></i>
-										</span>
-										<span class="notification-text">
-											<a href="#">Your order is placed</a> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 7 Min</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-red">
-											<i class="fa fa-bullhorn"></i>
-										</span>
-										<span class="notification-text">
-											<span>Your item is shipped</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 2 May</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-green">
-											<i class="fa fa-comments-o"></i>
-										</span>
-										<span class="notification-text">
-											<a href="#">Sneha Jogi</a> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 14 July</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-primary">
-											<i class="fa fa-file-word-o"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 15 Min</span>
-										</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="col-lg-6 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
@@ -669,16 +438,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-12 m-b30">
-					<div class="widget-box">
-						<div class="wc-title">
-							<h4>Basic Calendar</h4>
-						</div>
-						<div class="widget-inner">
-							<div id="calendar"></div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</main>
@@ -694,87 +453,6 @@
 <script src="assets/vendors/chart/chart.min.js"></script>
 <script src="assets/js/admin.js"></script>
 <script src='assets/vendors/calendar/moment.min.js'></script>
-<script src='assets/vendors/calendar/fullcalendar.js'></script>
-<script>
-  $(document).ready(function() {
 
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,listWeek'
-      },
-      defaultDate: '2019-03-12',
-      navLinks: true, // can click day/week names to navigate views
-
-      weekNumbers: true,
-      weekNumbersWithinDays: true,
-      weekNumberCalculation: 'ISO',
-
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2019-03-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2019-03-07',
-          end: '2019-03-10'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2019-03-09T16:00:00'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2019-03-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2019-03-11',
-          end: '2019-03-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-03-12T10:30:00',
-          end: '2019-03-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2019-03-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-03-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2019-03-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2019-03-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2019-03-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2019-03-28'
-        }
-      ]
-    });
-
-  });
-
-</script>
 </body>
-
-<!-- Mirrored from educhamp.themetrades.com/html/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Oct 2023 09:06:13 GMT -->
 </html>

@@ -102,14 +102,14 @@ Theme Version:	1.0.0
 
 				// The data for our dataset
 				data: {
-					labels: ["January", "February", "March", "April", "May", "June"],
+					labels: ["January", "February", "March", "April", "May", "June", "Jule", "August", "September", "October", "November", "December"],
 					// Information about the dataset
 					datasets: [{
-						label: "Views",
+						label: "Qeydiyyat",
 						backgroundColor: 'rgba(0,0,0,0.05)',
 						borderColor: '#4c1864',
 						borderWidth: "3",
-						data: [196,132,215,362,210,252],
+						data: [196,132,215,362,210,252,252,252,252,252,252,252],
 						pointRadius: 4,
 						pointHoverRadius:4,
 						pointHitRadius: 10,
