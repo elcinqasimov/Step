@@ -43,4 +43,9 @@ $lang = array(
     'logout'                => "Logout",
     'read_more'                => "Read more",
     'person'                => "person",
+    'partners'                => "Partners",
+    'menu'                => "Menu",
+    'our_gallery'                => "Our Gallery",
+    'services'                => "Services",
+    'copyright'                => "All Rights Reserved.",
 );

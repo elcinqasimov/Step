@@ -18,9 +18,10 @@
 						
                         <div class="secondary-inner">
                             <ul>
-								<li><a href="javascript:;" class="btn-link"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="javascript:;" class="btn-link"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="javascript:;" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="https://www.facebook.com/intcdc" class="btn-link"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://www.linkedin.com/in/intcdc" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="https://www.instagram.com/intcdc" class="btn-link"><i class="fa fa-instagram"></i></a></li>
+								<li><a href="https://www.youtube.com/@intcdc" class="btn-link"><i class="fa fa-youtube"></i></a></li>
 								<?php if($l == "az"){ ?>
 									<li><a href="<?=$_SERVER["REQUEST_URI"]?>&lang=en" >&nbsp;&nbsp;<img width="30px" src="assets/images/en.png"/></a></li>
 								<?php }else{ ?>
@@ -31,7 +32,7 @@
 								<?php if($userid == ""){ ?>
 							<li><a href="login.php" class="btn" style="padding:5px;">Login</a></li>
 							<?php }else{ ?>
-								<?php if($group == 1){ ?>
+							<?php if($group == 1){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>
 							<?php } ?>
 							<?php if($group == 2){ ?>

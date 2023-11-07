@@ -1,3 +1,21 @@
+    <?php
+
+    print_r($_POST);
+    if(isset($_POST["search"]) && $_POST["search"] != ""){
+        $search = " AND term.`name` REGEXP '".$_POST["search"]."'"; 
+    }else{
+        $search = "";
+    }
+
+    ?>
+    
+    <script>
+        $("#search").keyup(function(event) {
+    if (event.keyCode == 13) {
+        $("#search_key").trigger('click');
+    }
+})
+</script>
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
@@ -15,12 +33,17 @@
 					 <div class="row">
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
 							<div class="widget courses-search-bx placeani">
+                            <form method="POST" action="">
 								<div class="form-group">
 									<div class="input-group">
 										<label>Search Courses</label>
-										<input name="name" type="text" required class="form-control">
+                                        <form method="POST" action="">
+                                            <input name="search" id="search" type="text" required class="form-control">
+                                            <button type="button" style="display:none;" onclick="searchresult()" id="search_key">Search</button>
+                                        </form>
 									</div>
 								</div>
+                                </form>
 							</div>
 							<div class="widget widget_archive">
                                 <h5 class="widget-title style-1"><?=$lang["countries"]?></h5>
@@ -51,7 +74,7 @@
                                     $where = "";
                                 }else{
                                     $country =  $_GET["country"];
-                                    $where = "WHERE country_id = $country";
+                                    $where = "AND camps.country_id = $country";
                                 }
                                 $countsql = "
                                     SELECT count(*) FROM
@@ -59,7 +82,8 @@
                                         INNER JOIN camps ON term.camp_id = camps.id
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id 
-                                    $where";
+                                        WHERE term.id 
+                                    $where $search";
                                     $termsql = "
                                     SELECT
                                         term.id as 'id',
@@ -82,7 +106,7 @@
                                         INNER JOIN camps ON term.camp_id = camps.id
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id 
-                                    $where   LIMIT $offset, $total_records_per_page";
+                                    $where $search LIMIT $offset, $total_records_per_page";
                                     $terms = $db->query($termsql);
                                     $counts = $db->query($countsql);
                                 

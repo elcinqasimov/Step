@@ -47,7 +47,7 @@
 						<div class="row">
 							<div class="col-4 col-lg-4 col-md-4 col-sm-4">
 								<div class="widget footer_widget">
-									<h5 class="footer-title">Menu</h5>
+									<h5 class="footer-title"><?=$lang["menu"]?></h5>
 									<ul>
 										<?php 
 										$sehife = $db->select("pages","isnull(subid) AND id != 5");
@@ -82,7 +82,7 @@
 								</div>
 					<div class="col-12 col-lg-3 col-md-5 col-sm-12 footer-col-4">
                         <div class="widget widget_gallery gallery-grid-4">
-                            <h5 class="footer-title">Our Gallery</h5>
+                            <h5 class="footer-title"><?=$lang["our_gallery"]?></h5>
                             <ul class="magnific-image">
 								<li><a href="assets/images/gallery/1.jpg" class="magnific-anchor"><img src="assets/images/gallery/1.jpg" alt=""></a></li>
 								<li><a href="assets/images/gallery/2.jpg" class="magnific-anchor"><img src="assets/images/gallery/2.jpg" alt=""></a></li>
@@ -105,7 +105,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 text-center"> © 2023 <span class="text-white">INTCDC</span>  All Rights Reserved.</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center"> © 2023 <span class="text-white">INTCDC</span>  <?=$lang["copyright"]?></div>
                 </div>
             </div>
         </div>

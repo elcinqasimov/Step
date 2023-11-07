@@ -44,5 +44,10 @@ $lang = array(
     'logout'                => "Çıxış",
     'read_more'                => "Ətraflı oxu",
     'person'                => "nəfər",
+    'partners'                => "Partnyorlar",
+    'menu'                => "Menyu",
+    'our_gallery'                => "Qalereyamız",
+    'services'                => "Xidmətlərimiz",
+    'copyright'                => "Bütün hüquqlar qorunur.",
     
 );

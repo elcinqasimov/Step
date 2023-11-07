@@ -317,7 +317,7 @@
                 <div class="container">
 					<div class="row">
 						<div class="col-md-12 heading-bx style1 text-center">
-							<h2 class="title-head">Partnyorlar</h2>
+							<h2 class="title-head"><?=$lang["partners"]?></h2>
 						</div>
 					</div>
 					<div class="testimonial-carousel-2 owl-carousel owl-btn-1 col-12 p-lr0 owl-none">
