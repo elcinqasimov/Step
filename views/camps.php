@@ -1,6 +1,5 @@
     <?php
 
-    print_r($_POST);
     if(isset($_POST["search"]) && $_POST["search"] != ""){
         $search = " AND term.`name` REGEXP '".$_POST["search"]."'"; 
     }else{
