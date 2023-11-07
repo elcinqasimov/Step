@@ -42,4 +42,5 @@ $lang = array(
     'home_page'                => "Home",
     'logout'                => "Logout",
     'read_more'                => "Read more",
+    'person'                => "person",
 );

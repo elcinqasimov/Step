@@ -43,5 +43,6 @@ $lang = array(
     'home_page'                => "Ana səhifə",
     'logout'                => "Çıxış",
     'read_more'                => "Ətraflı oxu",
+    'person'                => "nəfər",
     
 );
