@@ -273,13 +273,13 @@
 								<div class="action-box">
 									<img src="<?=$consultant[$a]["image"]?>" alt="">
 								</div>
-								<div class="info-bx d-flex">
+								<div class="info-bx d-flex" style="width:100%;">
 									<div class="event-info">
 										<h4 class="event-title"><a href="events-details.html"><?=$consultant[$a]["fullname_".$l]?></a></h4>
 										<ul class="media-post">						
 											<li><a href="?do=psiychology&mod=consultant&id=<?=$consultant[$a]["id"]?>"><i class="fa fa-info"></i><?=$consultant[$a]["status_".$l]?></a></li>
 										</ul>
-										<p><?=$consultant[$a]["about_".$l]?></p>
+										<p>&nbsp;</p>
 									</div>
 								</div>
 								<div class="event-time">

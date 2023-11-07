@@ -2160,6 +2160,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
 }
 .event-bx .info-bx{
 	padding:30px;
+	width: 100%;
 }
 .event-time{
 	color: #fff;
@@ -3073,6 +3074,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 	}
 	.event-bx .info-bx {
 		padding: 20px;
+		width: 100%;
 	}
 	.event-info .event-title{
 		 font-size: 20px;
