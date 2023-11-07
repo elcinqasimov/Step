@@ -5,7 +5,7 @@
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="canonical" href="index.html" />
+	<link rel="canonical" href="index.php" />
 	<!-- OG -->
 	<meta name="robots" content="index, follow">
 	
@@ -22,8 +22,8 @@
 	<meta property="og:image" content="preview.png"/>
 	
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:url" content="index.html">
-	<meta name="twitter:creator" content="@themetrades">
+	<meta name="twitter:url" content="index.php">
+	<meta name="twitter:creator" content="@intcdc">
 	<meta name="twitter:title" content="INTCDC - International Child Development Center">
 	<meta name="twitter:description" content="INTCDC - International Child Development Center">
 	
@@ -88,6 +88,12 @@
 							<li><a href="?do=login">Login</a></li>
 							<li><a href="?do=register">Register</a></li>
 							<?php }else{ ?>
+								<?php if($group == 1){ ?>
+							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>
+							<?php } ?>
+							<?php if($group == 2){ ?>
+							<li><a href="admin/index.php" class="btn" style="padding:5px;background:grey;color:#fff; ">Agent panel</a></li>
+							<?php } ?>
 							<li><a href="?do=users&profile=<?=$userid?>"><?=$fullname?></a></li>
 							<li><a href="logout.php"><?=$lang["logout"]?></a></li>
 							<?php } ?>

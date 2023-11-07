@@ -4,7 +4,7 @@
         <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner3.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">Camps</h1>
+                    <h1 class="text-white"><?=$lang["last_camps"]?></h1>
 				 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                                 </ul>
                             </div>
 							<div class="widget">
-								<a href="#"><img src="assets/images/adv/adv.jpg" alt=""/></a>
+								<!--REKLAM-->
 							</div>
 							
 						</div>
@@ -91,7 +91,7 @@
 									<div class="cours-bx">
 										<div class="action-box">
 											<img src="assets/images/camp.jpg" alt="">
-											<a href="?do=camps_info&id=<?=$terms[$b]["id"]?>" class="btn">Read More</a>
+											<a href="?do=camps_info&id=<?=$terms[$b]["id"]?>" class="btn"><?=$lang["read_more"]?></a>
 										</div>
 										<div class="info-bx text-center">
 											<h5><a href="?do=camps_info&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>

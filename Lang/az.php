@@ -42,5 +42,6 @@ $lang = array(
     'last_camps'                => "Düşərgənlərin siyahısı",
     'home_page'                => "Ana səhifə",
     'logout'                => "Çıxış",
+    'read_more'                => "Ətraflı oxu",
     
 );

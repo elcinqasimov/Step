@@ -109,7 +109,7 @@ Theme Version:	1.0.0
 						backgroundColor: 'rgba(0,0,0,0.05)',
 						borderColor: '#4c1864',
 						borderWidth: "3",
-						data: [196,132,215,362,210,252,252,252,252,252,252,252],
+						data: [196,132,215,222,210,222,222,222,222,222,222,2],
 						pointRadius: 4,
 						pointHoverRadius:4,
 						pointHitRadius: 10,

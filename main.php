@@ -75,7 +75,7 @@
         <?php include_once 'design/slider.php'; ?>
         <!-- Main Slider -->
 		<div class="content-block">
-			<!-- Popular Courses -->
+			<!-- Popular CAMPS -->
 			<div class="section-area section-sp2 popular-courses-bx" style="background-image:url(assets/images/background/bg4.jpg); background-size:cover;">
                 <div class="container">
 					<div class="row">
@@ -153,7 +153,7 @@
 							<div class="cours-bx style1">
 								<div class="action-box">
 									<img src="assets/images/camp.jpg" alt="">
-									<a href="?do=camps_info&id=<?=$terms[$b]["id"]?>" class="btn">Read More</a>
+									<a href="?do=camps_info&id=<?=$terms[$b]["id"]?>" class="btn"><?=$lang["read_more"]?></a>
 								</div>
 								<div class="info-bx text-center">
 									<h5><a href="?do=camps_info&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>
@@ -184,7 +184,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Popular Courses END -->
+			<!-- Popular CAMPS END -->
 			<?php if($userid == ""){ ?>
 			<!-- Form -->
 			<div class="section-area section-sp3 ovpr-dark bg-fix appointment-box" style="background-image:url(assets/images/background/bg1.jpg);">
@@ -357,38 +357,29 @@
 	<!-- Footer ==== -->
    <?php include_once 'design/footer.php'; ?>
     <!-- Footer END ==== -->
-    <button class="back-to-top fa fa-chevron-up" ></button>
+
 </div>
 
 <!-- External JavaScripts -->
 <script src="assets/js/jquery.min.js"></script>
-<script src="assets/vendors/bootstrap/js/popper.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
 <script src="assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
 <script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
-<script src="assets/vendors/counter/waypoints-min.js"></script>
-<script src="assets/vendors/counter/counterup.min.js"></script>
-<script src="assets/vendors/imagesloaded/imagesloaded.js"></script>
+
 <script src="assets/vendors/masonry/masonry.js"></script>
-<script src="assets/vendors/masonry/filter.js"></script>
 <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
 <script src="assets/js/functions.js"></script>
-<script src="assets/js/contact.js"></script>
-<!-- <script src='assets/vendors/switcher/switcher.js'></script> -->
+
+
 <!-- Revolution JavaScripts Files -->
 <script src="assets/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
 <script src="assets/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script src="assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+
 <script src="assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
 <script src="assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
 <script src="assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="assets/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
 <script>
 jQuery(document).ready(function() {
 	'use strict';
@@ -402,7 +393,7 @@ jQuery(document).ready(function() {
 			jsFileLocation:"revolution/js/",
 			sliderLayout:"fullscreen",
 			dottedOverlay:"none",
-			delay:9000,
+			delay:1,
 			particles: {startSlide: "first", endSlide: "last", zIndex: "6",
 				particles: {
 					number: {value: 100}, color: {value: "#ffffff"},
@@ -410,8 +401,8 @@ jQuery(document).ready(function() {
 						type: "circle", stroke: {width: 0, color: "#ffffff", opacity: 1},
 						image: {src: ""}
 					},
-					opacity: {value: 1, random: true, min: 0.25, anim: {enable: false, speed: 3, opacity_min: 0, sync: false}},
-					size: {value: 3, random: true, min: 0.5, anim: {enable: false, speed: 40, size_min: 1, sync: false}},
+					opacity: {value: 1, random: true, min: 0.25, anim: {enable: false, speed: 1, opacity_min: 0, sync: false}},
+					size: {value: 3, random: true, min: 0.5, anim: {enable: false, speed: 1, size_min: 1, sync: false}},
 					line_linked: {enable: false, distance: 150, color: "#ffffff", opacity: 0.4, width: 1},
 					move: {enable: true, speed: 1, direction: "top", random: true, min_speed: 1, straight: false, out_mode: "out"}},
 				interactivity: {
@@ -429,12 +420,12 @@ jQuery(document).ready(function() {
 			parallax: {
 				type:"mouse",
 				origo:"slidercenter",
-				speed:400,
-				levels:[1,2,3,4,5,10,15,20,25,46,47,48,49,50,51,55],
+				speed:1,
+				levels:[1,2,3,4,5,10],
 			},
 			shadow:0,
 			spinner:"off",
-			autoHeight:"off",
+			autoHeight:"on",
 			fullScreenAutoWidth:"off",
 			fullScreenAlignForce:"off",
 			fullScreenOffsetContainer: "",
@@ -451,13 +442,6 @@ jQuery(document).ready(function() {
 			}
 		});
 	}
-	
-	/*if($('.setResizeMargin').length > 0){
-		var screenSize  = $( window ).width();
-		var containerSize = $('.container').width();
-		var getMargin = (screensize - containersize)/2;
-		$('.setResizeMargin').css('margin-left',getMargin);
-	}*/
 	
 	
 });	

@@ -31,7 +31,12 @@
 								<?php if($userid == ""){ ?>
 							<li><a href="login.php" class="btn" style="padding:5px;">Login</a></li>
 							<?php }else{ ?>
-							<li><a href="?do=users&profile=<?=$userid?>" class="btn" style="padding:5px;"><?=$fullname?></a></li>
+								<?php if($group == 1){ ?>
+							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>
+							<?php } ?>
+							<?php if($group == 2){ ?>
+							<li><a href="admin/index.php" class="btn" style="padding:5px;background:grey;color:#fff; ">Agent panel</a></li>
+							<?php } ?>
 							<li><a href="logout.php" class="btn" style="padding:5px;background:orange;"><?=$lang["logout"]?></a></li>
 							<?php } ?>
 							</ul>

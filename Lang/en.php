@@ -41,4 +41,5 @@ $lang = array(
     'last_camps'                => "Last camps",
     'home_page'                => "Home",
     'logout'                => "Logout",
+    'read_more'                => "Read more",
 );
