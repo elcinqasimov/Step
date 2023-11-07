@@ -93,7 +93,7 @@ if(isset($_POST["submit"]) && $_POST["submit"] == "login"){
 					<p><?=$lang["login_label"]?></p>
 				</div>	
 				<?php if($text != ""){ ?>
-				<div style="background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding-left:10px;"><?=$text?></div>
+				<div style="background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding-left:10px;margin-bottom:20px;"><?=$text?></div>
 				<?php } ?>
 				<form class="contact-bx" action="" method="POST">
 					<div class="row placeani">
