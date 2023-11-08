@@ -35,7 +35,7 @@
                             <form method="POST" action="">
 								<div class="form-group">
 									<div class="input-group">
-										<label>Search Courses</label>
+										<label><?=$lang["search_camp"]?></label>
                                         <form method="POST" action="">
                                             <input name="search" id="search" type="text" required class="form-control">
                                             <button type="button" style="display:none;" onclick="searchresult()" id="search_key">Search</button>

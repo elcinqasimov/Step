@@ -85,8 +85,8 @@
                                 </div>
 							</li>
 							<?php if($userid == ""){ ?>
-							<li><a href="?do=login">Login</a></li>
-							<li><a href="?do=register">Register</a></li>
+							<li><a href="login.php"><?=$lang["login_enter"]?></a></li>
+							<li><a href="register.php"><?=$lang["register"]?></a></li>
 							<?php }else{ ?>
 								<?php if($group == 1){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>

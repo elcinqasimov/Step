@@ -49,5 +49,8 @@ $lang = array(
     'our_gallery'                => "Qalereyamız",
     'services'                => "Xidmətlərimiz",
     'copyright'                => "Bütün hüquqlar qorunur.",
+    'register'                => "Qeydiyyat",
+    'login_enter'                => "Giriş",
+    'search_camp'                => "Düşərgə axtar",
     
 );

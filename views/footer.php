@@ -15,9 +15,11 @@
 								<li><a href="https://www.youtube.com/@intcdc" class="btn-link"><i class="fa fa-youtube"></i></a></li>
 							</ul>
 						</div>
+						<?php if($userid == ""){ ?>
 						<div class="pt-btn-join">
 							<a href="?do=register" class="btn "><?=$lang["register_now"]?></a>
 						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
