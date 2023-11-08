@@ -162,14 +162,8 @@
 								<div class="cours-more-info">
 											<div class="review">
 											
-												<ul class="cours-star">
-                                                    <?php for($s = 0;$s < $terms[$b]["count"];$s++){ ?>
-													<li class="active"><i class="fa fa-star"></i></li>
-                                                    <?php } ?>
-                                                    <?php for($ss= 0;$ss < 10-$terms[$b]["count"];$ss++){ ?>
-													<li><i class="fa fa-star"></i></li>
-													<?php } ?>
-												</ul>
+											<?=tarix($terms[$b]["startdate"])?>
+                                            <?=tarix($terms[$b]["enddate"])?>
 											</div>
 											<div class="price">	<span><?=$terms[$b]["count"]?> <?=$lang["person"]?></span>
 												<h5><?=$terms[$b]["price"]?> &#8364;</h5>
