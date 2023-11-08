@@ -30,7 +30,7 @@
         <div class="page-banner ovbl-dark" style="background-image:url(assets/images/gallery/4.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">Düşərgə haqqında</h1>
+                    <h1 class="text-white"><?=$lang["camp_info"]?></h1>
 				 </div>
             </div>
         </div>
@@ -52,12 +52,12 @@
 										$reg_link = "?do=register_camp&id=".$term[0]["id"];
 									}
 									?>
-									<a href="<?=$reg_link?>" class="btn radius-xl text-uppercase">Düşərgəyə qeydiyyat</a>
+									<a href="<?=$reg_link?>" class="btn radius-xl text-uppercase"><?=$lang["camp_reg"]?></a>
 								</div>
 								<div class="course-info-list scroll-page">
 									<ul class="navbar">
 										<li><a class="nav-link" href="#"><i class="ti-calendar"></i><?=tarix($term[0]["startdate"])?> - <?=tarix($term[0]["enddate"])?></a></li>
-										<li><a class="nav-link" href="#"><i class="ti-user"></i>Uşaq sayı : <?=$term[0]["count"]?></a></li>
+										<li><a class="nav-link" href="#"><i class="ti-user"></i><?=$lang["camp_person"]?> : <?=$term[0]["count"]?></a></li>
 									</ul>
 								</div>
 							</div>

@@ -127,7 +127,7 @@
                                             <?=tarix($terms[$b]["enddate"])?>
                                                 
 											</div>
-											<div class="price">	<span><?=$terms[$b]["count"]?> person</span>
+											<div class="price">	<span><?=$terms[$b]["count"]?> <?=$lang["person"]?></span>
 												<h5><?=$terms[$b]["price"]?> &#8364;</h5>
 											</div>
 										</div>
