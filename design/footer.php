@@ -34,7 +34,7 @@
 									</ul>
 								</div>
 							</div>
-							<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+							<div class="col-6 col-lg-6 col-md-6 col-sm-6">
 								<div class="widget footer_widget">
 									<h5 class="footer-title"><?=$lang["services"]?></h5>
 									<ul>
