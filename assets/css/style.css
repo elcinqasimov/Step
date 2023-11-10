@@ -331,7 +331,7 @@
 }
 .is-fixed .menu-logo{
     height: 70px;
-    width: 140px;
+    width: 160px;
 	transition:all 0.5s;
 	-webkit-transition:all 0.5s;
 	-moz-transition:all 0.5s;
@@ -347,12 +347,12 @@
 @media only screen and (max-width: 767px) {
     .menu-logo,
 	.is-fixed .menu-logo{
-        width: 140px;
-		max-width: 140px;
+        width: 160px;
+		max-width: 160px;
 		height:50px;
     }
 	.menu-logo img{
-		max-width: 140px;
+		max-width: 160px;
 	}
     .is-fixed .menu-logo a img{
         vertical-align: sub;
