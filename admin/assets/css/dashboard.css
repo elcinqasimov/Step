@@ -813,6 +813,12 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#668bff', endColorstr='#104dfd',GradientType=1 ); /* IE6-9 */
 }
 
+.widget-bg5{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#668bff+0,104dfd+100 */
+	background: #116406; /* Old browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#668bff', endColorstr='#104dfd',GradientType=1 ); /* IE6-9 */
+}
+
 .widget-box{
 	background-color: #fff;
 	box-shadow:0 3px 10px 0px rgba(0,0,0,.08);

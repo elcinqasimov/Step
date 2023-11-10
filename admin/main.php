@@ -2,75 +2,95 @@
 		<div class="container-fluid">
 			<!-- Card -->
 			<div class="row">
-				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
 					<div class="widget-card widget-bg1">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								Total Frofit
+								İstifadəçilər
 							</h4>
 							<span class="wc-des">
-								All Customs Value
+								Bütün istifadəçilər
 							</span>
 							<span class="wc-stats">
 								$<span class="counter">18</span>M 
 							</span>		
-							<div class="progress wc-progress">
-								<div class="progress-bar" role="progressbar" style="width: 78%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
 						</div>				      
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
 					<div class="widget-card widget-bg2">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								 New Feedbacks
+								Agentlər
 							</h4>
 							<span class="wc-des">
-								Customer Review
+								Bütün agentlər
+							</span>
+							<span class="wc-stats">
+								$<span class="counter">18</span>M 
+							</span>		
+						</div>				      
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
+					<div class="widget-card widget-bg3">					 
+						<div class="wc-item">
+							<h4 class="wc-title">
+								 Uşaqlar
+							</h4>
+							<span class="wc-des">
+								Uşaqların sayı
 							</span>
 							<span class="wc-stats counter">
 								120 
 							</span>		
-							<div class="progress wc-progress">
-								<div class="progress-bar" role="progressbar" style="width: 88%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
 						</div>				      
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-					<div class="widget-card widget-bg3">					 
+				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
+					<div class="widget-card widget-bg4">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								New Orders 
+								Qeydiyyatlar 
 							</h4>
 							<span class="wc-des">
-								Fresh Order Amount 
+								Düşərgə qeydiyyatları
 							</span>
 							<span class="wc-stats counter">
 								772 
 							</span>		
-							<div class="progress wc-progress">
-								<div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
 						</div>				      
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-					<div class="widget-card widget-bg4">					 
+				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
+					<div class="widget-card widget-bg5">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
-								New Users 
+								Düşərgələr
 							</h4>
 							<span class="wc-des">
-								Joined New User
+								Bütün düşərgələr
 							</span>
 							<span class="wc-stats counter">
 								350 
 							</span>		
-							<div class="progress wc-progress">
-								<div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
+
+						</div>				      
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
+					<div class="widget-card widget-bg6">					 
+						<div class="wc-item">
+							<h4 class="wc-title">
+								Valideyn turları 
+							</h4>
+							<span class="wc-des">
+								Valideyn turları
+							</span>
+							<span class="wc-stats counter">
+								350 
+							</span>		
+
 						</div>				      
 					</div>
 				</div>
@@ -81,7 +101,7 @@
 				<div class="col-lg-12 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
-							<h4>Your Profile Views</h4>
+							<h4>Statistika</h4>
 						</div>
 						<div class="widget-inner">
 							<canvas id="chart" width="100" height="15"></canvas>
@@ -92,7 +112,7 @@
 				<div class="col-lg-6 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
-							<h4>New Users</h4>
+							<h4>Yeni istifadəçilər</h4>
 						</div>
 						<div class="widget-inner">
 							<div class="new-user-list">
@@ -165,7 +185,7 @@
 				<div class="col-lg-6 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
-							<h4>Orders</h4>
+							<h4>Son qeydiyyatlar</h4>
 						</div>
 						<div class="widget-inner">
 							<div class="orders-list">
