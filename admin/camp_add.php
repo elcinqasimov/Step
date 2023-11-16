@@ -3,8 +3,44 @@
 <?php 
 $error = "";
 $text = "";
+
 if(isset($_POST["submit"]) && $_POST["submit"]  == "add"){
-print_r($_POST);
+if($_POST["name"] == ""){
+	$error .= "Düşərgə adı yazılmayıb.<br/>";
+}
+if($_POST["count"] == ""){
+	$error .= "Düşərgədə nəfər sayı yazılmayıb.<br/>";
+}
+if($_POST["camp_id"] == ""){
+	$error .= "Düşərgə qrupu seçilməyib.<br/>";
+}
+if($_POST["price"] == ""){
+	$error .= "Düşərgə qiyməti yazılmayıb.<br/>";
+}
+if($_POST["startdate"] == ""){
+	$error .= "Başlanma tarixi yazılmayıb.<br/>";
+}
+if($_POST["enddate"] == ""){
+	$error .= "Bitmə tarixi yazılmayıb.";
+}
+if($_POST["description_az"] == ""){
+	$error .= "Düşərgənin təsviri (AZ) yazılmayıb.<br/>";
+}
+if($_POST["description_en"] == ""){
+	$error .= "Düşərgənin təsviri (EN) yazılmayıb.<br/>";
+}
+if($error == ""){
+	unset($_POST["submit"]);
+	unset($_POST["undefined"]);
+	unset($_POST["files"]);
+	$_POST["startdate"] = ekstarix($_POST["startdate"]);
+	$_POST["enddate"] = ekstarix($_POST["enddate"]);
+	$db->insert("term",$_POST);
+echo '<script>location.href = "?do=camps";</script>';
+}else{
+	$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
+}
+
 }
 if(isset($_POST["submit"]) && $_POST["submit"]  == "finish"){
 	$where = "id = ".$id;
@@ -14,33 +50,58 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "finish"){
 	$disabled = "disabled";
 }
 if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
-	print_r($_POST);
+	if(!isset($_POST["name"]) && $_POST["name"] == ""){
+		$error .= "Düşərgə adı yazılmayıb.";
+	}
+	if(!isset($_POST["count"]) && $_POST["count"] == ""){
+		$error .= "Düşərgədə nəfər sayı yazılmayıb.";
+	}
+	if(!isset($_POST["camp_id"]) && $_POST["camp_id"] == ""){
+		$error .= "Düşərgə qrupu seçilməyib.";
+	}
+	if(!isset($_POST["price"]) && $_POST["price"] == ""){
+		$error .= "Düşərgə qiyməti yazılmayıb.";
+	}
+	if(!isset($_POST["startdate"]) && $_POST["startdate"] == ""){
+		$error .= "Başlanma tarixi yazılmayıb.";
+	}
+	if(!isset($_POST["enddate"]) && $_POST["enddate"] == ""){
+		$error .= "Bitmə tarixi yazılmayıb.";
+	}
+	if(!isset($_POST["description_az"]) && $_POST["description_az"] == ""){
+		$error .= "Düşərgənin təsviri (AZ) yazılmayıb.";
+	}
+	if(!isset($_POST["description_en"]) && $_POST["description_en"] == ""){
+		$error .= "Düşərgənin təsviri (EN) yazılmayıb.";
+	}
 	unset($_POST["submit"]);
+	unset($_POST["undefined"]);
+	unset($_POST["files"]);
 	$where = "id = ".$id;
 	$db->update("term",$_POST,$where);
 	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Qeydiyyat yadda saxlanıldı.</div>";
 }
 
-										$sql = "
-										SELECT
-											id as 'id',
-											`name` as 'name', 
-											startdate as 'startdate', 
-											enddate as 'enddate', 
-											count as 'count',  
-											price as 'price', 
-											camp_id as 'camp_id', 
-											finish as 'finish', 
-											description_az as 'description_az', 
-											description_en as 'description_en' 
-                                    	FROM
-                                        term  WHERE id = '$id'";
-										$regsiyahi = $db->query($sql);
-										if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
-											$disabled = "disabled";
-										}else{
-											$disabled = "";
-										}
+$sql = "
+SELECT
+	id as 'id',
+	`name` as 'name', 
+	startdate as 'startdate', 
+	enddate as 'enddate', 
+	count as 'count',  
+	price as 'price', 
+	camp_id as 'camp_id', 
+	finish as 'finish', 
+	description_az as 'description_az', 
+	description_en as 'description_en' 
+FROM
+term  WHERE id = '$id'";
+$regsiyahi = $db->query($sql);
+if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
+	$disabled = "disabled";
+}else{
+	$disabled = "";
+}
 
 if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$camp_id	=	$regsiyahi[0]["camp_id"];
@@ -111,13 +172,13 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 									<div class="form-group col-3">
 										<label class="col-form-label">Düşərgə adı</label>
 										<div>
-											<input class="form-control" type="text" value="<?=$name?>" <?=$disabled?>>
+											<input class="form-control" name="name" type="text" value="<?=$name?>" <?=$disabled?>>
 										</div>
 									</div>
 									<div class="form-group col-3">
 										<label class="col-form-label">Düşərgədə nəfər sayı</label>
 										<div>
-											<input class="form-control" type="number" value="<?=$count?>" <?=$disabled?>>
+											<input class="form-control" type="number" name="count" value="<?=$count?>" <?=$disabled?>>
 										</div>
 									</div>
 									<div class="form-group col-3">
@@ -136,19 +197,19 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 									<div class="form-group col-3">
 										<label class="col-form-label">Düşərgə qiyməti</label>
 										<div>
-											<input class="form-control" type="text" value="<?=$price?>" <?=$disabled?>>
+											<input class="form-control" type="number" name="price" value="<?=$price?>" <?=$disabled?>>
 										</div>
 									</div>
 									<div class="form-group col-6">
 										<label class="col-form-label"> Başlanma tarixi</label>
 										<div>
-											<input class="form-control" type="text" value="<?=$startdate?>" <?=$disabled?>>
+											<input class="form-control" type="text" name="startdate" value="<?=$startdate?>" <?=$disabled?>>
 										</div>
 									</div>
 									<div class="form-group col-6">
 										<label class="col-form-label"> Bitmə tarixi</label>
 										<div>
-											<input class="form-control" type="text" value="<?=$enddate?>" <?=$disabled?>>
+											<input class="form-control" type="text" name="enddate" value="<?=$enddate?>" <?=$disabled?>>
 										</div>
 									</div>
 									</div>
@@ -164,13 +225,13 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 									<div class="form-group col-6">
 										<label class="col-form-label">Düşərgənin təsviri (AZ)</label>
 										<div>
-											<textarea id="desc_az" name="desc_az" <?=$disabled?>><?=$desc_az?></textarea>	
+											<textarea id="desc_az" name="description_az" <?=$disabled?>><?=$desc_az?></textarea>	
 										</div>
 									</div>
 									<div class="form-group col-6">
 										<label class="col-form-label">Düşərgənin təsviri (EN)</label>
 										<div>
-											<textarea id="desc_en" name="desc_en" <?=$disabled?>><?=$desc_en?></textarea>	
+											<textarea id="desc_en" name="description_en" <?=$disabled?>><?=$desc_en?></textarea>	
 										</div>
 									</div>
 									<?php if($disabled == ""){ ?>
