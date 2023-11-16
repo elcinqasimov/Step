@@ -1,3 +1,10 @@
+<?php
+	$users			= $db->query("SELECT count(*) as 'say' FROM users");
+	$agents			= $db->query("SELECT count(*) as 'say' FROM users WHERE `group` = '2'");
+	$childs			= $db->query("SELECT count(*) as 'say' FROM children");
+	$registration	= $db->query("SELECT count(*) as 'say' FROM registration");
+	$camps			= $db->query("SELECT count(*) as 'say' FROM term");
+?>
 <main class="ttr-wrapper">
 		<div class="container-fluid">
 			<!-- Card -->
@@ -12,7 +19,7 @@
 								Bütün istifadəçilər
 							</span>
 							<span class="wc-stats">
-								$<span class="counter">18</span>M 
+								<span class="counter"><?=$users[0]["say"]?></span> 
 							</span>		
 						</div>				      
 					</div>
@@ -27,7 +34,7 @@
 								Bütün agentlər
 							</span>
 							<span class="wc-stats">
-								$<span class="counter">18</span>M 
+								<span class="counter"><?=$agents[0]["say"]?></span> 
 							</span>		
 						</div>				      
 					</div>
@@ -42,7 +49,7 @@
 								Uşaqların sayı
 							</span>
 							<span class="wc-stats counter">
-								120 
+							<?=$childs[0]["say"]?> 
 							</span>		
 						</div>				      
 					</div>
@@ -57,7 +64,7 @@
 								Düşərgə qeydiyyatları
 							</span>
 							<span class="wc-stats counter">
-								772 
+							<?=$registration[0]["say"]?> 
 							</span>		
 						</div>				      
 					</div>
@@ -72,7 +79,7 @@
 								Bütün düşərgələr
 							</span>
 							<span class="wc-stats counter">
-								350 
+							<?=$camps[0]["say"]?> 
 							</span>		
 
 						</div>				      
@@ -88,7 +95,7 @@
 								Valideyn turları
 							</span>
 							<span class="wc-stats counter">
-								350 
+								-- 
 							</span>		
 
 						</div>				      
@@ -117,66 +124,19 @@
 						<div class="widget-inner">
 							<div class="new-user-list">
 								<ul>
+									<?php 
+										$user = $db->query("SELECT * FROM users LIMIT 5");
+										for($a = 0;$a<count($user);$a++){ 
+									?>
 									<li>
-										<span class="new-users-pic">
-											<img src="assets/images/testimonials/pic1.jpg" alt=""/>
-										</span>
 										<span class="new-users-text">
-											<a href="#" class="new-users-name">Anna Strong </a>
-											<span class="new-users-info">Visual Designer,Google Inc </span>
+											<a href="?do=user_info&id=<?=$regsiyahi[$a]["id"]?>" class="new-users-name"><?=$user[$a]["fullname"]?></a>
 										</span>
 										<span class="new-users-btn">
-											<a href="#" class="btn button-sm outline">Follow</a>
+											<a href="?do=user_info&id=<?=$regsiyahi[$a]["id"]?>" class="btn button-sm outline">Bax</a>
 										</span>
 									</li>
-									<li>
-										<span class="new-users-pic">
-											<img src="assets/images/testimonials/pic2.jpg" alt=""/>
-										</span>
-										<span class="new-users-text">
-											<a href="#" class="new-users-name"> Milano Esco </a>
-											<span class="new-users-info">Product Designer, Apple Inc </span>
-										</span>
-										<span class="new-users-btn">
-											<a href="#" class="btn button-sm outline">Follow</a>
-										</span>
-									</li>
-									<li>
-										<span class="new-users-pic">
-											<img src="assets/images/testimonials/pic1.jpg" alt=""/>
-										</span>
-										<span class="new-users-text">
-											<a href="#" class="new-users-name">Nick Bold  </a>
-											<span class="new-users-info">Web Developer, Facebook Inc </span>
-										</span>
-										<span class="new-users-btn">
-											<a href="#" class="btn button-sm outline">Follow</a>
-										</span>
-									</li>
-									<li>
-										<span class="new-users-pic">
-											<img src="assets/images/testimonials/pic2.jpg" alt=""/>
-										</span>
-										<span class="new-users-text">
-											<a href="#" class="new-users-name">Wiltor Delton </a>
-											<span class="new-users-info">Project Manager, Amazon Inc </span>
-										</span>
-										<span class="new-users-btn">
-											<a href="#" class="btn button-sm outline">Follow</a>
-										</span>
-									</li>
-									<li>
-										<span class="new-users-pic">
-											<img src="assets/images/testimonials/pic3.jpg" alt=""/>
-										</span>
-										<span class="new-users-text">
-											<a href="#" class="new-users-name">Nick Stone </a>
-											<span class="new-users-info">Project Manager, Amazon Inc  </span>
-										</span>
-										<span class="new-users-btn">
-											<a href="#" class="btn button-sm outline">Follow</a>
-										</span>
-									</li>
+									<?php } ?>
 								</ul>
 							</div>
 						</div>
@@ -190,51 +150,54 @@
 						<div class="widget-inner">
 							<div class="orders-list">
 								<ul>
+									<?php 
+										$sql = "
+                                    SELECT
+										registration.id as 'id',
+										registration.regdate as 'regdate',
+										registration.verify as 'verify',
+										children.fullname as 'c_fullname',
+										users.fullname as 'u_fullname',
+                                        term.id as 'term_id',
+                                        term.`name` as 'term', 
+                                        term.startdate as 'startdate', 
+                                        term.enddate as 'enddate', 
+                                        term.count as 'count',  
+                                        term.price as 'price', 
+                                        countries.country_az as 'country_az', 
+                                        countries.country_en as 'country_en', 
+                                        city.name_az as 'city_az', 
+                                        city.name_en as 'city_en', 
+                                        term.description_az as 'description_az', 
+                                        term.description_en as 'description_en', 
+                                        term.camp_id as 'camp_id',
+                                        camps.`name` as 'camp_name',
+                                        camps.`country_id` as 'country_id'
+                                    FROM
+                                        registration
+										INNER JOIN term ON registration.term = term.id
+										INNER JOIN children ON registration.childid = children.id
+										INNER JOIN users ON registration.parentid = users.id
+                                        INNER JOIN camps ON term.camp_id = camps.id
+                                        INNER JOIN city ON camps.city_id = city.id
+                                        INNER JOIN countries ON camps.country_id = countries.id LIMIT 5";
+										$regsiyahi = $db->query($sql);
+										for($a = 0;$a<count($regsiyahi);$a++){ 
+									?>
 									<li>
 										<span class="orders-title">
-											<a href="#" class="orders-title-name">Anna Strong </a>
-											<span class="orders-info">Order #02357 | Date 12/08/2019</span>
+											<a href="?do=camp_info&id=<?=$regsiyahi[$a]["id"]?>" class="orders-title-name">Uşağın adı : <?=$regsiyahi[$a]["c_fullname"]?> | Valideyn : <?=$regsiyahi[$a]["u_fullname"]?> </a>
+											<span class="orders-info">Qeydiyyat : #<?=$regsiyahi[$a]["id"]?> | Tarix : <?=tarix($regsiyahi[$a]["regdate"])?> | Düşərgə : <?=$regsiyahi[$a]["term"]?></span>
 										</span>
 										<span class="orders-btn">
-											<a href="#" class="btn button-sm red">Unpaid</a>
+											<?php if($regsiyahi[$a]["verify"] == 0){ ?>
+												<a href="?do=camp_info&id=<?=$regsiyahi[$a]["id"]?>" class="btn button-sm red">Təsdiqlənməyib</a>
+											<?php }else{ ?>
+												<a href="?do=camp_info&id=<?=$regsiyahi[$a]["id"]?>" class="btn button-sm green">Təsdiqlənib</a>
+											<?php } ?>
 										</span>
 									</li>
-									<li>
-										<span class="orders-title">
-											<a href="#" class="orders-title-name">Revenue</a>
-											<span class="orders-info">Order #02357 | Date 12/08/2019</span>
-										</span>
-										<span class="orders-btn">
-											<a href="#" class="btn button-sm red">Unpaid</a>
-										</span>
-									</li>
-									<li>
-										<span class="orders-title">
-											<a href="#" class="orders-title-name">Anna Strong </a>
-											<span class="orders-info">Order #02357 | Date 12/08/2019</span>
-										</span>
-										<span class="orders-btn">
-											<a href="#" class="btn button-sm green">Paid</a>
-										</span>
-									</li>
-									<li>
-										<span class="orders-title">
-											<a href="#" class="orders-title-name">Revenue</a>
-											<span class="orders-info">Order #02357 | Date 12/08/2019</span>
-										</span>
-										<span class="orders-btn">
-											<a href="#" class="btn button-sm green">Paid</a>
-										</span>
-									</li>
-									<li>
-										<span class="orders-title">
-											<a href="#" class="orders-title-name">Anna Strong </a>
-											<span class="orders-info">Order #02357 | Date 12/08/2019</span>
-										</span>
-										<span class="orders-btn">
-											<a href="#" class="btn button-sm green">Paid</a>
-										</span>
-									</li>
+									<?php } ?>
 								</ul>
 							</div>
 						</div>

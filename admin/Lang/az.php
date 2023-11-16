@@ -42,5 +42,9 @@ $lang = array(
     'last_camps'                => "Düşərgənlərin siyahısı",
     'home_page'                => "Ana səhifə",
     'logout'                => "Çıxış",
+    'previous'              => "Birinci",
+    'next'                  => "Sonrakı",
+    'back'                  => "Əvvəlki",
+    'last'                  => "Sonuncu",
     
 );

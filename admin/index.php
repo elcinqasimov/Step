@@ -17,10 +17,10 @@ include_once '../core.php';
 	<meta name="robots" content="" />
 	
 	<!-- DESCRIPTION -->
-	<meta name="description" content="EduChamp : Education HTML Template" />
+	<meta name="description" content="INTCDC - International Child Development Center" />
 	
 	<!-- OG -->
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
+	<meta property="og:title" content="INTCDC - International Child Development Center" />
 	<meta property="og:description" content="EduChamp : Education HTML Template" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
@@ -53,6 +53,8 @@ include_once '../core.php';
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendors/summernote/summernote.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendors/file-upload/imageuploadify.min.css">
 	
 </head>
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
@@ -184,7 +186,7 @@ include_once '../core.php';
 
 	<!--Main container start -->
 	<?php
-		if($do != '' && file_exists('views/'.$do.'.php')){
+		if($do != '' && file_exists(''.$do.'.php')){
 			include ''.$do.'.php';
 		}else{
 			include 'main.php';
@@ -315,7 +317,21 @@ Theme Version:	1.0.0
 						backgroundColor: 'rgba(0,0,0,0.05)',
 						borderColor: '#4c1864',
 						borderWidth: "3",
-						data: [196,132,215,222,210,222,222,222,222,222,222,2],
+						<?php
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 1");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 2");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 3");
+						$m[]= $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 4");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 5");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 6");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 7");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 8");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 9");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 10");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 11");
+						$m[] = $db->query("SELECT Count(*) FROM `registration` WHERE Month(regdate) = 12");
+						?>
+						data: [<?=$m[0][0][0]?>,<?=$m[1][0][0]?>,<?=$m[2][0][0]?>,<?=$m[3][0][0]?>,<?=$m[4][0][0]?>,<?=$m[5][0][0]?>,<?=$m[6][0][0]?>,<?=$m[7][0][0]?>,<?=$m[8][0][0]?>,<?=$m[9][0][0]?>,<?=$m[10][0][0]?>,<?=$m[11][0][0]?>],
 						pointRadius: 4,
 						pointHoverRadius:4,
 						pointHitRadius: 10,
@@ -373,7 +389,7 @@ Theme Version:	1.0.0
 			if(!checkSelectorExistence('.counter')){return;}
 			 jQuery('.counter').counterUp({
 				delay: 10,
-				time: 3000
+				time: 1000
 			});	
 		}
 		
@@ -412,6 +428,24 @@ Theme Version:	1.0.0
 	jQuery(window).on("load", function (e) {AdminBuilder.afterLoadThePage();});
 	
 })(jQuery);
+</script>
+
+<script src="assets/vendors/summernote/summernote.js"></script>
+	<script src="assets/vendors/file-upload/imageuploadify.min.js"></script>
+	<script>
+    $(document).ready(function() {
+      $('#desc_az').summernote({
+        height: 300,
+        name: "description_az",
+        tabsize: 2
+	});
+      $('#desc_en').summernote({
+        height: 300,
+        name: "description_az",
+        tabsize: 2
+      });
+
+    });
 </script>
 </body>
 </html>

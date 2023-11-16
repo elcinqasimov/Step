@@ -53,5 +53,9 @@ $lang = array(
     'camp_info'                => "Düşərgə haqqında",
     'camp_reg'                => "Düşərgəyə qeydiyyat",
     'camp_person'                => "Uşaq sayı",
+    'previous'              => "Birinci",
+    'next'                  => "Sonrakı",
+    'back'                  => "Əvvəlki",
+    'last'                  => "Sonuncu",
     
 );

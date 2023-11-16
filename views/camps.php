@@ -118,7 +118,7 @@
 										</div>
 										<div class="info-bx text-center">
 											<h5><a href="?do=camps_info&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>
-											<span><?=$terms[$b]["country_en"]?> (<?=$terms[$b]["city_en"]?>)</span>
+											<span><?=$terms[$b]["country_".$l]?> (<?=$terms[$b]["city_".$l]?>)</span>
 										</div>
 										<div class="cours-more-info">
 											<div class="review">

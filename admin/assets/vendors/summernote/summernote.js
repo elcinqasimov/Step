@@ -69,11 +69,11 @@
           };
       }
   };
-
+var name_text =  $("#textarea1").attr( "dataname" );
   var editor = renderer.create('<div class="note-editor note-frame card"/>');
   var toolbar = renderer.create('<div class="note-toolbar card-header" role="toolbar"></div>');
   var editingArea = renderer.create('<div class="note-editing-area"/>');
-  var codable = renderer.create('<textarea class="note-codable" role="textbox" aria-multiline="true"/>');
+  var codable = renderer.create('<textarea name="'+name_text+'" class="note-codable" role="textbox" aria-multiline="true"/>');
   var editable = renderer.create('<div class="note-editable card-block" contentEditable="true" role="textbox" aria-multiline="true"/>');
   var statusbar = renderer.create([
       '<output class="note-status-output" aria-live="polite"/>',

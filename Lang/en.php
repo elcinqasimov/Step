@@ -50,5 +50,9 @@ $lang = array(
     'camp_info'             => "About camp",
     'camp_reg'              => "Register camp",
     'camp_person'           => "Person",
+    'previous'              => "Previous",
+    'next'                  => "Next",
+    'back'                  => "Back",
+    'last'                  => "Last",
 );
 ?>
