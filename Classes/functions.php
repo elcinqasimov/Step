@@ -93,6 +93,32 @@ function ekstarix($tarix){
 }
 #endregion
 
+function upload_file($file,$count,$folder,$lastid,$db,$tag){
+    /*
+     $connect = ftp_connect($ftp)or die("Unable to connect to host");
+     ftp_login($connect,$username,$pwd)or die("Authorization Failed");
+     ftp_put($connect,$d.'/'.$filename,$tmp,FTP_ASCII)or die("Unable to upload");
+    */
+        for ($i=0; $i < $count; $i++) {
+            $file_parts = pathinfo($file["name"][$i]);
+            $explode = explode('.',$file["name"][$i]);
+            $olcu = filesize($file["tmp_name"][$i]);
+            $olcu = Olcu($olcu);
+            $tezead = sifrele(time().$explode[0]).".".end($explode);
+            $sened["olcu"] = $olcu;
+            $sened["hy_id"] = $lastid;
+            $sened["tag"] = $tag;
+            $sened["tarix"] = date("Y-m-d H:i:s");;
+            $sened["format"] = end($explode);
+            $sened["orig_file"] = $file["name"][$i];
+            $sened["md5sum"] = md5_file($file["tmp_name"][$i]);
+            $folders = Qovluq($lastid,$folder);
+            $sened["fayl"] = $folders.$tezead;
+            move_uploaded_file($file["tmp_name"][$i], $sened["fayl"]);
+            $db->insert("senedler",$sened);
+        }
+    }
+
 function pagination($total_records){
     global $total_records_per_page;
     global $page_no;
