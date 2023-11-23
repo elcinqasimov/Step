@@ -91,7 +91,6 @@ class Database
         }
         $sql .= implode(", ", $fld);
         $sql .= " WHERE " . $cond;
-        echo $sql;
     
         try {
             $stmt = $this->conn->prepare($sql);
