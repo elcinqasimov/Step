@@ -249,7 +249,6 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 											<input class="form-control" type="text" name="enddate" value="<?=$enddate?>" <?=$disabled?>>
 										</div>
 									</div>
-									</div>
 									<div class="form-group col-4">
 										<label class="col-form-label">Şəkillər</label>
 										<div>
