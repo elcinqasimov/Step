@@ -29,25 +29,32 @@ if($_POST["description_az"] == ""){
 if($_POST["description_en"] == ""){
 	$error .= "Düşərgənin təsviri (EN) yazılmayıb.<br/>";
 }
-$error=array();
-$extension=array("jpeg","jpg","png","gif");
-foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name) {
-    $file_name=$_FILES["files"]["name"][$key];
-    $file_tmp=$_FILES["files"]["tmp_name"][$key];
-    $ext=pathinfo($file_name,PATHINFO_EXTENSION);
-
-    if(in_array($ext,$extension)) {
-        if(!file_exists("../assets/gallery/".$file_name)) {
-            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],"../assets/gallery/".$file_name);
-        }
-        else {
-
-        }
-    }
-    else {
-        array_push($error,"$file_name, ");
-    }
-}
+$allowed =  array('php','PHP');
+$upload_id = array();
+$countfile  = count(array_filter($_FILES["file"]["name"]));
+if($countfile > 0){
+	for ($i=0; $i < $countfile; $i++) {
+		$filename2 = $_FILES['file']['name'][$i];
+		$ext2 = pathinfo($filename2, PATHINFO_EXTENSION);
+		if(!in_array($ext2,$allowed) ) {
+			for ($i=0; $i < $countfile; $i++) {
+				$file_parts = pathinfo($_FILES["file"]["name"][$i]);
+				$explode = explode('.',$_FILES["file"]["name"][$i]);
+				$olcu = filesize($_FILES["file"]["tmp_name"][$i]);
+				$olcu = Olcu($olcu);
+				$tezead = sifrele($explode[0].time().strtoupper(chr(rand(65, 90)) . chr(rand(65, 90)) . rand(100, 999))).".".end($explode);
+				$sened["name"] = $_POST["name"];
+				$sened["path"] = "assets/images/gallery/".$tezead;
+				$sened["path2"] = "../assets/images/gallery/".$tezead;
+				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened["path2"]);
+				unset($sened["path2"]);
+				$db->insert("gallery",$sened);
+				$upload_id[] = $db->id();
+			}
+		}else{
+			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
+		}
+	}
 if($error == ""){
 	unset($_POST["submit"]);
 	unset($_POST["undefined"]);
