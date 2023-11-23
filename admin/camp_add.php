@@ -56,22 +56,23 @@ if($countfile > 0){
 		}
 	}
 }
-if($error == ""){
-	unset($_POST["submit"]);
-	unset($_POST["undefined"]);
-	unset($_POST["files"]);
-	$_POST["startdate"] = ekstarix($_POST["startdate"]);
-	$_POST["enddate"] = ekstarix($_POST["enddate"]);
-	$db->insert("term",$_POST);
-	$lastid_term = $db->id();
-	print_r($upload_id);
-	for($f=0;$f<count($upload_id);$f++){
-		$wheref = "id = ".$upload_id[$f];
-		$finishf["term_id"] = $lastid_term;
-		$db->update("gallery",$finishf,$wheref);
-echo '<script>location.href = "?do=camps";</script>';
-}else{
-	$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
+	if($error == ""){
+		unset($_POST["submit"]);
+		unset($_POST["undefined"]);
+		unset($_POST["files"]);
+		$_POST["startdate"] = ekstarix($_POST["startdate"]);
+		$_POST["enddate"] = ekstarix($_POST["enddate"]);
+		$db->insert("term",$_POST);
+		$lastid_term = $db->id();
+		print_r($upload_id);
+		for($f=0;$f<count($upload_id);$f++){
+			$wheref = "id = ".$upload_id[$f];
+			$finishf["term_id"] = $lastid_term;
+			$db->update("gallery",$finishf,$wheref);
+	echo '<script>location.href = "?do=camps";</script>';
+	}else{
+		$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
+	}
 }
 }
 if(isset($_POST["submit"]) && $_POST["submit"]  == "finish"){
