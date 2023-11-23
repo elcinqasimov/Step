@@ -199,7 +199,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 						</div>
 						<?php } ?>
 						<div class="widget-inner">
-							<form class="mail-compose" method="POST" action="">
+							<form class="mail-compose"  enctype="multipart/form-data" method="POST" action="">
 								<div class="row">
 									<div class="col-12">
 										<div class="ml-auto">
@@ -237,18 +237,24 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 											<input class="form-control" type="number" name="price" value="<?=$price?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-6">
+									<div class="form-group col-4">
 										<label class="col-form-label"> Başlanma tarixi</label>
 										<div>
 											<input class="form-control" type="text" name="startdate" value="<?=$startdate?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-6">
+									<div class="form-group col-4">
 										<label class="col-form-label"> Bitmə tarixi</label>
 										<div>
 											<input class="form-control" type="text" name="enddate" value="<?=$enddate?>" <?=$disabled?>>
 										</div>
 									</div>
+									</div>
+									<div class="form-group col-4">
+										<label class="col-form-label">Şəkillər</label>
+										<div>
+											<input class="form-control" type="file" multiple="multiple" name="file[]" <?=$disabled?>>
+										</div>
 									</div>
 									<div class="row">
 									<hr style="width:100%;"/>
