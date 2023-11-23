@@ -123,7 +123,7 @@ SELECT
 	description_az as 'description_az', 
 	description_en as 'description_en' 
 FROM
-term  WHERE id = '$id'";
+term  WHERE id = $id";
 $regsiyahi = $db->query($sql);
 if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
 	$disabled = "disabled";
