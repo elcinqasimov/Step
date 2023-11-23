@@ -96,6 +96,7 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 	if(!isset($_POST["description_en"]) && $_POST["description_en"] == ""){
 		$error .= "Düşərgənin təsviri (EN) yazılmayıb.";
 	}
+	if($error == ""){
 	$_POST["startdate"] = ekstarix($_POST["startdate"]);
 	$_POST["enddate"] = ekstarix($_POST["enddate"]);
 	unset($_POST["submit"]);
@@ -104,6 +105,9 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 	$where = "id = ".$id;
 	$db->update("term",$_POST,$where);
 	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Qeydiyyat yadda saxlanıldı.</div>";
+	}else{
+		$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
+	}
 }
 
 $sql = "
