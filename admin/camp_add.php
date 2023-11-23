@@ -106,6 +106,7 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 	unset($_POST["undefined"]);
 	unset($_POST["files"]);
 	$where = "id = ".$id;
+	print_r($_POST);
 	$db->update("term",$_POST,$where);
 	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Qeydiyyat yadda saxlanıldı.</div>";
 }
