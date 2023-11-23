@@ -137,7 +137,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$enddate	=	tarix($regsiyahi[0]["enddate"]);
 	$desc_az	=	$regsiyahi[0]["description_az"];
 	$desc_en	=	$regsiyahi[0]["description_en"];
-}elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add" || $_POST["submit"] == "edit")){
+}elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add")){
 	$camp_id	=	$_POST["camp_id"];
 	$name		=	$_POST["name"];
 	$count		=	$_POST["count"];
@@ -162,7 +162,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
         document.getElementById("camp_id").options.selectedIndex = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
-<?php }elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add" || $_POST["submit"] == "edit")){?>
+<?php }elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add")){?>
 	<script type="text/javascript">
 	window.onload = function(event) {
         document.getElementById("camp_id").options.selectedIndex = <?=$_POST["camp_id"]?>;
