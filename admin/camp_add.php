@@ -172,13 +172,13 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 <?php if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){ ?>
 <script type="text/javascript">
 	window.onload = function(event) {
-        document.getElementById("camp_id").options.selectedIndex = <?=$regsiyahi[0]["camp_id"]?>;
+        document.getElementById("camp_id").options.value = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
 <?php }elseif(isset($_POST["submit"]) && $_POST["submit"] == "add"){?>
 	<script type="text/javascript">
 	window.onload = function(event) {
-        document.getElementById("camp_id").options.selectedIndex = <?=$_POST["camp_id"]?>;
+        document.getElementById("camp_id").options.value = <?=$_POST["camp_id"]?>;
     };
 </script>
 <?php } ?>
