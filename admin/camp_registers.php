@@ -2,7 +2,7 @@
 	$text = "";
 
 	if(isset($_GET["mod"]) && $_GET["mod"] == "del"){
-		$db->query("DELETE FROM terms WHERE id = '$id'");
+		$db->query("DELETE FROM registration WHERE id = '$id'");
 		$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Düşərgə silindi</div>";
 	}
 
