@@ -37,14 +37,11 @@ foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name) {
     $ext=pathinfo($file_name,PATHINFO_EXTENSION);
 
     if(in_array($ext,$extension)) {
-        if(!file_exists("../assets/gallery/".$txtGalleryName."/".$file_name)) {
-            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],"../assets/gallery/".$txtGalleryName."/".$file_name);
+        if(!file_exists("../assets/gallery/".$file_name)) {
+            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],"../assets/gallery/".$file_name);
         }
         else {
-            $filename=basename($file_name,$ext);
-            $newFileName=$filename.time().".".$ext;
-            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],"<div class="assets">
-			<gallery></gallery>/".$txtGalleryName."/".$newFileName);
+
         }
     }
     else {
@@ -96,18 +93,13 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 	if(!isset($_POST["description_en"]) && $_POST["description_en"] == ""){
 		$error .= "Düşərgənin təsviri (EN) yazılmayıb.";
 	}
-	if($error == ""){
-	$_POST["startdate"] = ekstarix($_POST["startdate"]);
-	$_POST["enddate"] = ekstarix($_POST["enddate"]);
+	
 	unset($_POST["submit"]);
 	unset($_POST["undefined"]);
 	unset($_POST["files"]);
 	$where = "id = ".$id;
 	$db->update("term",$_POST,$where);
 	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Qeydiyyat yadda saxlanıldı.</div>";
-	}else{
-		$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
-	}
 }
 
 $sql = "
@@ -123,9 +115,8 @@ SELECT
 	description_az as 'description_az', 
 	description_en as 'description_en' 
 FROM
-term  WHERE id = $id";
+term  WHERE id = '$id'";
 $regsiyahi = $db->query($sql);
-echo $sql;
 if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
 	$disabled = "disabled";
 }else{
@@ -142,7 +133,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$enddate	=	tarix($regsiyahi[0]["enddate"]);
 	$desc_az	=	$regsiyahi[0]["description_az"];
 	$desc_en	=	$regsiyahi[0]["description_en"];
-}elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add")){
+}elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add" || $_POST["submit"] == "edit")){
 	$camp_id	=	$_POST["camp_id"];
 	$name		=	$_POST["name"];
 	$count		=	$_POST["count"];
@@ -167,7 +158,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
         document.getElementById("camp_id").options.selectedIndex = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
-<?php }elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add")){?>
+<?php }elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add" || $_POST["submit"] == "edit")){?>
 	<script type="text/javascript">
 	window.onload = function(event) {
         document.getElementById("camp_id").options.selectedIndex = <?=$_POST["camp_id"]?>;
