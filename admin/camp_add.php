@@ -63,6 +63,12 @@ if($error == ""){
 	$_POST["startdate"] = ekstarix($_POST["startdate"]);
 	$_POST["enddate"] = ekstarix($_POST["enddate"]);
 	$db->insert("term",$_POST);
+	$lastid_term = $db->id();
+	print_r($upload_id);
+	for($f=0;$f<count($upload_id);$f++){
+		$wheref = "id = ".$upload_id[$f];
+		$finishf["term_id"] = $lastid_term;
+		$db->update("gallery",$finishf,$wheref);
 echo '<script>location.href = "?do=camps";</script>';
 }else{
 	$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
@@ -101,7 +107,8 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 	if(!isset($_POST["description_en"]) && $_POST["description_en"] == ""){
 		$error .= "Düşərgənin təsviri (EN) yazılmayıb.";
 	}
-	
+	$_POST["startdate"] = ekstarix($_POST["startdate"]);
+	$_POST["enddate"] = ekstarix($_POST["enddate"]);
 	unset($_POST["submit"]);
 	unset($_POST["undefined"]);
 	unset($_POST["files"]);
@@ -142,7 +149,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$enddate	=	tarix($regsiyahi[0]["enddate"]);
 	$desc_az	=	$regsiyahi[0]["description_az"];
 	$desc_en	=	$regsiyahi[0]["description_en"];
-}elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add" || $_POST["submit"] == "edit")){
+}elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add")){
 	$camp_id	=	$_POST["camp_id"];
 	$name		=	$_POST["name"];
 	$count		=	$_POST["count"];
@@ -167,7 +174,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
         document.getElementById("camp_id").options.selectedIndex = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
-<?php }elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add" || $_POST["submit"] == "edit")){?>
+<?php }elseif(isset($_POST["submit"]) && ($_POST["submit"] == "add")){?>
 	<script type="text/javascript">
 	window.onload = function(event) {
         document.getElementById("camp_id").options.selectedIndex = <?=$_POST["camp_id"]?>;
