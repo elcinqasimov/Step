@@ -125,6 +125,7 @@ SELECT
 FROM
 term  WHERE id = $id";
 $regsiyahi = $db->query($sql);
+echo $sql;
 if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
 	$disabled = "disabled";
 }else{
