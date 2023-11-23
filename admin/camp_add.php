@@ -55,6 +55,7 @@ if($countfile > 0){
 			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
 		}
 	}
+	
 if($error == ""){
 	unset($_POST["submit"]);
 	unset($_POST["undefined"]);
