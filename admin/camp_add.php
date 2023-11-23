@@ -29,32 +29,27 @@ if($_POST["description_az"] == ""){
 if($_POST["description_en"] == ""){
 	$error .= "Düşərgənin təsviri (EN) yazılmayıb.<br/>";
 }
-$allowed =  array('php','PHP');
-$upload_id = array();
-$countfile  = count(array_filter($_FILES["file"]["name"]));
-if($countfile > 0){
-	for ($i=0; $i < $countfile; $i++) {
-		$filename2 = $_FILES['file']['name'][$i];
-		$ext2 = pathinfo($filename2, PATHINFO_EXTENSION);
-		if(!in_array($ext2,$allowed) ) {
-			for ($i=0; $i < $countfile; $i++) {
-				$file_parts = pathinfo($_FILES["file"]["name"][$i]);
-				$explode = explode('.',$_FILES["file"]["name"][$i]);
-				$olcu = filesize($_FILES["file"]["tmp_name"][$i]);
-				$olcu = Olcu($olcu);
-				$tezead = sifrele($explode[0].time().strtoupper(chr(rand(65, 90)) . chr(rand(65, 90)) . rand(100, 999))).".".end($explode);
-				$sened["name"] = $_POST["name"];
-				$sened["path"] = "assets/images/gallery/".$tezead;
-				$sened["path2"] = "../assets/images/gallery/".$tezead;
-				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened["path2"]);
-				unset($sened["path2"]);
-				$db->insert("gallery",$sened);
-				$upload_id[] = $db->id();
-			}
-		}else{
-			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
-		}
-	}
+$error=array();
+$extension=array("jpeg","jpg","png","gif");
+foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name) {
+    $file_name=$_FILES["files"]["name"][$key];
+    $file_tmp=$_FILES["files"]["tmp_name"][$key];
+    $ext=pathinfo($file_name,PATHINFO_EXTENSION);
+
+    if(in_array($ext,$extension)) {
+        if(!file_exists("../assets/gallery/".$txtGalleryName."/".$file_name)) {
+            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],"../assets/gallery/".$txtGalleryName."/".$file_name);
+        }
+        else {
+            $filename=basename($file_name,$ext);
+            $newFileName=$filename.time().".".$ext;
+            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],"<div class="assets">
+			<gallery></gallery>/".$txtGalleryName."/".$newFileName);
+        }
+    }
+    else {
+        array_push($error,"$file_name, ");
+    }
 }
 if($error == ""){
 	unset($_POST["submit"]);
@@ -63,15 +58,6 @@ if($error == ""){
 	$_POST["startdate"] = ekstarix($_POST["startdate"]);
 	$_POST["enddate"] = ekstarix($_POST["enddate"]);
 	$db->insert("term",$_POST);
-	$lastid_term = $db->id();
-	print_r($upload_id);
-	for($f=0;$f<count($upload_id);$f++){
-		$wheref = "id = ".$upload_id[$f];
-		$finishf["term_id"] = $lastid_term;
-		$db->update("gallery",$finishf,$wheref);
-	}
-
-
 echo '<script>location.href = "?do=camps";</script>';
 }else{
 	$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
@@ -110,10 +96,12 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 	if(!isset($_POST["description_en"]) && $_POST["description_en"] == ""){
 		$error .= "Düşərgənin təsviri (EN) yazılmayıb.";
 	}
+	$_POST["startdate"] = ekstarix($_POST["startdate"]);
+	$_POST["enddate"] = ekstarix($_POST["enddate"]);
 	unset($_POST["submit"]);
 	unset($_POST["undefined"]);
 	unset($_POST["files"]);
-	$where = "id = ".$id;
+	$where = "id = '".$id."';
 	$db->update("term",$_POST,$where);
 	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Qeydiyyat yadda saxlanıldı.</div>";
 }
@@ -141,6 +129,7 @@ if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
 
 if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$camp_id	=	$regsiyahi[0]["camp_id"];
+	$id			=	$regsiyahi[0]["camp_id"];
 	$name		=	$regsiyahi[0]["name"];
 	$count		=	$regsiyahi[0]["count"];
 	$price		=	$regsiyahi[0]["price"];
@@ -197,7 +186,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 						</div>
 						<?php } ?>
 						<div class="widget-inner">
-							<form class="mail-compose" enctype="multipart/form-data" method="POST" action="">
+							<form class="mail-compose" method="POST" action="">
 								<div class="row">
 									<div class="col-12">
 										<div class="ml-auto">
@@ -235,22 +224,16 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 											<input class="form-control" type="number" name="price" value="<?=$price?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-4">
+									<div class="form-group col-6">
 										<label class="col-form-label"> Başlanma tarixi</label>
 										<div>
 											<input class="form-control" type="text" name="startdate" value="<?=$startdate?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-4">
+									<div class="form-group col-6">
 										<label class="col-form-label"> Bitmə tarixi</label>
 										<div>
 											<input class="form-control" type="text" name="enddate" value="<?=$enddate?>" <?=$disabled?>>
-										</div>
-									</div>
-									<div class="form-group col-4">
-										<label class="col-form-label">Şəkillər</label>
-										<div>
-											<input class="form-control" type="file" multiple="multiple" name="file[]" <?=$disabled?>>
 										</div>
 									</div>
 									</div>
