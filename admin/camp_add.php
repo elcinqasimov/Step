@@ -69,6 +69,7 @@ if($countfile > 0){
 			$wheref = "id = ".$upload_id[$f];
 			$finishf["term_id"] = $lastid_term;
 			$db->update("gallery",$finishf,$wheref);
+		}
 	echo '<script>location.href = "?do=camps";</script>';
 	}else{
 		$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
