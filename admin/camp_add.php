@@ -198,7 +198,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 <?php if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){ ?>
 <script type="text/javascript">
 	window.onload = function(event) {
-		$("#camp_id").val() = <?=$regsiyahi[0]["camp_id"]?>;
+		$("#camp_id").val(<?=$regsiyahi[0]["camp_id"]?>).change();
         //document.getElementById("camp_id").options.value = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
