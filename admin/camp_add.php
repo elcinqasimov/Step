@@ -91,6 +91,7 @@ if($countfile > 0){
 		$filename2 = $_FILES['file']['name'][$i];
 		$ext2 = pathinfo($filename2, PATHINFO_EXTENSION);
 		if(!in_array($ext2,$allowed) ) {
+			$db->query("DELETE FROM gallery WHERE term_id = $id");
 			for ($i=0; $i < $countfile; $i++) {
 				$file_parts = pathinfo($_FILES["file"]["name"][$i]);
 				$explode = explode('.',$_FILES["file"]["name"][$i]);
@@ -101,8 +102,6 @@ if($countfile > 0){
 				$sened["path"] = "assets/images/gallery/".$tezead;
 				$sened["path2"] = "../assets/images/gallery/".$tezead;
 				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened["path2"]);
-				unset($sened["path2"]);
-				$db->query("DELETE FROM gallery WHERE term_id = $id");
 				$sened["term_id"] = $id;
 				$db->insert("gallery",$sened);
 			}
