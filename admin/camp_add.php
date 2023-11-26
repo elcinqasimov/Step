@@ -102,6 +102,7 @@ if($countfile > 0){
 				$sened["path"] = "assets/images/gallery/".$tezead;
 				$sened["path2"] = "../assets/images/gallery/".$tezead;
 				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened["path2"]);
+				unset($sened["path2"]);
 				$sened["term_id"] = $id;
 				$db->insert("gallery",$sened);
 			}
