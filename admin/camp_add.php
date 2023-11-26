@@ -169,7 +169,6 @@ if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
 
 if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$camp_id	=	$regsiyahi[0]["camp_id"];
-	$id			=	$regsiyahi[0]["camp_id"];
 	$name		=	$regsiyahi[0]["name"];
 	$count		=	$regsiyahi[0]["count"];
 	$price		=	$regsiyahi[0]["price"];
