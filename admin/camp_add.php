@@ -83,6 +83,34 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "finish"){
 	$disabled = "disabled";
 }
 if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
+	$allowed =  array('php','PHP');
+$upload_id = array();
+$countfile  = count(array_filter($_FILES["file"]["name"]));
+if($countfile > 0){
+	for ($i=0; $i < $countfile; $i++) {
+		$filename2 = $_FILES['file']['name'][$i];
+		$ext2 = pathinfo($filename2, PATHINFO_EXTENSION);
+		if(!in_array($ext2,$allowed) ) {
+			for ($i=0; $i < $countfile; $i++) {
+				$file_parts = pathinfo($_FILES["file"]["name"][$i]);
+				$explode = explode('.',$_FILES["file"]["name"][$i]);
+				$olcu = filesize($_FILES["file"]["tmp_name"][$i]);
+				$olcu = Olcu($olcu);
+				$tezead = sifrele($explode[0].time().strtoupper(chr(rand(65, 90)) . chr(rand(65, 90)) . rand(100, 999))).".".end($explode);
+				$sened["name"] = $_POST["name"];
+				$sened["path"] = "assets/images/gallery/".$tezead;
+				$sened["path2"] = "../assets/images/gallery/".$tezead;
+				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened["path2"]);
+				unset($sened["path2"]);
+				$db->query("DELETE FROM gallery WHERE term_id = $id")
+				$sened["term_id"] = $id;
+				$db->insert("gallery",$sened);
+			}
+		}else{
+			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
+		}
+	}
+}
 	if(!isset($_POST["name"]) && $_POST["name"] == ""){
 		$error .= "Düşərgə adı yazılmayıb.";
 	}
