@@ -83,7 +83,7 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "finish"){
 	$disabled = "disabled";
 }
 if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
-	$allowed =  array('php','PHP');
+$allowed =  array('php','PHP');
 $upload_id = array();
 $countfile  = count(array_filter($_FILES["file"]["name"]));
 if($countfile > 0){
@@ -102,7 +102,7 @@ if($countfile > 0){
 				$sened["path2"] = "../assets/images/gallery/".$tezead;
 				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened["path2"]);
 				unset($sened["path2"]);
-				$db->query("DELETE FROM gallery WHERE term_id = $id")
+				$db->query("DELETE FROM gallery WHERE term_id = $id");
 				$sened["term_id"] = $id;
 				$db->insert("gallery",$sened);
 			}
