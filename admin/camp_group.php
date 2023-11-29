@@ -2,7 +2,7 @@
 	$text = "";
 	if(isset($_POST["submit"]) && $_POST["submit"] == "camps"){
 		unset($_POST["submit"]);
-		$say = $db-> query("SELECT count(*) FROM camps WHERE name = '".$_POST["name"]."'");
+		$say = $db-> query("SELECT count(*) FROM camps WHERE `name` = '".$_POST["name"]."'");
 		if($say[0]["count(*)"] < 1){
         	$db->insert("camps",$_POST);
 			$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Düşərgə qrup adı əlavə olundu</div>";
