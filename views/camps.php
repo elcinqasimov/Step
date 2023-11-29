@@ -1,7 +1,7 @@
     <?php
 
-    if(isset($_POST["search"]) && $_POST["search"] != ""){
-        $search = " AND term.`name` REGEXP '".$_POST["search"]."'"; 
+    if(isset($_GET["search"]) && $_GET["search"] != ""){
+        $search = " AND term.`name` REGEXP '".$_GET["search"]."'"; 
     }else{
         $search = "";
     }
@@ -36,7 +36,7 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label><?=$lang["search_camp"]?></label>
-                                        <form method="POST" action="">
+                                        <form method="GET" action="">
                                             <input name="search" id="search" type="text" required class="form-control">
                                             <button type="button" style="display:none;" onclick="searchresult()" id="search_key">Search</button>
                                         </form>
@@ -104,7 +104,7 @@
                                         term
                                         INNER JOIN camps ON term.camp_id = camps.id
                                         INNER JOIN city ON camps.city_id = city.id
-                                        INNER JOIN countries ON camps.country_id = countries.id 
+                                        INNER JOIN countries ON camps.country_id = countries.id WHERE 
                                     $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
                                     $terms = $db->query($termsql);
                                     $counts = $db->query($countsql);
