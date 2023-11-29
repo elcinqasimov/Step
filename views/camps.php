@@ -32,7 +32,7 @@
 					 <div class="row">
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
 							<div class="widget courses-search-bx placeani">
-                            <form method="GET" action="<?=$_SERVER["REQUEST_URI"]?>">
+                            <form method="GET" action="?do=camps">
 								<div class="form-group">
 									<div class="input-group">
 										<label><?=$lang["search_camp"]?></label>
