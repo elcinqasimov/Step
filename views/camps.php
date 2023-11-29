@@ -82,7 +82,7 @@
                                         INNER JOIN camps ON term.camp_id = camps.id
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id 
-                                        WHERE term.count > 0 AND finish = 0
+                                        WHERE term.count > 0 AND term.finish = 0
                                     $where $search";
                                     $termsql = "
                                     SELECT
@@ -92,6 +92,7 @@
                                         term.enddate as 'enddate', 
                                         term.count as 'count',  
                                         term.price as 'price', 
+                                        term.finish as 'finish', 
                                         countries.country_az as 'country_az', 
                                         countries.country_en as 'country_en', 
                                         city.name_az as 'city_az', 
@@ -106,7 +107,7 @@
                                         INNER JOIN camps ON term.camp_id = camps.id
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id  
-                                        WHERE term.count > 0 AND finish = 0 $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
+                                        WHERE term.count > 0 AND term.finish = 0 $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
                                     $terms = $db->query($termsql);
                                     $counts = $db->query($countsql);
                                 
