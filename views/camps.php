@@ -37,8 +37,8 @@
 									<div class="input-group">
 										<label><?=$lang["search_camp"]?></label>
                                         <form method="GET" action="">
+                                        <input name="do" value="camps" id="search" type="hidden" required class="form-control">
                                             <input name="search" id="search" type="text" required class="form-control">
-                                            <input name="do" value="camps" id="search" type="hidden" required class="form-control">
                                             <button type="button" style="display:none;" onclick="searchresult()" id="search_key">Search</button>
                                         </form>
 									</div>
