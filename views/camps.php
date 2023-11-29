@@ -106,6 +106,7 @@
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id  
                                         WHERE $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
+                                        echo $termsql;
                                     $terms = $db->query($termsql);
                                     $counts = $db->query($countsql);
                                 
