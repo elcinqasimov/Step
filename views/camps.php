@@ -125,7 +125,7 @@
 										<div class="cours-more-info">
 											<div class="review">
 											
-                                            <?=tarix($terms[$b]["startdate"])?>
+                                            <?=tarix($terms[$b]["startdate"])?><br/>
                                             <?=tarix($terms[$b]["enddate"])?>
                                                 
 											</div>
