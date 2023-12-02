@@ -46,7 +46,6 @@
 						</div>
 						<div class="col-lg-7 col-md-12 heading-bx p-lr">
 							<div class="video-bx">
-								<img src="assets/images/about/pic1.jpg" alt=""/>
 								<a href="https://www.youtube.com/watch?v=r_yjdS5-x7s" class="popup-youtube video"><i class="fa fa-play"></i></a>
 							</div>
 						</div>
