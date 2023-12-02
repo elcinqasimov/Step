@@ -54,5 +54,6 @@ $lang = array(
     'next'                  => "Next",
     'back'                  => "Back",
     'last'                  => "Last",
+    'gallery'                  => "Gallery",
 );
 ?>

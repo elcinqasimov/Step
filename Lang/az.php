@@ -57,5 +57,6 @@ $lang = array(
     'next'                  => "Sonrakı",
     'back'                  => "Əvvəlki",
     'last'                  => "Sonuncu",
+    'gallery'               => "Qalereya",
     
 );
