@@ -336,9 +336,9 @@
 						</div>
 						<div class="item">
 							<div class="testimonial-bx style1">
-								<div style="float:right;width:70px;"><img width="50px" src="" alt=""></div>
+								<div style="float:right;width:70px;"><img width="50px" src="assets/images/bil.jpg" alt=""></div>
 								<div class="testimonial-info">
-									<h5 class="name">ELSE Group LTD</h5>
+									<h5 class="name">Bakı İstanbul Liseyi</h5>
 								</div>
 							</div>
 						</div>
