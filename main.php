@@ -108,6 +108,7 @@
 						
 					</div>
 				</div>
+				<?php /*
 				<div class="container-fluid">	
 					<div class="row">
 						<div class="col-md-12 heading-bx style1 text-center">
@@ -178,6 +179,7 @@
 					</div>
 				</div>
 			</div>
+			*/ ?>
 			<!-- Popular CAMPS END -->
 			<?php if($userid == ""){ ?>
 			<!-- Form -->
