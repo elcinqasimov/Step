@@ -20,7 +20,7 @@
 							$about = $db->query("SELECT * FROM about");
 							for($a = 0;$a<count($about);$a++){
 						?>
-						<div class="col-lg-3 col-md-6 col-sm-6 m-b30">
+						<div class="col-lg-4 col-md-6 col-sm-6 m-b30">
 							<div class="feature-container">
 								<div class="feature-md text-white m-b20">
 									<a href="#" class="icon-cell"><img src="<?=$about[$a]["icon"]?>" alt=""/></a> 
