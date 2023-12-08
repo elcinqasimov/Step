@@ -66,12 +66,12 @@
 										</a>
 										<div class="ov-box">
 											<div class="overlay-icon align-m"> 
-												<a href="<?=$gallery[$b]["path"]?>" class="magnific-anchor" title="<?=$group[$a]["term"]?>">
+												<a href="<?=$gallery[$b]["path"]?>" class="magnific-anchor" title="<?=$gallery[$b]["term"]?>">
 													<i class="ti-search"></i>
 												</a>
 											</div>
 											<div class="portfolio-info-bx bg-primary">
-												<h4><a href="#"><?=$group[$a]["term"]?></a></h4>
+												<h4><a href="#"><?=$gallery[$b]["term"]?></a></h4>
 											</div>
 										</div>
 									</div>
