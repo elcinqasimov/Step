@@ -150,6 +150,22 @@ include_once '../core.php';
 		                </ul>
 		            </li>
 					<li>
+					<li>
+						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-image"></i></span>
+		                	<span class="ttr-label">Albom</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+		                	<li>
+		                		<a href="?do=albom_groups" class="ttr-material-button"><span class="ttr-label">Albom qrupları</span></a>
+		                	</li>
+							<li>
+		                		<a href="?do=alboms" class="ttr-material-button"><span class="ttr-label">Albom siyahıları</span></a>
+		                	</li>
+		                </ul>
+		            </li>
+					<li>
 						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-calendar"></i></span>
 		                	<span class="ttr-label">Düşərgə</span>

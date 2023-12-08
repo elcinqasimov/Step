@@ -126,6 +126,7 @@ function pagination($total_records){
     global $next_page;
     global $previous_page;
     global $lang;
+    global $adjacents;
     $total_no_of_pages = ceil($total_records / $total_records_per_page);
     echo '<div class="col-lg-12 m-b20"><div class="pagination-bx rounded-sm gray clearfix">';
     echo '<center><ul class="pagination">';
