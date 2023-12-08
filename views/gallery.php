@@ -1,9 +1,9 @@
     <?php 
 		$_GET["group"] = (isset($_GET["group"])) ? $_GET["group"] : ""; 
 		if($_GET["group"] == ""){
-			$where = "WHERE group_id != 0";
+			$where = "WHERE gallery.group_id != 0";
 		}else{
-			$where = "WHERE group_id = ".$_GET["group"];
+			$where = "WHERE gallery.group_id = ".$_GET["group"];
 		}
 	?>
 	<!-- Content -->
@@ -37,10 +37,13 @@
 								INNER JOIN
 								albom_groups
 								ON 
-									gallery.group_id = albom_groups.id,
-								term $where";
+									gallery.group_id = albom_groups.id
+									INNER JOIN term ON gallery.term_id = term.id
+									 $where";
+								echo $gallery_sql;
 								 $total_records_per_page = 12; 
 								$gallery = $db->query("$gallery_sql LIMIT $offset, $total_records_per_page");
+								print_r($gallery);
 								$say = $db->query("SELECT count(*) as 'say' from gallery $where LIMIT $offset, $total_records_per_page");
 								$group = $db->query("SELECT * from albom_groups");
 								?>
