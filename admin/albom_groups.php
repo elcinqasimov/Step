@@ -44,7 +44,7 @@
 								<div class="mail-box-list">
 									<?php 
 										$country = $db->query("SELECT * FROM albom_groups LIMIT $offset, $total_records_per_page");
-										$c_country = $db-> query("SELECT count(*) FROM countries");
+										$c_country = $db-> query("SELECT count(*) FROM albom_groups");
 										for($a = 0;$a<count($country);$a++){
 										?>
 									<div class="mail-list-info">
