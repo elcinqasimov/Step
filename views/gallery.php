@@ -56,16 +56,16 @@
 					</div>
 					<div class="clearfix">
 						<ul id="masonry" class="ttr-gallery-listing magnific-image row">
-						<?php for($a=0;$a<count($gallery);$a++){ ?>
+						<?php for($b=0;$b<count($gallery);$b++){ ?>
 							<li class="action-card col-lg-3 col-md-4 col-sm-6 book">
 								<div class="ttr-box portfolio-bx">
 									<div class="ttr-media media-ov2 media-effect">
 										<a href="#">
-											<img src="<?=$gallery[$a]["path"]?>" alt=""> 
+											<img src="<?=$gallery[$b]["path"]?>" alt=""> 
 										</a>
 										<div class="ov-box">
 											<div class="overlay-icon align-m"> 
-												<a href="<?=$gallery[$a]["path"]?>" class="magnific-anchor" title="Title Come Here">
+												<a href="<?=$gallery[$b]["path"]?>" class="magnific-anchor" title="Title Come Here">
 													<i class="ti-search"></i>
 												</a>
 											</div>
