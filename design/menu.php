@@ -9,6 +9,11 @@ $sehife = $db->select("pages","isnull(subid)");
 
 						<li><a href="index.php"><?=$lang["home_page"]?></a></li>
 							<?php
+							if($referans != ""){
+								$r_link = "&referans=".$referans;
+							}else{
+								$r_link = "";
+							}
 								$count = count($sehife);
 								for($i = 0;$i<$count;$i++){
 									$active = ($do == $sehife[$i]['id']) ? 'class="active"' : ''; 
@@ -19,14 +24,14 @@ $sehife = $db->select("pages","isnull(subid)");
 										$href = 'javascript:;';
 									}else{
 										$drop = '';
-										$href = '?do='.$sehife[$i]['url'];
+										$href = '?do='.$sehife[$i]['url'].$r_link;
 									}
 							?>
 							<li <?=$active?>><a href="<?=$href?>"><?=$sehife[$i]['name_'.$l.'']?> <?=$drop?></a>
 								<?php if($counts > 0){ ?>
 									<ul class="sub-menu">
 										<?php for($a=0;$a<$counts;$a++){?>
-											<li><a href="?do=<?=$subsehife[$a]['url']?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
+											<li><a href="?do=<?=$subsehife[$a]['url']?><?=$r_link?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
 										<?php } ?>
 									</ul>
 								<?php } ?>

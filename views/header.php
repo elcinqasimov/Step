@@ -94,6 +94,9 @@
 							<?php if($group == 2){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:grey;color:#fff; ">Agent panel</a></li>
 							<?php } ?>
+							<?php if($group == 0){ ?>
+							<li><a href="admin/index.php" class="btn" style="padding:5px;background:grey;color:#fff; ">User panel</a></li>
+							<?php } ?>
 							<li><a href="?do=users&profile=<?=$userid?>"><?=$fullname?></a></li>
 							<li><a href="logout.php"><?=$lang["logout"]?></a></li>
 							<?php } ?>
@@ -143,6 +146,11 @@
 						<li><a href="index.php"><?=$lang["home_page"]?></a></li>
 
 <?php
+if($referans != ""){
+	$r_link = "&referans=".$referans;
+}else{
+	$r_link = "";
+}
 $sehife = $db->select("pages","isnull(subid)");
 	$count = count($sehife);
 	for($i = 0;$i<$count;$i++){
@@ -154,7 +162,7 @@ $sehife = $db->select("pages","isnull(subid)");
 			$href = 'javascript:;';
 		}else{
 			$drop = '';
-			$href = '?do='.$sehife[$i]['url'];
+			$href = '?do='.$sehife[$i]['url'].$r_link;
 		}
 ?>
 <li <?=$active?>><a href="<?=$href?>"><?=$sehife[$i]['name_'.$l.'']?> <?=$drop?></a>
@@ -162,7 +170,7 @@ $sehife = $db->select("pages","isnull(subid)");
 		<ul class="sub-menu">
 
 			<?php for($a=0;$a<$counts;$a++){?>
-				<li><a href="?do=<?=$subsehife[$a]['url']?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
+				<li><a href="?do=<?=$subsehife[$a]['url']?><?=$r_link?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
 			<?php } ?>
 		</ul>
 	<?php } ?>

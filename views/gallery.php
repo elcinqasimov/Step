@@ -1,4 +1,5 @@
     <?php 
+	if($group == 1){
 		$_GET["group"] = (isset($_GET["group"])) ? $_GET["group"] : ""; 
 		if($_GET["group"] == ""){
 			$where = "WHERE gallery.group_id != 0";
@@ -89,3 +90,8 @@
     </div>
     <!-- Content END-->
 	<script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
+	<?php
+	}else{
+		header('Location: admin/index.php');
+	}
+	?>

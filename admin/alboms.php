@@ -1,4 +1,5 @@
 <?php
+if($group == 1){
 	$text = "";
 	if(isset($_POST["submit"]) && $_POST["submit"] == "alboms"){
 		unset($_POST["submit"]);
@@ -76,4 +77,8 @@
 			</div>
 		</div>
 	</main>
-	
+	<?php
+	}else{
+		header('Location: admin/index.php');
+	}
+	?>

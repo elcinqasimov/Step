@@ -136,6 +136,22 @@ include_once '../core.php';
 		            </li>
 					<li>
 						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-calendar"></i></span>
+		                	<span class="ttr-label">Qeydiyyatlar</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+		                	<li>
+		                		<a href="?do=referans" class="ttr-material-button"><span class="ttr-label">Referanslar</span></a>
+		                	</li>
+							<li>
+		                		<a href="?do=qeydiyyat" class="ttr-material-button"><span class="ttr-label">Düşərgə qeydiyyatları</span></a>
+		                	</li>
+		                </ul>
+		            </li>
+					<?php if($group == 1){ ?>
+					<li>
+						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-user"></i></span>
 		                	<span class="ttr-label">İstifadəçilər</span>
 		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
@@ -190,7 +206,7 @@ include_once '../core.php';
 		                </ul>
 		            </li>
 					
-		            </li>
+		            <?php } ?>
 		            <li class="ttr-seperate"></li>
 				</ul>
 				<!-- sidebar menu end -->

@@ -146,6 +146,7 @@ $objectid   =       (isset($_GET["objectid"])) ? $_GET["objectid"] : "";    //--
 $person_id  =       (isset($_GET["person_id"])) ? $_GET["person_id"] : "";  //---->Case person_id
 $sort       =       (isset($_GET["sort"])) ? $_GET["sort"] : "";            //---->Case sort
 $by         =       (isset($_GET["by"])) ? $_GET["by"] : "";                //---->Case by
+$referans   =       (isset($_GET["referans"])) ? $_GET["referans"] : "";    //---->Case referans
 
    //---->Case Language
 

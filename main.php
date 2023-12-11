@@ -191,6 +191,7 @@
 						</div>
 					</div>
 					<form class="contact-bx ajax-form" method="POST" action="?do=register">
+						<input type="hidden" name="referans" value="<?=$referans?>"/>
 						<div class="ajax-message"></div>
 						<div class="row placeani">
 							<div class="col-lg-6">

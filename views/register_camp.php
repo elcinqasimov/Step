@@ -23,6 +23,7 @@ $text = "";
 				$child["parentid"] = $userid;
 				$child["fullname"] = $_POST["fullname"];
 				$child["language"] = $_POST["language"];
+				$child["referans"] = $_POST["referans"];
 				$child["sex"] = $_POST["sex"];
 				$db->insert("children",$child);
 				$childid = $db->id();
@@ -64,6 +65,7 @@ $text = "";
 					<?php } ?>
 						<?php if(!isset($_POST["submit"])){ ?>
 						<form class="contact-bx ajax-form" action="" method="POST">
+							<input type="hidden" name="referans" value="<?=$referans?>"/>
 						<div class="ajax-message"></div>
 							<div class="heading-bx left">
 								<h2 class="title-head"><?=$lang["register_camp"]?></h2>

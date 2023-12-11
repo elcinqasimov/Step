@@ -1,3 +1,4 @@
+<?php if($group == 1){ ?>
 <link href="assets/css/suneditor.css" rel="stylesheet" type="text/css">
 <script src="assets/js/suneditor.js"></script>
 <?php 
@@ -133,4 +134,8 @@ if(isset($_POST["submit"]) && $_POST["submit"] == "add"){
 			</div>
 		</div>
 	</main>
-
+	<?php
+	}else{
+		header('Location: admin/index.php');
+	}
+	?>

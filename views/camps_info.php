@@ -46,10 +46,16 @@
 									<h4 class="price"><?=$term[0]["price"]?> &#8364;</h4>
 								</div>	
 								<div class="course-buy-now text-center">
-									<?php if($userid == ""){
+									<?php
+									if($referans != ""){
+										$r_link = "&referans=".$referans;
+									}else{
+										$r_link = "";
+									}
+									if($userid == ""){
 										$reg_link = "login.php";
 									}else{
-										$reg_link = "?do=register_camp&id=".$term[0]["id"];
+										$reg_link = "?do=register_camp".$r_link."&id=".$term[0]["id"];
 									}
 									?>
 									<a href="<?=$reg_link?>" class="btn radius-xl text-uppercase"><?=$lang["camp_reg"]?></a>

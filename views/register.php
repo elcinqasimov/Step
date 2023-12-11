@@ -10,7 +10,11 @@
         $db->insert("users",$_POST);
         $regid = $db->id();
         $_SESSION["userid"] = $regid;
-        header('Location: ?do=camps');
+        if($_POST["referans"] != ""){
+            header('Location: ?do=camps&referans='.$_POST["referans"]);
+        }else{
+            header('Location: ?do=camps');
+        }
     }    
 
     ?>

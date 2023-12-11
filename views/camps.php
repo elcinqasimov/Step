@@ -110,16 +110,20 @@
                                         WHERE term.count > 0 AND term.finish = 0 $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
                                     $terms = $db->query($termsql);
                                     $counts = $db->query($countsql);
-                                
+                                if($referans != ""){
+                                    $r_link = "&referans=".$referans;
+                                }else{
+                                    $r_link = "";
+                                }
                                 for($b = 0;$b < count($terms);$b++){ ?>
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
 										<div class="action-box">
 											<img src="assets/images/camp.jpg" alt="">
-											<a href="?do=camps_info&id=<?=$terms[$b]["id"]?>" class="btn"><?=$lang["read_more"]?></a>
+											<a href="?do=camps_info<?=$r_link?>&id=<?=$terms[$b]["id"]?>" class="btn"><?=$lang["read_more"]?></a>
 										</div>
 										<div class="info-bx text-center">
-											<h5><a href="?do=camps_info&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>
+											<h5><a href="?do=camps_info<?=$r_link?>&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>
 											<span><?=$terms[$b]["country_".$l]?> (<?=$terms[$b]["city_".$l]?>)</span>
 										</div>
 										<div class="cours-more-info">
