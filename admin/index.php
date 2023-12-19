@@ -142,7 +142,7 @@ include_once '../core.php';
 		                </a>
 		                <ul>
 		                	<li>
-		                		<a href="?do=referans" class="ttr-material-button"><span class="ttr-label">Referanslar</span></a>
+		                		<a href="?do=referans" class="ttr-material-button"><span class="ttr-label">Referans qeydiyyatları</span></a>
 		                	</li>
 							<li>
 		                		<a href="?do=qeydiyyat" class="ttr-material-button"><span class="ttr-label">Düşərgə qeydiyyatları</span></a>

@@ -1,55 +1,28 @@
 <?php
-	$users			= $db->query("SELECT count(*) as 'say' FROM users");
-	$agents			= $db->query("SELECT count(*) as 'say' FROM users WHERE `group` = '2'");
-	$childs			= $db->query("SELECT count(*) as 'say' FROM children");
-	$registration	= $db->query("SELECT count(*) as 'say' FROM registration");
-	$camps			= $db->query("SELECT count(*) as 'say' FROM term");
+	$users			= $db->query("SELECT count(*) as 'say' FROM users WHERE referans = $userid");
+	$registration	= $db->query("SELECT count(*) as 'say' FROM registration WHERE referans = $userid");
 ?>
+
 <main class="ttr-wrapper">
 		<div class="container-fluid">
 			<!-- Card -->
+			<?php $url = "http://".$_SERVER['HTTP_HOST'];?>
+			<div style="background:#8d4a4a;color:#fff;border:1px;solid red;border-radius:5px;padding:5px 0 5px 15px;margin-bottom:20px;">Referans link : <?=$url."/?referans=".$userid?></div>
+
 			<div class="row">
+				
 				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
+					
 					<div class="widget-card widget-bg1">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
 								İstifadəçilər
 							</h4>
 							<span class="wc-des">
-								Bütün istifadəçilər
+								Referans
 							</span>
 							<span class="wc-stats">
 								<span class="counter"><?=$users[0]["say"]?></span> 
-							</span>		
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
-					<div class="widget-card widget-bg2">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Agentlər
-							</h4>
-							<span class="wc-des">
-								Bütün agentlər
-							</span>
-							<span class="wc-stats">
-								<span class="counter"><?=$agents[0]["say"]?></span> 
-							</span>		
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
-					<div class="widget-card widget-bg3">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								 Uşaqlar
-							</h4>
-							<span class="wc-des">
-								Uşaqların sayı
-							</span>
-							<span class="wc-stats counter">
-							<?=$childs[0]["say"]?> 
 							</span>		
 						</div>				      
 					</div>
@@ -70,29 +43,13 @@
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
-					<div class="widget-card widget-bg5">					 
-						<div class="wc-item">
-							<h4 class="wc-title">
-								Düşərgələr
-							</h4>
-							<span class="wc-des">
-								Bütün düşərgələr
-							</span>
-							<span class="wc-stats counter">
-							<?=$camps[0]["say"]?> 
-							</span>		
-
-						</div>				      
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-2 col-xl-2 col-sm-6 col-12">
 					<div class="widget-card widget-bg6">					 
 						<div class="wc-item">
 							<h4 class="wc-title">
 								Valideyn turları 
 							</h4>
 							<span class="wc-des">
-								Valideyn turları
+								Referans
 							</span>
 							<span class="wc-stats counter">
 								-- 
@@ -104,18 +61,6 @@
 			</div>
 			<!-- Card END -->
 			<div class="row">
-				<!-- Your Profile Views Chart -->
-				<div class="col-lg-12 m-b30">
-					<div class="widget-box">
-						<div class="wc-title">
-							<h4>Statistika</h4>
-						</div>
-						<div class="widget-inner">
-							<canvas id="chart" width="100" height="15"></canvas>
-						</div>
-					</div>
-				</div>
-				<!-- Your Profile Views Chart END-->
 				<div class="col-lg-6 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
@@ -206,3 +151,4 @@
 			</div>
 		</div>
 	</main>
+	
