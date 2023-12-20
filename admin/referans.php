@@ -2,12 +2,24 @@
 	$users			= $db->query("SELECT count(*) as 'say' FROM users WHERE referans = $userid");
 	$registration	= $db->query("SELECT count(*) as 'say' FROM registration WHERE referans = $userid");
 ?>
-
+<style>
+	.referans{
+		background:#8d4a4a;
+		color:#fff;
+		border:1px solid red;
+		border-radius:4px;
+		padding:5px 0 5px 15px;
+		margin-bottom:20px;
+		box-shadow: 0 3px 10px 0px rgba(0,0,0,.08);
+	}
+</style>
 <main class="ttr-wrapper">
 		<div class="container-fluid">
 			<!-- Card -->
-			<?php $url = "http://".$_SERVER['HTTP_HOST'];?>
-			<div style="background:#8d4a4a;color:#fff;border:1px;solid red;border-radius:5px;padding:5px 0 5px 15px;margin-bottom:20px;">Referans link : <?=$url."/?referans=".$userid?></div>
+			<?php
+			$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === FALSE ? 'http' : 'https'; 
+			$url = "://".$_SERVER['HTTP_HOST'];?>
+			<div class="referans">Referans link : <?=$protocol.$url."/?referans=".$userid?></div>
 
 			<div class="row">
 				
