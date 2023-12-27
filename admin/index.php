@@ -1,8 +1,10 @@
 <?php 
 include_once '../core.php';
+/*
 	if($group < 1){
 		header('Location: ../index.php');
 	 }
+	 */
 	 ?>
 <!DOCTYPE html>
 <html lang="en">
