@@ -35,6 +35,9 @@
 							<?php if($group == 1){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>
 							<?php } ?>
+							<?php if($group == 0){ ?>
+							<li><a href="admin/index.php" class="btn" style="padding:5px;background:grey;color:#fff; ">User panel</a></li>
+							<?php } ?>
 							<?php if($group == 2){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:grey;color:#fff; ">Agent panel</a></li>
 							<?php } ?>
