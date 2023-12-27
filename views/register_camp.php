@@ -31,6 +31,7 @@ $text = "";
 				$reg["childid"] = $childid;
 				$reg["term"] = $id;
 				$reg["regdate"] = $vaxt;
+				$reg["referans"] = $referans;
 				$db->insert("registration",$reg);
 				$text = "Düşərgəyə qeydiyyat uğurla tamamlandı.";
 			}
