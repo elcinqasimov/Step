@@ -223,7 +223,11 @@ include_once '../core.php';
 		if($do != '' && file_exists(''.$do.'.php')){
 			include ''.$do.'.php';
 		}else{
+			if($group == 1){
 			include 'main.php';
+			}else{
+				include 'referans.php';
+			}
 		}
 	?>
 	<div class="ttr-overlay"></div>
