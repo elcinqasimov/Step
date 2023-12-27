@@ -93,6 +93,7 @@
 										<span class="new-users-btn">
 											<a href="?do=user_info&id=<?=$user[$a]["id"]?>" class="btn button-sm outline">Bax</a>
 										</span>
+										-->
 									</li>
 									<?php } ?>
 								</ul>
