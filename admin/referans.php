@@ -82,7 +82,7 @@
 							<div class="new-user-list">
 								<ul>
 									<?php 
-										$user = $db->query("SELECT * FROM users LIMIT 5");
+										$user = $db->query("SELECT * FROM users WHERE referans = $userid");
 										for($a = 0;$a<count($user);$a++){ 
 									?>
 									<li>
@@ -137,7 +137,7 @@
 										INNER JOIN users ON registration.parentid = users.id
                                         INNER JOIN camps ON term.camp_id = camps.id
                                         INNER JOIN city ON camps.city_id = city.id
-                                        INNER JOIN countries ON camps.country_id = countries.id LIMIT 5";
+                                        INNER JOIN countries ON camps.country_id = countries.id WHERE registration.referans = $userid";
 										$regsiyahi = $db->query($sql);
 										for($a = 0;$a<count($regsiyahi);$a++){ 
 									?>
