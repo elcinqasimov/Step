@@ -130,7 +130,7 @@
 									?>
 									<li>
 										<span class="new-users-text">
-											<a href="?do=user_info&id=<?=$user[$a]["id"]?>" class="new-users-name"><?=$user[$a]["fullname"]?></a> Telefon : <?=$user[$a]["phone"]?> | E-Mail : <?=$user[$a]["mail"]?>
+											<a href="?do=user_info&id=<?=$user[$a]["id"]?>" class="new-users-name">ID : <?=$user[$a]["id"]?> | <?=$user[$a]["fullname"]?></a> Telefon : <?=$user[$a]["phone"]?> | E-Mail : <?=$user[$a]["mail"]?>
 										</span>
 										<!--
 										<span class="new-users-btn">
