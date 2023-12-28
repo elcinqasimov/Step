@@ -1,12 +1,3 @@
-<?php
-if($referans != "" || $do != ""){
-	$r_link = "?referans=".$referans;
-}elseif($referans != "" || $do != ""){
-	$r_link = "&referans=".$referans;
-}else{
-	$r_link = "";
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
