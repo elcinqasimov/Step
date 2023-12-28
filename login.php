@@ -1,5 +1,12 @@
 <?php
 include_once 'core.php';
+if($referans != "" || $do != ""){
+	$r_link = "?referans=".$referans;
+}elseif($referans != "" || $do != ""){
+	$r_link = "&referans=".$referans;
+}else{
+	$r_link = "";
+}
 $text = "";
 if(isset($_POST["submit"]) && $_POST["submit"] == "login"){
 	$pass = $_POST["password"] = hash('sha256', $_POST["password"]);

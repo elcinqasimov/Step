@@ -25,7 +25,7 @@ $lang = array(
     'about'                 => "About us",
     'about_label'           => "If you also want to spend your vacation efficiently, usefully and most importantly, interestingly, you can participate in summer school projects organized by the International Child Development Center in foreign countries. The main advantages of summer and winter camps are improving your English skills and making new friends among your peers from different countries. Summer and winter camps organized by our company are rich in various entertainment, intellectual games, knowledge competitions, debates, excursions and trips. Spend your summer vacation improving your English.",
     'login_header'          => "Login to your <span>Account</span>",
-    'login_label'          => "Don't have an account? <a href=\"register.php\">Create one here</a>",
+    'login_label'          => "Don't have an account? <a href=\"register.php".$r_link."\">Create one here</a>",
     'remember_me'           => "Remember me",
     'forget_password'       => "<a href=\"forget-password.php\" class=\"ml-auto\">Forgot Password?</a>",
     'login_enter'           => "Login",
