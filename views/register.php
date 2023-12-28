@@ -6,6 +6,7 @@
         $_POST["password"] = hash('sha256', $_POST["password"]);
         $_POST["regdate"] = $vaxt;
         $_POST["online"] = $vaxt;
+        $_POST["referans"] = $referans;
         $_POST["ip"] = $_SERVER['REMOTE_ADDR'];
         $db->insert("users",$_POST);
         $regid = $db->id();
