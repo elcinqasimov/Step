@@ -82,7 +82,7 @@
 							<div class="new-user-list">
 								<ul>
 									<?php 
-										$user = $db->query("SELECT * FROM users WHERE referans = $userid");
+										$user = $db->query("SELECT * FROM users WHERE referans = '$userid'");
 										for($a = 0;$a<count($user);$a++){ 
 									?>
 									<li>
