@@ -30,7 +30,7 @@
 									&nbsp; | &nbsp;
 								<!-- Search Button ==== -->	
 								<?php if($userid == ""){ ?>
-							<li><a href="login.php" class="btn" style="padding:5px;"><?=$lang["login_enter"]?></a></li>
+							<li><a href="login.php<?=$r_link?>" class="btn" style="padding:5px;"><?=$lang["login_enter"]?></a></li>
 							<?php }else{ ?>
 							<?php if($group == 1){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>
