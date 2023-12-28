@@ -148,6 +148,13 @@ $sort       =       (isset($_GET["sort"])) ? $_GET["sort"] : "";            //--
 $by         =       (isset($_GET["by"])) ? $_GET["by"] : "";                //---->Case by
 $referans   =       (isset($_GET["referans"])) ? $_GET["referans"] : "0";    //---->Case referans
 
+if($referans != "" || $do != ""){
+	$r_link = "?referans=".$referans;
+}elseif($referans != "" || $do != ""){
+	$r_link = "&referans=".$referans;
+}else{
+	$r_link = "";
+}
    //---->Case Language
 
 ///////////////////////////////////////
@@ -229,12 +236,5 @@ define("UPLOAD",    $upload_dir);
 ///////////////////////////////////////
 #endregion 
 
-if($referans != "" || $do != ""){
-	$r_link = "?referans=".$referans;
-}elseif($referans != "" || $do != ""){
-	$r_link = "&referans=".$referans;
-}else{
-	$r_link = "";
-}
 
 ?>
