@@ -1,6 +1,6 @@
 <?php
-	$users			= $db->query("SELECT count(*) as 'say' FROM users WHERE referans = '$userid'");
-	$registration	= $db->query("SELECT count(*) as 'say' FROM registration WHERE referans = '$userid'");
+	$users			= $db->query("SELECT count(*) as 'say' FROM users WHERE referans = $userid");
+	$registration	= $db->query("SELECT count(*) as 'say' FROM registration WHERE referans = $userid");
 ?>
 <style>
 	.referans{
