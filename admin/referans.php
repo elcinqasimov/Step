@@ -19,7 +19,7 @@
 			<?php
 			$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === FALSE ? 'http' : 'https'; 
 			$url = "://".$_SERVER['HTTP_HOST'];?>
-			<div class="referans">Referans link : <?=$protocol.$url."/?referans=".$userid?></div>
+			<div class="referans">Referans link : <?=$protocol.$url."/?referans=".USERID?></div>
 
 			<div class="row">
 				
