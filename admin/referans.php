@@ -115,6 +115,7 @@
 										registration.id as 'id',
 										registration.regdate as 'regdate',
 										registration.verify as 'verify',
+										registration.referans as 'referans',
 										children.fullname as 'c_fullname',
 										users.fullname as 'u_fullname',
                                         term.id as 'term_id',
