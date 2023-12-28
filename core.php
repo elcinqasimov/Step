@@ -150,7 +150,7 @@ $referans   =       (isset($_GET["referans"])) ? $_GET["referans"] : "0";    //-
 
 if($referans != "" || $do != ""){
 	$r_link = "?referans=".$referans;
-}elseif($referans != "" || $do != ""){
+}elseif($referans != ""){
 	$r_link = "&referans=".$referans;
 }else{
 	$r_link = "";
