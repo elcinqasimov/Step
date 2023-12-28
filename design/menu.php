@@ -9,11 +9,6 @@ $sehife = $db->select("pages","isnull(subid)");
 
 						<li><a href="index.php"><?=$lang["home_page"]?></a></li>
 							<?php
-							if($referans != ""){
-								$r_link = "&referans=".$referans;
-							}else{
-								$r_link = "";
-							}
 								$count = count($sehife);
 								for($i = 0;$i<$count;$i++){
 									$active = ($do == $sehife[$i]['id']) ? 'class="active"' : ''; 
