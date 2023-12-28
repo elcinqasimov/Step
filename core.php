@@ -61,7 +61,7 @@ include 'Classes/functions.php';
 //include 'includes/WriteTag.php';
 //include 'includes/settings.php';
 //include 'includes/Log.php';
-include 'Classes/Language.php';
+
 //include 'includes/Persons.php';
 
 
@@ -236,5 +236,5 @@ define("UPLOAD",    $upload_dir);
 ///////////////////////////////////////
 #endregion 
 
-
+include 'Classes/Language.php';
 ?>
