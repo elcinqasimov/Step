@@ -1,3 +1,10 @@
+<?php
+if($referans != ""){
+	$r_link = "&referans=".$referans;
+}else{
+	$r_link = "";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,10 +92,10 @@
                                 </div>
 							</li>
 							<?php if($userid == ""){ ?>
-							<li><a href="login.php"><?=$lang["login_enter"]?></a></li>
-							<li><a href="register.php"><?=$lang["register"]?></a></li>
+							<li><a href="login.php<?=$r_link?>"><?=$lang["login_enter"]?></a></li>
+							<li><a href="register.php<?=$r_link?>"><?=$lang["register"]?></a></li>
 							<?php }else{ ?>
-								<?php if($group == 1){ ?>
+							<?php if($group == 1){ ?>
 							<li><a href="admin/index.php" class="btn" style="padding:5px;background:red;color:#fff; ">Admin panel</a></li>
 							<?php } ?>
 							<?php if($group == 2){ ?>
@@ -146,11 +153,7 @@
 						<li><a href="index.php"><?=$lang["home_page"]?></a></li>
 
 <?php
-if($referans != ""){
-	$r_link = "&referans=".$referans;
-}else{
-	$r_link = "";
-}
+
 $sehife = $db->select("pages","isnull(subid)");
 	$count = count($sehife);
 	for($i = 0;$i<$count;$i++){
