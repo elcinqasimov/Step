@@ -1,5 +1,7 @@
 <?php
-if($referans != ""){
+if($referans != "" || $do != ""){
+	$r_link = "?referans=".$referans;
+}elseif($referans != "" || $do != ""){
 	$r_link = "&referans=".$referans;
 }else{
 	$r_link = "";
