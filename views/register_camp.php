@@ -23,7 +23,6 @@ $text = "";
 				$child["parentid"] = $userid;
 				$child["fullname"] = $_POST["fullname"];
 				$child["language"] = $_POST["language"];
-				$child["referans"] = $_POST["referans"];
 				$child["sex"] = $_POST["sex"];
 				$db->insert("children",$child);
 				$childid = $db->id();
@@ -31,7 +30,7 @@ $text = "";
 				$reg["childid"] = $childid;
 				$reg["term"] = $id;
 				$reg["regdate"] = $vaxt;
-				$reg["referans"] = $referans;
+				$reg["referans"] = $_POST["referans"];
 				$db->insert("registration",$reg);
 				$text = "Düşərgəyə qeydiyyat uğurla tamamlandı.";
 			}
