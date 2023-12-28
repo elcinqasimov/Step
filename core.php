@@ -149,9 +149,9 @@ $by         =       (isset($_GET["by"])) ? $_GET["by"] : "";                //--
 $referans   =       (isset($_GET["referans"])) ? $_GET["referans"] : "0";    //---->Case referans
 
 if($referans != "0" || $do != ""){
-	$r_link = "?referans=".$referans;
-}elseif($referans != "0"){
 	$r_link = "&referans=".$referans;
+}elseif($referans != "0"){
+	$r_link = "?referans=".$referans;
 }else{
 	$r_link = "";
 }
