@@ -117,8 +117,9 @@
 
 </div>
 <!-- External JavaScripts -->
-<script src="assets/vendors/bootstrap/js/popper.min.js"></script>
+
 <script src="assets/js/jquery.min.js"></script>
+<script src="assets/vendors/bootstrap/js/popper.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
 
