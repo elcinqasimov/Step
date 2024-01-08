@@ -158,7 +158,7 @@ $sehife = $db->select("pages","isnull(subid)");
 			$href = 'javascript:;';
 		}else{
 			$drop = '';
-			$href = '?do='.$sehife[$i]['url']."&".$r_link;
+			$href = '?do='.$sehife[$i]['url']."".$r_link;
 		}
 ?>
 <li <?=$active?>><a href="<?=$href?>"><?=$sehife[$i]['name_'.$l.'']?> <?=$drop?></a>
@@ -166,7 +166,7 @@ $sehife = $db->select("pages","isnull(subid)");
 		<ul class="sub-menu">
 
 			<?php for($a=0;$a<$counts;$a++){?>
-				<li><a href="?do=<?=$subsehife[$a]['url']?>&<?=$r_link?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
+				<li><a href="?do=<?=$subsehife[$a]['url']?><?=$r_link?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
 			<?php } ?>
 		</ul>
 	<?php } ?>
