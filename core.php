@@ -170,8 +170,12 @@ parse_str($query,$out);
 unset($out["page_no"]);
 unset($out["page_no2"]);
 unset($out["lang"]);
-echo $urlkod["path"];
-$_SERVER['REQUEST_URI'] = $urlkod["path"]."?".http_build_query($out);
+if($urlkod["path"] == "/"){
+  $_SERVER['REQUEST_URI'] = $urlkod["path"]."".http_build_query($out);
+}else{
+  $_SERVER['REQUEST_URI'] = $urlkod["path"]."?".http_build_query($out);
+}
+
 ///////////////////////////////////////
 #endregion 
 
