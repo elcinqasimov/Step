@@ -1,5 +1,4 @@
     <?php 
-	if($group == 1){
 		$_GET["group"] = (isset($_GET["group"])) ? $_GET["group"] : ""; 
 		if($_GET["group"] == ""){
 			$where = "WHERE gallery.group_id != 0";
