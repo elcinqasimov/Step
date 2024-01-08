@@ -26,7 +26,7 @@ $sehife = $db->select("pages","isnull(subid)");
 								<?php if($counts > 0){ ?>
 									<ul class="sub-menu">
 										<?php for($a=0;$a<$counts;$a++){?>
-											<li><a href="?do=<?=$subsehife[$a]['url']?>&<?=$r_link?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
+											<li><a href="?do=<?=$subsehife[$a]['url']?><?=$r_link?>"><?=$subsehife[$a]['name_'.$l.'']?></a></li>
 										<?php } ?>
 									</ul>
 								<?php } ?>
