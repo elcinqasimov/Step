@@ -90,8 +90,3 @@
     </div>
     <!-- Content END-->
 	<script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
-	<?php
-	}else{
-		header('Location: admin/index.php');
-	}
-	?>
