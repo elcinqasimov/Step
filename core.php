@@ -150,8 +150,10 @@ $referans   =       (isset($_GET["referans"])) ? $_GET["referans"] : "0";    //-
 
 if($referans != "0"){
 	$r_link = "referans=".$referans;
+	$rr_link = "?referans=".$referans;
 }else{
 	$r_link = "";
+	$rr_link = "";
 }
    //---->Case Language
 
