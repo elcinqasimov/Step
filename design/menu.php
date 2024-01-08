@@ -19,7 +19,7 @@ $sehife = $db->select("pages","isnull(subid)");
 										$href = 'javascript:;';
 									}else{
 										$drop = '';
-										$href = '?do='.$sehife[$i]['url']."&".$r_link;
+										$href = '?do='.$sehife[$i]['url']."".$r_link;
 									}
 							?>
 							<li <?=$active?>><a href="<?=$href?>"><?=$sehife[$i]['name_'.$l.'']?> <?=$drop?></a>
