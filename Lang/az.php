@@ -27,7 +27,7 @@ $lang = array(
     'about'                => "Haqqımızda",
     'about_label'          => "Əgər siz də tətilinizi səmərəli, faydalı və maraqlı keçirmək istəyirsinizsə, Beynəlxalq Uşaq İnkişaf Mərkəzinin xarici ölkələrdə təşkil etdiyi yay və qış düşərgələri layihələrində iştirak edə bilərsiniz. Yay və qış düşərgələrinin əsas üstünlükləri ingilis dili biliklərinizi təkmilləşdirmək və müxtəlif ölkələrdən olan həmyaşıdlarınız arasında yeni dostlar qazanmaqdır. Şirkətimizin təşkil etdiyi yay və qış düşərgələri müxtəlif əyləncələr, intellektual oyunlar, bilik yarışları, debatlar, ekskursiyalar və səyahətlərlə zəngindir. Yay tətilinizi ingilis dilinizi təkmilləşdirməklə keçirin.",
     'login_header'                => "İstifadəçi adı ilə <span>giriş et</span>",
-    'login_label'                => "İstifadəçi adınız yoxdur? <a href=\"register.php?\".$r_link."\">Qeydiyyatdan keçin</a>",
+    'login_label'                => "İstifadəçi adınız yoxdur? <a href=\"register.php?$r_link">Qeydiyyatdan keçin</a>",
     'remember_me'                => "Yadda saxla",
     'forget_password'                => "<a href=\"forget-password.php\" class=\"ml-auto\">Şifrəni unutmusan?</a>",
     'login_enter'                => "Daxil ol",
