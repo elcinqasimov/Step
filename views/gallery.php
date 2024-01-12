@@ -42,7 +42,7 @@
 									 $where";
 								 $total_records_per_page = 12; 
 								$gallery = $db->query("$gallery_sql LIMIT $offset, $total_records_per_page");
-								$say = $db->query("SELECT count(*) as 'say' from gallery $where LIMIT $offset, $total_records_per_page");
+								$say = $db->query("SELECT count(*) as 'say' from gallery $where");
 								$group = $db->query("SELECT * from albom_groups");
 								?>
 							<li class="btn active">
