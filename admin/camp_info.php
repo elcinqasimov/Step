@@ -70,7 +70,6 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "verify"){
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id WHERE registration.id = '$id'";
 										$regsiyahi = $db->query($sql);
-										print_r($regsiyahi);
 										if($regsiyahi[0]["verify"] == 1){
 											$disabled = "disabled";
 										}else{
