@@ -3,14 +3,14 @@
 $error = "";
 $text = "";
 if(isset($_POST["submit"]) && $_POST["submit"]  == "submit"){
-	print_r($_POST);
+
 	unset($_POST["submit"]);
 	$where = "id = ".$id;
 	$db->update("registration",$_POST,$where);
 	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Qeydiyyat yadda saxlanıldı.</div>";
 }
 if(isset($_POST["submit"]) && $_POST["submit"]  == "verify"){
-	print_r($_POST);
+
 	if(isset($_POST["payment"]) && $_POST["payment"] < 1){
 		$error .= "Ödəniş olunmayıb. ";
 	}
@@ -39,7 +39,7 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "verify"){
 										registration.visa as 'visa',
 										registration.tools as 'tools',
 										registration.payment as 'payment',
-										registration.documents as 'document',
+										registration.document as 'document',
 										registration.psixoloji as 'psixoloji',
 										children.fullname as 'c_fullname',
 										children.language as 'language',
@@ -70,6 +70,7 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "verify"){
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id WHERE registration.id = '$id'";
 										$regsiyahi = $db->query($sql);
+										print_r($regsiyahi);
 										if($regsiyahi[0]["verify"] == 1){
 											$disabled = "disabled";
 										}else{
