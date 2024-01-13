@@ -23,7 +23,7 @@
 	 INNER JOIN countries ON camps.country_id = countries.id 
  WHERE term.id = $id";
  $term = $db->query($termsql);
- print_r($term);
+
 ?>
     <!-- Content -->
     <div class="page-content bg-white">
