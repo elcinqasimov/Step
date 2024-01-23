@@ -191,7 +191,7 @@
 							<h2 class="title-head"><?=$lang["register_now"]?></h2>
 						</div>
 					</div>
-					<form class="contact-bx ajax-form" method="POST" action="?do=register">
+					<form class="contact-bx ajax-form" method="POST" action="register.php">
 						<input type="hidden" name="referans" value="<?=$referans?>"/>
 						<div class="ajax-message"></div>
 						<div class="row placeani">
@@ -242,6 +242,9 @@
 										<input oninvalid="this.setCustomValidity('<?=$lang["password2_require"]?>')" name="password2" type="password" required class="form-control">
 									</div>
 								</div>
+							</div>
+							<div class="col-lg-12">
+								<center><input type="checkbox" name="term"> <?=$lang["agree"]?></center>
 							</div>
 							<div class="col-lg-12">
 								<button name="submit" type="submit" value="register" class="btn button-md"><?=$lang["register_button"]?></button>

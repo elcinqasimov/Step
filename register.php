@@ -1,17 +1,25 @@
 <?php
 include_once 'core.php';
 $error = "";
+
     if(isset($_POST["submit"]) && $_POST["submit"] == "register"){
         unset($_POST["submit"]);
 		$usermail = $db->query("SELECT * from users WHERE mail = '".$_POST["mail"]."'");
 		if($_POST["password2"] != $_POST["password"]){
-			$error .= "Təkrar şifrə uyğun gəlmir.";
+			$error .= $lang["rpassword_error"];
+		}
+		if(isset($_POST["term"]) && $_POST["term"] == "on"){
+			
+		}else{
+			$error .= $lang["term_error"];
 		}
 		if(count($usermail) > 0){
-			$error .= " E-mail adreslə artıq qeydiyyatdan keçmisiniz.";
+			$error .= $lang["email_error"];
 		}
 		if($error == ""){
+			print_r($_POST);
 			unset($_POST["password2"]);
+			unset($_POST["term"]);
 			$_POST["password"] = hash('sha256', $_POST["password"]);
 			$_POST["regdate"] = $vaxt;
 			$_POST["online"] = $vaxt;

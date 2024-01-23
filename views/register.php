@@ -1,7 +1,9 @@
 <?php
 
     if($_POST["submit"] == "register"){
+        print_r($_POST);
         unset($_POST["submit"]);
+        unset($_POST["term"]);
         unset($_POST["password2"]);
         $_POST["password"] = hash('sha256', $_POST["password"]);
         $_POST["regdate"] = $vaxt;
@@ -12,9 +14,9 @@
         $regid = $db->id();
         $_SESSION["userid"] = $regid;
         if($_POST["referans"] != ""){
-            header('Location: ?do=camps&referans='.$_POST["referans"]);
+        //    header('Location: ?do=camps&referans='.$_POST["referans"]);
         }else{
-            header('Location: ?do=camps');
+         //   header('Location: ?do=camps');
         }
     }    
 
