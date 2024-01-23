@@ -160,6 +160,9 @@ $error = "";
 									</div>
 								</div>
 							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<center><input type="checkbox" name="term"> <?=$lang["agree"]?></center>
+							</div>
 							<div class="col-lg-12">
 								<button name="submit" type="submit" value="register" class="btn button-md"><?=$lang["register_button"]?></button>
 							</div>
