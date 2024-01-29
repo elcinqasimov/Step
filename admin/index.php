@@ -208,6 +208,27 @@ include_once '../core.php';
 		                </ul>
 		            </li>
 					
+					<?php } ?>
+					<?php if($group == 1 || $group == 2){ ?>
+						<li>
+						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-calendar"></i></span>
+		                	<span class="ttr-label">Konsultasiya</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+						<li>
+		                		<a href="?do=consultants" class="ttr-material-button"><span class="ttr-label">Konsultantlar</span></a>
+		                	</li>
+		                	<li>
+		                		<a href="?do=consultation&type=0" class="ttr-material-button"><span class="ttr-label">Dil konsultasiyasi</span></a>
+		                	</li>
+		                	<li>
+		                		<a href="?do=consultation&type=1" class="ttr-material-button"><span class="ttr-label">Psixoloji konsultasiya</span></a>
+		                	</li>
+							
+		                </ul>
+		            </li>
 		            <?php } ?>
 		            <li class="ttr-seperate"></li>
 				</ul>
