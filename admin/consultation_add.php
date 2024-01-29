@@ -11,8 +11,8 @@ if($_POST["name"] == ""){
 if($_POST["count"] == ""){
 	$error .= "Düşərgədə nəfər sayı yazılmayıb.<br/>";
 }
-if($_POST["camp_id"] == ""){
-	$error .= "Düşərgə qrupu seçilməyib.<br/>";
+if($_POST["term_id"] == ""){
+	$error .= "Düşərgə seçilməyib.<br/>";
 }
 if($_POST["price"] == ""){
 	$error .= "Düşərgə qiyməti yazılmayıb.<br/>";

@@ -36,21 +36,13 @@
 									$sql = "
 										SELECT 
 										term.name as 'name',
-										term.count as 'count',
-										term.startdate as 'startdate',
-										term.enddate as 'enddate',
-										term.price as 'price',
-										consultation_list.consultant_id as 'consultant_id',
-										countries.country_az as 'country_az',
-										city.name_az as 'name_az',
-										camps.name as 'camp_name',
-										term.id as 'id'
+										children.fullname as 'fullname',
+										consultation_list.startdate as 'startdate',
+										consultation_list.enddate as 'enddate',
+										consultation_list.id as 'id'
 										FROM consultation_list
 										INNER JOIN term ON consultation_list.term_id = term.id
-										INNER JOIN camps ON term.camp_id = camps.id
 										INNER JOIN children ON consultation_list.child_id = children.id
-										INNER JOIN countries ON camps.country_id = countries.id
-										INNER JOIN city ON camps.city_id = city.id
 									";
 										$term = $db->query("$sql LIMIT $offset, $total_records_per_page");
 										$c_term = $db-> query("SELECT count(*) FROM consultation_list");
@@ -58,12 +50,10 @@
 										?>
 									<div class="mail-list-info">
 										<div class="mail-list-title-info">
-											<p><b><?=$term[$a]["name"]?></b> (<?=$term[$a]["country_az"]?> - <?=$term[$a]["name_az"]?>) | Başlama : <?=tarix($term[$a]["startdate"])?> | Bitmə : <?=tarix($term[$a]["enddate"])?> | Qiymət : <?=$term[$a]["price"]?> | Nəfər : <?=$term[$a]["count"]?></p>
+											<p><b><?=$term[$a]["fullname"]?></b> | (<?=$term[$a]["name"]?>) | Başlama : <?=tarix($term[$a]["startdate"])?> | Bitmə : <?=tarix($term[$a]["enddate"])?></p>
 										</div>
 										<ul class="mailbox-toolbar">
-											<li data-toggle="tooltip" title="Delete"><a href="?do=camps&mod=del&id=<?=$term[$a]["id"]?>"><i class="fa fa-trash-o"></i></a></li>
-											<li data-toggle="tooltip" title="Delete"><a href="?do=camp_add&mod=edit&id=<?=$term[$a]["id"]?>"><i class="fa fa-pencil"></i></a></li>
-											<li data-toggle="tooltip" title="Delete"><a href="?do=camps&mod=del&id=<?=$term[$a]["id"]?>"><i class="fa fa-flag-checkered"></i></a></li>
+											<li data-toggle="tooltip" title="Delete"><a href="?do=consultation&mod=del&id=<?=$term[$a]["id"]?>"><i class="fa fa-flag-checkered"></i></a></li>
 										</ul>
 									</div>
 									<?php } ?>
