@@ -147,6 +147,7 @@ $person_id  =       (isset($_GET["person_id"])) ? $_GET["person_id"] : "";  //--
 $sort       =       (isset($_GET["sort"])) ? $_GET["sort"] : "";            //---->Case sort
 $by         =       (isset($_GET["by"])) ? $_GET["by"] : "";                //---->Case by
 $referans   =       (isset($_GET["referans"])) ? $_GET["referans"] : "0";    //---->Case referans
+$type   =       (isset($_GET["type"])) ? $_GET["type"] : "";    //---->Case referans
 
 if($referans != "0"){
 	$r_link = "&referans=".$referans;

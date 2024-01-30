@@ -9,7 +9,13 @@
 		$db->query("DELETE FROM term WHERE id = '$id'");
 		$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Düşərgə adı silindi</div>";
 	}
-
+if($group == 0){
+	$where  = " AND userid = $userid ";
+}elseif($group !=1 || $group != 2 || $group != 0){
+	$where = " AND consultant_id = $userid ";
+}else{
+	$where = "";
+}
 
 ?>
 	<!--Main container start -->
@@ -28,7 +34,9 @@
 							<div class="mail-list-container">
 								<div class="mail-toolbar">
 									<div class="mail-search-bar">
-										<a href="?do=consultation_add&mod=add" class="btn default">Konsultasiya əlavə et</a>
+										<?php if($group == 1 || $group == 2){ ?>
+										<a href="?do=consultation_add&mod=add&type=1" class="btn default">Konsultasiya əlavə et</a>
+										<?php } ?>
 									</div>
 								</div>
 								<div class="mail-box-list">
@@ -43,9 +51,10 @@
 										FROM consultation_list
 										INNER JOIN term ON consultation_list.term_id = term.id
 										INNER JOIN children ON consultation_list.child_id = children.id
+										WHERE `type` = $type $where
 									";
 										$term = $db->query("$sql LIMIT $offset, $total_records_per_page");
-										$c_term = $db-> query("SELECT count(*) FROM consultation_list");
+										$c_term = $db-> query("SELECT count(*) FROM consultation_list WHERE `type` = $type $where");
 										for($a = 0;$a<count($term);$a++){
 										?>
 									<div class="mail-list-info">
