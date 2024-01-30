@@ -7,16 +7,21 @@ if($_POST["startdate"] == ""){
 	$error .= "Başlanma tarixi yazılmayıb.<br/>";
 }
 if($_POST["enddate"] == ""){
-	$error .= "Bitmə tarixi yazılmayıb.";
+	$error .= "Bitmə tarixi yazılmayıb.<br/>";
 }
-if(!isset($_POST["link"]) && $_POST["link"] == ""){
+if(isset($_POST["link"]) && $_POST["link"] == ""){
 	$error .= "Link yazılmayıb.";
 }
 
 	if($error == ""){
+
 		unset($_POST["submit"]);
 		$_POST["startdate"] = ekstarix($_POST["startdate"]);
 		$_POST["enddate"] = ekstarix($_POST["enddate"]);
+		$_POST["regdate"] = $vaxt;
+		$child = $db->query("SELECT * FROM children WHERE id = ".$_POST["child_id"]);
+		$_POST["user_id"] = $child[0]["parentid"];
+		$_POST["type"] = $type;
 		$db->insert("consultation_list",$_POST);
 		$lastid_term = $db->id();
 	echo '<script>location.href = "?do=consultation&type='.$type .';</script>';
@@ -97,18 +102,18 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 <?php if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){ ?>
 <script type="text/javascript">
 	window.onload = function(event) {
-		$("#camp_id").val(<?=$regsiyahi[0]["camp_id"]?>).change();
-		$("#camp_id").val(<?=$regsiyahi[0]["consultant_id"]?>).change();
-		$("#camp_id").val(<?=$regsiyahi[0]["term_id"]?>).change();
+		$("#child_id").val(<?=$regsiyahi[0]["child_id"]?>).change();
+		$("#consultant_id").val(<?=$regsiyahi[0]["consultant_id"]?>).change();
+		$("#term_id").val(<?=$regsiyahi[0]["term_id"]?>).change();
         //document.getElementById("camp_id").options.value = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
 <?php }elseif(isset($_POST["submit"]) && $_POST["submit"] == "add"){?>
 	<script type="text/javascript">
 	window.onload = function(event) {
-		$("#camp_id").val(<?=$_POST["camp_id"]?>).change();
-		$("#camp_id").val(<?=$_POST["consultant_id"]?>).change();
-		$("#camp_id").val(<?=$_POST["term_id"]?>).change();
+		$("#child_id").val(<?=$_POST["child_id"]?>).change();
+		$("#consultant_id").val(<?=$_POST["consultant_id"]?>).change();
+		$("#term_id").val(<?=$_POST["term_id"]?>).change();
     };
 </script>
 <?php } ?>
@@ -200,7 +205,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 									<div class="form-group col-3">
 										<label class="col-form-label">İştirak</label>
 										<div>
-										<select name="child_id" class="form-control" id="no_attend" <?=$disabled?>>
+										<select name="no_attend" class="form-control" id="no_attend" <?=$disabled?>>
 											<option value="0">İştirak edib</option>
 											<option value="1">İştirak etməyib</option>
 										</select>

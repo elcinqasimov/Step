@@ -6,15 +6,15 @@
 			$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Konsultasiya əlavə olundu</div>";
 	}
 	if(isset($_GET["mod"]) && $_GET["mod"] == "del"){
-		$db->query("DELETE FROM term WHERE id = '$id'");
-		$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Düşərgə adı silindi</div>";
+		$db->query("DELETE FROM consultation_list WHERE id = '$id'");
+		$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Konsultasiya silindi</div>";
 	}
 if($group == 0){
 	$where  = " AND userid = $userid ";
-}elseif($group !=1 || $group != 2 || $group != 0){
-	$where = " AND consultant_id = $userid ";
-}else{
+}elseif($group == 1){
 	$where = "";
+}else{
+	$where = " AND consultant_id = $userid ";
 }
 
 ?>
