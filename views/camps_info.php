@@ -74,7 +74,7 @@
 							<div class="courses-post">
 							<div class="widget widget_gallery gallery-grid-4">
 									<ul class="magnific-image">
-							<?php $gallery = $db->query("SELECT * FROM gallery where term_id = ".$id);
+							<?php $gallery = $db->query("SELECT * FROM gallery where term_id = ".$id." AND group_id = 0");
 									for($a=0;$a<count($gallery);$a++){ ?>
 											
 												<li><a href="<?=$gallery[$a]["path"]?>" class="magnific-anchor"><img src="<?=$gallery[$a]["path"]?>" alt=""></a></li>
