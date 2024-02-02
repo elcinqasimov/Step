@@ -92,6 +92,7 @@
                                         term.enddate as 'enddate', 
                                         term.count as 'count',  
                                         term.price as 'price', 
+                                        term.exc as 'exc', 
                                         term.finish as 'finish', 
                                         countries.country_az as 'country_az', 
                                         countries.country_en as 'country_en', 
@@ -108,14 +109,28 @@
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id  
                                         WHERE term.count > 0 AND term.finish = 0 $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
+                                        
                                     $terms = $db->query($termsql);
+
                                     $counts = $db->query($countsql);
                                 if($referans != ""){
                                     $r_link = "&referans=".$referans;
                                 }else{
                                     $r_link = "";
                                 }
-                                for($b = 0;$b < count($terms);$b++){ ?>
+                                for($b = 0;$b < count($terms);$b++){
+                                    if($terms[$b]["exc"] == "euro"){
+                                        $exc = "€";
+                                    }elseif($terms[$b]["exc"] == "usd"){
+                                        $exc = " &dollar;";
+                                    }elseif($terms[$b]["exc"] == "tl"){
+                                        $exc = "&#8378;";
+                                    }elseif($terms[$b]["exc"] == "azn"){
+                                        $exc = "&#8380;";
+                                    }elseif($terms[$b]["exc"] == "rubl"){
+                                        $exc = "&#8381;";
+                                    }
+                                    ?>
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
 										<div class="action-box">
@@ -134,7 +149,7 @@
                                                 
 											</div>
 											<div class="price">	<span><?=$terms[$b]["count"]?> <?=$lang["person"]?></span>
-												<h5><?=$terms[$b]["price"]?> &#8364;</h5>
+												<h5><?=$terms[$b]["price"]?> <?=$exc?></h5>
 											</div>
 										</div>
 									</div>

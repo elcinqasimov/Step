@@ -7,6 +7,7 @@
 	 term.enddate as 'enddate', 
 	 term.count as 'count',  
 	 term.price as 'price', 
+	 term.exc as 'exc', 
 	 countries.country_az as 'country_az', 
 	 countries.country_en as 'country_en', 
 	 city.name_az as 'city_az', 
@@ -23,7 +24,17 @@
 	 INNER JOIN countries ON camps.country_id = countries.id 
  WHERE term.id = $id";
  $term = $db->query($termsql);
-
+if($term[0]["exc"] == "euro"){
+	$exc = "€";
+}elseif($term[0]["exc"] == "usd"){
+	$exc = " &dollar;";
+}elseif($term[0]["exc"] == "tl"){
+	$exc = "&#8378;";
+}elseif($term[0]["exc"] == "azn"){
+	$exc = "&#8380;";
+}elseif($term[0]["exc"] == "rubl"){
+	$exc = "&#8381;";
+}
 ?>
     <!-- Content -->
     <div class="page-content bg-white">
@@ -44,7 +55,7 @@
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
 							<div class="course-detail-bx">
 								<div class="course-price">
-									<h4 class="price"><?=$term[0]["price"]?> &#8364;</h4>
+									<h4 class="price"><?=$term[0]["price"]?> <?=$exc?> </h4>
 								</div>	
 								<div class="course-buy-now text-center">
 									<?php

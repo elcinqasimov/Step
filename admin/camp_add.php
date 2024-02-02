@@ -152,6 +152,7 @@ SELECT
 	`name` as 'name', 
 	startdate as 'startdate', 
 	enddate as 'enddate', 
+	exc as 'exc', 
 	count as 'count',  
 	price as 'price', 
 	camp_id as 'camp_id', 
@@ -171,6 +172,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$camp_id	=	$regsiyahi[0]["camp_id"];
 	$name		=	$regsiyahi[0]["name"];
 	$count		=	$regsiyahi[0]["count"];
+	$exc		=	$regsiyahi[0]["exc"];
 	$price		=	$regsiyahi[0]["price"];
 	$startdate	=	tarix($regsiyahi[0]["startdate"]);
 	$enddate	=	tarix($regsiyahi[0]["enddate"]);
@@ -181,6 +183,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$name		=	$_POST["name"];
 	$count		=	$_POST["count"];
 	$price		=	$_POST["price"];
+	$exc		=	$_POST["exc"];
 	$startdate	=	tarix($_POST["startdate"]);
 	$enddate	=	tarix($_POST["enddate"]);
 	$desc_az	=	$_POST["description_az"];
@@ -189,6 +192,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	$name		=	"";
 	$count		=	"";
 	$price		=	"";
+	$exc		=	"";
 	$startdate	=	"";
 	$enddate	=	"";
 	$desc_az	=	"";
@@ -199,6 +203,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 <script type="text/javascript">
 	window.onload = function(event) {
 		$("#camp_id").val(<?=$regsiyahi[0]["camp_id"]?>).change();
+		$("#exc").val("<?=$regsiyahi[0]["exc"]?>").change();
         //document.getElementById("camp_id").options.value = <?=$regsiyahi[0]["camp_id"]?>;
     };
 </script>
@@ -206,6 +211,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 	<script type="text/javascript">
 	window.onload = function(event) {
 		$("#camp_id").val(<?=$regsiyahi[0]["camp_id"]?>).change();
+		$("#exc").val(<?=$regsiyahi[0]["exc"]?>).change();
        // document.getElementById("camp_id").options.value = <?=$_POST["camp_id"]?>;
     };
 </script>
@@ -246,7 +252,7 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 											<input class="form-control" type="number" name="count" value="<?=$count?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-3">
+									<div class="form-group col-2">
 										<label class="col-form-label">Düşərgə qrupu</label>
 										<div>
 										<select name="camp_id" class="form-control" id="camp_id" <?=$disabled?>>
@@ -259,10 +265,22 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 												</select>
 										</div>
 									</div>
-									<div class="form-group col-3">
+									<div class="form-group col-2">
 										<label class="col-form-label">Düşərgə qiyməti</label>
 										<div>
 											<input class="form-control" type="number" name="price" value="<?=$price?>" <?=$disabled?>>
+										</div>
+									</div>
+									<div class="form-group col-2">
+										<label class="col-form-label">Məzənnə</label>
+										<div>
+										<select name="exc" class="form-control" id="exc" <?=$disabled?>>
+											<option value="azn">AZN</option>
+											<option value="euro">EURO</option>
+											<option value="usd">USD</option>
+											<option value="tl">TL</option>
+											<option value="rubl">RUBL</option>
+										</select>
 										</div>
 									</div>
 									<div class="form-group col-4">
