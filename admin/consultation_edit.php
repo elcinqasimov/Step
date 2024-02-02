@@ -1,53 +1,52 @@
 <?php 
 $error = "";
 $text = "";
-$disabled = "";
-if(isset($_POST["submit"]) && $_POST["submit"]  == "add"){
-if($_POST["startdate"] == ""){
-	$error .= "Başlanma tarixi yazılmayıb.<br/>";
-}
-if($_POST["enddate"] == ""){
-	$error .= "Bitmə tarixi yazılmayıb.<br/>";
-}
-if(isset($_POST["link"]) && $_POST["link"] == ""){
-	$error .= "Link yazılmayıb.";
-}
-	if($error == ""){
-		unset($_POST["submit"]);
-		$_POST["startdate"] = ekstarix($_POST["startdate"]);
-		$_POST["enddate"] = ekstarix($_POST["enddate"]);
-		$_POST["regdate"] = $vaxt;
-		$child = $db->query("SELECT * FROM children WHERE id = ".$_POST["child_id"]);
-		$_POST["user_id"] = $child[0]["parentid"];
-		$_POST["type"] = $type;
-		$db->insert("consultation_list",$_POST);
-		$lastid_term = $db->id();
-	echo '<script>location.href = "?do=consultation&type='.$type .';</script>';
-	}else{
-		$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
+$sql = "SELECT * FROM consultation_list WHERE id = ".$id;
+$regsiyahi = $db->query($sql);
+$type	=	$regsiyahi[0]["type"];
+$note		=	$regsiyahi[0]["note"];
+$link		=	$regsiyahi[0]["link"];
+$startdate	=	$regsiyahi[0]["startdate"];
+$enddate	=	$regsiyahi[0]["enddate"];
+
+
+if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
+
+	if(!isset($_POST["startdate"]) && $_POST["startdate"] == ""){
+		$error .= "Başlanma tarixi yazılmayıb.";
 	}
+	if(!isset($_POST["link"]) && $_POST["link"] == ""){
+		$error .= "Link yazılmayıb.";
+	}
+	if(!isset($_POST["enddate"]) && $_POST["enddate"] == ""){
+		$error .= "Bitmə tarixi yazılmayıb.";
+	}
+
+	$_POST["startdate"] = tam_ekstarix($_POST["startdate"]);
+	$_POST["enddate"] = tam_ekstarix($_POST["enddate"]);
+	print_r($_POST);
+	unset($_POST["submit"]);
+	$where = "id = ".$id;
+	$db->update("consultation_list",$_POST,$where);
+	$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">Konsultasiya yadda saxlanıldı.</div>";
 }
-if(isset($_POST["submit"]) && $_POST["submit"] == "add"){
-	$term_id	=	$_POST["term_id"];
-	$note		=	$_POST["note"];
-	$link		=	$_POST["link"];
-	$price		=	$_POST["price"];
+
+
+if(isset($regsiyahi[0]["finish"]) && $regsiyahi[0]["finish"] == 1){
+	$disabled = "disabled";
 }else{
-	$note		=	"";
-	$link		=	"";
-	$startdate		=	"";
-	$enddate		=	"";
+	$disabled = "";
 }
 ?>
-<?php if(isset($_POST["submit"]) && $_POST["submit"] == "add"){?>
-	<script type="text/javascript">
+
+<script type="text/javascript">
 	window.onload = function(event) {
-		$("#child_id").val(<?=$_POST["child_id"]?>).change();
-		$("#consultant_id").val(<?=$_POST["consultant_id"]?>).change();
-		$("#term_id").val(<?=$_POST["term_id"]?>).change();
+		$("#child_id").val(<?=$regsiyahi[0]["child_id"]?>).change();
+		$("#consultant_id").val(<?=$regsiyahi[0]["consultant_id"]?>).change();
+		$("#term_id").val(<?=$regsiyahi[0]["term_id"]?>).change();
     };
 </script>
-<?php } ?>
+
 	<!--Main container start -->
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
@@ -162,19 +161,13 @@ if(isset($_POST["submit"]) && $_POST["submit"] == "add"){
 									</div>
 									
 									
-									<?php if($disabled == ""){ ?>
+									
 									<div class="col-12">
-									<?php if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){ ?>
+									
 										<button type="submit" name="submit" value="edit" class="btn blue">Yadda saxla</button>
-										<?php } ?>
-										<?php if(isset($_GET["mod"]) && $_GET["mod"] == "add"){ ?>
-										<button type="submit" name="submit" value="add" class="btn">Əlavə et</button>
-										<?php } ?>
-										<?php if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){ ?>
-										<button type="submit" name="submit" value="finish" class="btn green">Təsdiqlə</button>
-										<?php } ?>
+										
 									</div>
-									<?php } ?>
+									
 								</div>
 							</form>
 						</div>

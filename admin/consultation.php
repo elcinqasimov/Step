@@ -9,12 +9,12 @@
 		$db->query("DELETE FROM consultation_list WHERE id = '$id'");
 		$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px;margin-bottom:20px;\">Konsultasiya silindi</div>";
 	}
-if($group == 0){
-	$where  = " AND userid = $userid ";
-}elseif($group == 1){
+if($group == 3 || $group == 4){
+	$where  = " AND consultant_id = $userid ";
+}elseif($group == 1 || $group == 2){
 	$where = "";
 }else{
-	$where = " AND consultant_id = $userid ";
+	$where = " AND user_id = $userid ";
 }
 
 ?>
@@ -35,7 +35,7 @@ if($group == 0){
 								<div class="mail-toolbar">
 									<div class="mail-search-bar">
 										<?php if($group == 1 || $group == 2){ ?>
-										<a href="?do=consultation_add&mod=add&type=1" class="btn default">Konsultasiya əlavə et</a>
+										<a href="?do=consultation_add&mod=add&type=<?=$type?>" class="btn default">Konsultasiya əlavə et</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -47,6 +47,7 @@ if($group == 0){
 										children.fullname as 'fullname',
 										consultation_list.startdate as 'startdate',
 										consultation_list.enddate as 'enddate',
+										consultation_list.verify as 'verify',
 										consultation_list.id as 'id'
 										FROM consultation_list
 										INNER JOIN term ON consultation_list.term_id = term.id
@@ -57,12 +58,23 @@ if($group == 0){
 										$c_term = $db-> query("SELECT count(*) FROM consultation_list WHERE `type` = $type $where");
 										for($a = 0;$a<count($term);$a++){
 										?>
+										
 									<div class="mail-list-info">
-										<div class="mail-list-title-info">
+										<div class="mail-list-title-info" style="flex-grow: 0.87 !important;">
+										<a href="?do=consultation_info&id=<?=$term[$a]["id"]?>">
 											<p><b><?=$term[$a]["fullname"]?></b> | (<?=$term[$a]["name"]?>) | Başlama : <?=tarix($term[$a]["startdate"])?> | Bitmə : <?=tarix($term[$a]["enddate"])?></p>
+											</a>
 										</div>
+										<span class="orders-btn">
+											<?php if($term[$a]["verify"] == 0){ ?>
+												<a href="?do=consultation_info&id=<?=$term[$a]["id"]?>" class="btn button-sm red">Təsdiqlənməyib</a>
+											<?php }else{ ?>
+												<a href="?do=consultation_info&id=<?=$term[$a]["id"]?>" class="btn button-sm green">Təsdiqlənib</a>
+											<?php } ?>
+										</span>
 										<ul class="mailbox-toolbar">
-											<li data-toggle="tooltip" title="Delete"><a href="?do=consultation&mod=del&id=<?=$term[$a]["id"]?>"><i class="fa fa-flag-checkered"></i></a></li>
+											<li data-toggle="tooltip" title="Delete"><a href="?do=consultation&mod=del&id=<?=$term[$a]["id"]?>"><i class="fa fa-trash"></i></a></li>
+											<li data-toggle="tooltip" title="Delete"><a href="?do=consultation&mod=info&id=<?=$term[$a]["id"]?>"><i class="fa fa-flag-checkered"></i></a></li>
 										</ul>
 									</div>
 									<?php } ?>

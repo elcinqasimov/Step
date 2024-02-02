@@ -87,6 +87,10 @@ function tam_tarix($tarix){
     $newDate = date("d.m.Y H:m:s", strtotime($tarix));
     return $newDate;
 }
+function tam_ekstarix($tarix){
+    $newDate = date("Y-m-d H:i:s", strtotime($tarix));
+    return $newDate;
+}
 function ekstarix($tarix){
     $newDate = date("Y-m-d", strtotime($tarix));
     return $newDate;

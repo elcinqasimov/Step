@@ -209,7 +209,7 @@ include_once '../core.php';
 		            </li>
 					
 					<?php } ?>
-					<?php if($group == 1 || $group == 2){ ?>
+					
 						<li>
 						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-calendar"></i></span>
@@ -218,7 +218,9 @@ include_once '../core.php';
 		                </a>
 		                <ul>
 						<li>
+						<?php if($group == 1 || $group == 2){ ?>
 		                		<a href="?do=consultants" class="ttr-material-button"><span class="ttr-label">Konsultantlar</span></a>
+								<?php } ?>
 		                	</li>
 		                	<li>
 		                		<a href="?do=consultation&type=0" class="ttr-material-button"><span class="ttr-label">Dil konsultasiyasi</span></a>
@@ -229,7 +231,7 @@ include_once '../core.php';
 							
 		                </ul>
 		            </li>
-		            <?php } ?>
+		            
 		            <li class="ttr-seperate"></li>
 				</ul>
 				<!-- sidebar menu end -->
