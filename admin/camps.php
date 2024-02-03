@@ -53,6 +53,7 @@
 										INNER JOIN camps ON term.camp_id = camps.id
 										INNER JOIN countries ON camps.country_id = countries.id
 										INNER JOIN city ON camps.city_id = city.id
+										ORDER BY term.id DESC
 									";
 										$term = $db->query("$sql LIMIT $offset, $total_records_per_page");
 										$c_term = $db-> query("SELECT count(*) FROM term");
