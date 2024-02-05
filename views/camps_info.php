@@ -189,7 +189,7 @@ for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
   <div class="widget widget_gallery gallery-grid-4">
 									<ul class="magnific-image">
-							<?php $gallery = $db->query("SELECT * FROM gallery where term_id = ".$id." AND group_id = 0");
+							<?php $gallery = $db->query("SELECT * FROM gallery where term_id = ".$term[0]["term_id"]." AND group_id = 0");
 									for($a=0;$a<count($gallery);$a++){ ?>
 											
 												<li><a href="<?=$gallery[$a]["path"]?>" class="magnific-anchor"><img src="<?=$gallery[$a]["path"]?>" alt=""></a></li>
