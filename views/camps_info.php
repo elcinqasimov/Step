@@ -3,6 +3,7 @@
  SELECT
 	 term.id as 'term_id',
 	 camps.id as 'id',
+	 camps.`name` as 'name', 
 	 term.`name` as 'term', 
 	 term.startdate as 'startdate', 
 	 term.enddate as 'enddate', 
