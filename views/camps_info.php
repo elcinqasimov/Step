@@ -113,8 +113,15 @@ button {
 *, ::after, ::before {
     box-sizing: border-box;
 }
-
-
+thead{
+	background:#f7b205;
+}
+td{
+	border-bottom:1px solid #ccc;
+}
+tbody>tr:nth-of-type(odd) {
+    background-color: #9abbf1;
+}
 </style>
 <hr/>
 									<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -137,6 +144,7 @@ button {
 
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 <table>
+	<thead>
 	<tr>
 		<td>№</td>
 		<td>Düşərgə adı</td>
@@ -145,6 +153,8 @@ button {
 		<td>Qiymət</td>
 		<td>---</td>
 	</tr>
+	</thead>
+<tbody>
 
 <?php 
 for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
@@ -169,6 +179,7 @@ for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
 		<td><a href="<?=$reg_link?>" class="btn radius-xl text-uppercase"><?=$lang["camp_reg"]?></a></td>
 	</tr>
 <?php } ?>
+</tbody>
 </table>
   </div>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
