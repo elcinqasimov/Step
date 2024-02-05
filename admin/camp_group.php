@@ -66,6 +66,7 @@
 										FROM camps
 										INNER JOIN countries ON camps.country_id = countries.id
 										INNER JOIN city ON camps.city_id = city.id
+										ORDER BY camps.id DESC
 									";
 										$camp_group = $db->query("$sql LIMIT $offset, $total_records_per_page");
 										$c_camp_group = $db-> query("SELECT count(*) FROM camps");

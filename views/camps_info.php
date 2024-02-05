@@ -1,7 +1,8 @@
 <?php
  $termsql = "
  SELECT
-	 term.id as 'id',
+	 term.id as 'term_id',
+	 camps.id as 'id',
 	 term.`name` as 'term', 
 	 term.startdate as 'startdate', 
 	 term.enddate as 'enddate', 
@@ -18,12 +19,13 @@
 	 camps.`name` as 'camp_name',
 	 camps.`country_id` as 'country_id'
  FROM
-	 term
-	 INNER JOIN camps ON term.camp_id = camps.id
+	 camps
+	 INNER JOIN term ON camps.id = term.camp_id
 	 INNER JOIN city ON camps.city_id = city.id
 	 INNER JOIN countries ON camps.country_id = countries.id 
- WHERE term.id = $id";
+ WHERE camps.id = $id";
  $term = $db->query($termsql);
+
 if($term[0]["exc"] == "euro"){
 	$exc = "€";
 }elseif($term[0]["exc"] == "usd"){
@@ -52,12 +54,99 @@ if($term[0]["exc"] == "euro"){
 			<div class="section-area section-sp1 gallery-bx">
                 <div class="container">
 					 <div class="row d-flex flex-row-reverse">
-						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-							<div class="course-detail-bx">
-								<div class="course-price">
-									<h4 class="price"><?=$term[0]["price"]?> <?=$exc?> </h4>
-								</div>	
-								<div class="course-buy-now text-center">
+
+					
+						<div class="col-lg-12 col-md-8 col-sm-12">
+							<div class="courses-post">
+
+								<div class="ttr-post-info">
+									<div class="ttr-post-title ">
+										<h2 class="post-title"><?=$term[0]["term"]?></h2>
+									</div>
+									</div>
+
+<style>
+	.nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #007bff;
+}
+.nav-pills .nav-link {
+    background: 0 0;
+    border: 0;
+    border-radius: 0.25rem;
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    border-radius: 0;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+
+</style>
+<hr/>
+									<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Haqqında</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Qiymət və cədvəllər</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Qalereya</button>
+  </li>
+</ul>
+<hr/>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+										<p><?=$term[0]["description_".$l]?></p>
+									</div>
+
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+<table>
+	<tr>
+		<td>№</td>
+		<td>Düşərgə adı</td>
+		<td>Düşərgə tarix aralığı</td>
+		<td>Uşaq sayı</td>
+		<td>Qiymət</td>
+		<td>---</td>
+	</tr>
+
+<?php 
+for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
 									<?php
 									if($referans != ""){
 										$r_link = "&referans=".$referans;
@@ -67,23 +156,22 @@ if($term[0]["exc"] == "euro"){
 									if($userid == ""){
 										$reg_link = "login.php";
 									}else{
-										$reg_link = "?do=register_camp".$r_link."&id=".$term[0]["id"];
+										$reg_link = "?do=register_camp".$r_link."&id=".$term[$a]["term_id"];
 									}
 									?>
-									<a href="<?=$reg_link?>" class="btn radius-xl text-uppercase"><?=$lang["camp_reg"]?></a>
-								</div>
-								<div class="course-info-list scroll-page">
-									<ul class="navbar">
-										<li><a class="nav-link" href="#"><i class="ti-calendar"></i><?=tarix($term[0]["startdate"])?> - <?=tarix($term[0]["enddate"])?></a></li>
-										<li><a class="nav-link" href="#"><i class="ti-user"></i><?=$lang["camp_person"]?> : <?=$term[0]["count"]?></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					
-						<div class="col-lg-9 col-md-8 col-sm-12">
-							<div class="courses-post">
-							<div class="widget widget_gallery gallery-grid-4">
+	<tr>
+		<td><?=$b?></td>
+		<td><?=$term[$a]["term"]?></td>
+		<td><?=tarix($term[$a]["startdate"])?> - <?=tarix($term[$a]["enddate"])?></td>
+		<td><?=$term[$a]["count"]?></td>
+		<td><?=$term[$a]["price"]?> <?=$exc?></td>
+		<td><a href="<?=$reg_link?>" class="btn radius-xl text-uppercase"><?=$lang["camp_reg"]?></a></td>
+	</tr>
+<?php } ?>
+</table>
+  </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+  <div class="widget widget_gallery gallery-grid-4">
 									<ul class="magnific-image">
 							<?php $gallery = $db->query("SELECT * FROM gallery where term_id = ".$id." AND group_id = 0");
 									for($a=0;$a<count($gallery);$a++){ ?>
@@ -92,13 +180,11 @@ if($term[0]["exc"] == "euro"){
 							<?php } ?>
 						</ul>
 						</div>
-								<div class="ttr-post-info">
-									<div class="ttr-post-title ">
-										<h2 class="post-title"><?=$term[0]["term"]?></h2>
-									</div>
-									<div class="ttr-post-text">
-										<p><?=$term[0]["description_".$l]?></p>
-									</div>
+  </div>
+</div>
+<hr/>
+
+									
 									
 						</div>
 								</div>

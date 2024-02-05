@@ -1,9 +1,11 @@
     <?php
 
     if(isset($_GET["search"]) && $_GET["search"] != ""){
+        $search_value = $_GET["search"];
         $search = " AND term.`name` REGEXP '".$_GET["search"]."'"; 
     }else{
         $search = "";
+        $search_value = "";
     }
 
     ?>
@@ -38,7 +40,7 @@
 										<label><?=$lang["search_camp"]?></label>
                                         <form method="GET" action="">
                                         <input name="do" value="camps" id="search" type="hidden" required class="form-control">
-                                            <input name="search" id="search" type="text" required class="form-control">
+                                            <input name="search" id="search" value="<?=$search_value?>" type="text" class="form-control">
                                             <button type="button" style="display:none;" onclick="searchresult()" id="search_key">Search</button>
                                         </form>
 									</div>
@@ -74,41 +76,20 @@
                                     $where = "";
                                 }else{
                                     $country =  $_GET["country"];
-                                    $where = "AND camps.country_id = $country";
+                                    $where = "AND country_id = $country";
                                 }
                                 $countsql = "
                                     SELECT count(*) FROM
-                                        term
-                                        INNER JOIN camps ON term.camp_id = camps.id
+                                        camps
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id 
-                                        WHERE term.count > 0 AND term.finish = 0
                                     $where $search";
                                     $termsql = "
-                                    SELECT
-                                        term.id as 'id',
-                                        term.`name` as 'term', 
-                                        term.startdate as 'startdate', 
-                                        term.enddate as 'enddate', 
-                                        term.count as 'count',  
-                                        term.price as 'price', 
-                                        term.exc as 'exc', 
-                                        term.finish as 'finish', 
-                                        countries.country_az as 'country_az', 
-                                        countries.country_en as 'country_en', 
-                                        city.name_az as 'city_az', 
-                                        city.name_en as 'city_en', 
-                                        term.description_az as 'description_az', 
-                                        term.description_en as 'description_en', 
-                                        term.camp_id as 'camp_id',
-                                        camps.`name` as 'camp_name',
-                                        camps.`country_id` as 'country_id'
-                                    FROM
-                                        term
-                                        INNER JOIN camps ON term.camp_id = camps.id
+                                    SELECT camps.id as 'id',camps.country_id as 'country_id',camps.name,city.name_$l as 'city',countries.country_$l as'country' FROM
+                                        camps
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id  
-                                        WHERE term.count > 0 AND term.finish = 0 $where $search order by term.name ASC LIMIT $offset, $total_records_per_page";
+                                        WHERE camps.id $where $search order by name ASC LIMIT $offset, $total_records_per_page";
                                         
                                     $terms = $db->query($termsql);
 
@@ -119,17 +100,7 @@
                                     $r_link = "";
                                 }
                                 for($b = 0;$b < count($terms);$b++){
-                                    if($terms[$b]["exc"] == "euro"){
-                                        $exc = "€";
-                                    }elseif($terms[$b]["exc"] == "usd"){
-                                        $exc = " &dollar;";
-                                    }elseif($terms[$b]["exc"] == "tl"){
-                                        $exc = "&#8378;";
-                                    }elseif($terms[$b]["exc"] == "azn"){
-                                        $exc = "&#8380;";
-                                    }elseif($terms[$b]["exc"] == "rubl"){
-                                        $exc = "&#8381;";
-                                    }
+
                                     ?>
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
@@ -138,20 +109,10 @@
 											<a href="?do=camps_info<?=$r_link?>&id=<?=$terms[$b]["id"]?>" class="btn"><?=$lang["read_more"]?></a>
 										</div>
 										<div class="info-bx text-center">
-											<h5><a href="?do=camps_info<?=$r_link?>&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>
-											<span><?=$terms[$b]["country_".$l]?> (<?=$terms[$b]["city_".$l]?>)</span>
+											<h5><a href="?do=camps_info<?=$r_link?>&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["name"]?></a></h5>
+											<span><?=$terms[$b]["country"]?> (<?=$terms[$b]["city"]?>)</span>
 										</div>
-										<div class="cours-more-info">
-											<div class="review">
-											
-                                            <?=tarix($terms[$b]["startdate"])?><br/>
-                                            <?=tarix($terms[$b]["enddate"])?>
-                                                
-											</div>
-											<div class="price">	<span><?=$terms[$b]["count"]?> <?=$lang["person"]?></span>
-												<h5><?=$terms[$b]["price"]?> <?=$exc?></h5>
-											</div>
-										</div>
+
 									</div>
 								</div>
                                 <?php } 
