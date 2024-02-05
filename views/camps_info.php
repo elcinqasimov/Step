@@ -61,7 +61,7 @@ if($term[0]["exc"] == "euro"){
 
 								<div class="ttr-post-info">
 									<div class="ttr-post-title ">
-										<h2 class="post-title"><?=$term[0]["term"]?></h2>
+										<h2 class="post-title"><?=$term[0]["name"]?></h2>
 									</div>
 									</div>
 
