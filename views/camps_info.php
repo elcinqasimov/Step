@@ -27,6 +27,7 @@
  WHERE camps.id = $id";
  $term = $db->query($termsql);
 
+ if(count($term)> 0){
 if($term[0]["exc"] == "euro"){
 	$exc = "€";
 }elseif($term[0]["exc"] == "usd"){
@@ -38,6 +39,7 @@ if($term[0]["exc"] == "euro"){
 }elseif($term[0]["exc"] == "rubl"){
 	$exc = "&#8381;";
 }
+ }
 ?>
     <!-- Content -->
     <div class="page-content bg-white">
@@ -54,8 +56,10 @@ if($term[0]["exc"] == "euro"){
             <!-- About Us -->
 			<div class="section-area section-sp1 gallery-bx">
                 <div class="container">
+				<?php if(count($term)< 1) { echo "<h4><center>Hal hazırda düşərgə qeydiyyatı yoxdur.</center></h4>"; }else{ ?>
 					 <div class="row d-flex flex-row-reverse">
 
+			
 					
 						<div class="col-lg-12 col-md-8 col-sm-12">
 							<div class="courses-post">
@@ -195,7 +199,7 @@ for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
   </div>
 </div>
 <hr/>
-
+<?php } ?>
 									
 									
 						</div>
