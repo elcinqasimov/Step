@@ -152,6 +152,12 @@ include_once '../core.php';
 		                </ul>
 		            </li>
 					<?php if($group == 1){ ?>
+						<li>
+						<a href="?do=settings" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-settings"></i></span>
+		                	<span class="ttr-label">Düzəlişlər</span>
+		                </a>
+		            </li>
 					<li>
 						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-user"></i></span>
@@ -495,17 +501,31 @@ Theme Version:	1.0.0
 	<script src="assets/vendors/file-upload/imageuploadify.min.js"></script>
 	<script>
     $(document).ready(function() {
+		<?php if($do == "settings"){ ?>
+		$('#term_az').summernote({
+        height: 300,
+        name: "terms_az",
+        tabsize: 2
+	});
+	$('#term_en').summernote({
+        height: 300,
+        name: "terms_en",
+        tabsize: 2
+	});
+	<?php } ?>
+	<?php if($do == "camp_add"){ ?>
       $('#desc_az').summernote({
         height: 300,
         name: "description_az",
         tabsize: 2
 	});
+
       $('#desc_en').summernote({
         height: 300,
-        name: "description_az",
+        name: "description_en",
         tabsize: 2
       });
-
+	  <?php } ?>
     });
 </script>
 </body>

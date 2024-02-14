@@ -101,6 +101,8 @@ $vaxt         = date('Y-m-d H:i:s',time());
 $year         = date('Y',time());
 $ipaddress  = $_SERVER['REMOTE_ADDR'];
 $useragent  = $_SERVER['HTTP_USER_AGENT'];
+
+
 $online     = time();
 if(isset($_SESSION["userid"])){
   $userid = $_SESSION["userid"];
@@ -238,4 +240,9 @@ define("UPLOAD",    $upload_dir);
 #endregion 
 
 include 'Classes/Language.php';
+$settings	      = $db->select("settings");
+$title	      = $settings[0]["title_$l"];
+$term	      = $settings[0]["term_$l"];
+$_POST = str_replace("'","\'",$_POST);
+$_POST = str_replace('"','\"',$_POST);
 ?>
