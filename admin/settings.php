@@ -18,13 +18,14 @@ if($_POST["term_en"] == ""){
 	$error .= "Şərtləri və Qaydaları EN yazılmayıb.<br/>";
 }
 	if($error == ""){
+		$error = "Dəyişikliklər yadda saxlanıldı.";
 		unset($_POST["submit"]);
 		unset($_POST["undefined"]);
 		unset($_POST["files"]);
 		$wheres =" id = 1";
 		$db->update("settings",$_POST,$wheres);
 
-	echo '<script>location.href = "?do=settings";</script>';
+		$text = "<div style=\"background:green;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
 	}else{
 		$text = "<div style=\"background:red;color:#fff;width:100%;border:1px solid #ccc;border-radius:5px;padding:5px 5px 5px 15px;margin-bottom:20px;\">$error</div>";
 	}
