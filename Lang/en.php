@@ -60,6 +60,6 @@ $lang = array(
     'email_error'                  => "You are already registered with an e-mail address. <br/>",
     'agree'               => "I agree to the <a href=\"term.php\"  target=\"_blank\">Terms and Conditions</a>",
     'term'                  => '',
-    
+    'view'               => 'View list',
 );
 ?>

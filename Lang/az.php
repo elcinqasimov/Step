@@ -63,4 +63,5 @@ $lang = array(
     'email_error'                  => "E-mail adreslə artıq qeydiyyatdan keçmisiniz. <br/>",
     'agree'               => "Mən <a href=\"term.php\"  target=\"_blank\">Şərtləri və Qaydaları</a> qəbul edirəm",
     'term'               => '',
+    'view'               => 'Siyahıya bax',
 );

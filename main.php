@@ -109,78 +109,41 @@
 						
 					</div>
 				</div>
-				<?php /*
+				
 				<div class="container-fluid">	
 					<div class="row">
 						<div class="col-md-12 heading-bx style1 text-center">
 							<h2 class="title-head"><?=$lang["last_camps"]?></h2>
 						</div>
 					</div>
-					<div class="row">
-					<div class="courses-carousel-2 owl-carousel owl-btn-1 col-12 p-lr0 owl-none">
+					<div class="row m-b50">
 					<?php 
-                                if(!isset($_GET["country"]) OR $_GET["country"] == "all"){
-                                    $where = "";
-                                }else{
-                                    $country =  $_GET["country"];
-                                    $where = "WHERE country_id = $country";
-                                }
-                                $termsql = "
-                                    SELECT
-                                        term.id as 'id',
-                                        term.`name` as 'term', 
-                                        term.startdate as 'startdate', 
-                                        term.enddate as 'enddate', 
-                                        term.count as 'count',  
-                                        term.price as 'price', 
-                                        countries.country_az as 'country_az', 
-                                        countries.country_en as 'country_en', 
-                                        city.name_az as 'city_az', 
-                                        city.name_en as 'city_en', 
-                                        term.description_az as 'description_az', 
-                                        term.description_en as 'description_en', 
-                                        term.camp_id as 'camp_id',
-                                        camps.`name` as 'camp_name',
-                                        camps.`country_id` as 'country_id'
-                                    FROM
-                                        term
-                                        INNER JOIN camps ON term.camp_id = camps.id
-                                        INNER JOIN city ON camps.city_id = city.id
-                                        INNER JOIN countries ON camps.country_id = countries.id 
-                                    $where LIMIT 5";
-                                    $terms = $db->query($termsql);
-                                
-                                for($b = 0;$b < count($terms);$b++){ ?>
-						<div class="item">
-							<div class="cours-bx style1">
-								<div class="action-box">
-									<img src="assets/images/camp.jpg" alt="">
-									<a href="?do=camps_info&id=<?=$terms[$b]["id"]?>" class="btn"><?=$lang["read_more"]?></a>
+						$services = $db->select("camp_type");
+						$i =1;
+						for($a = 0; $a < count($services); $a++){ 
+							?>
+						<div class="col-lg-4 col-md-6">
+							<div class="services-bx text-left m-b30">
+								<div class="feature-lg text-white m-b30">
+									
+								<img src="<?=$services[$a]["image"]?>"/>
 								</div>
-								<div class="info-bx text-center">
-									<h5><a href="?do=camps_info&id=<?=$terms[$b]["id"]?>"><?=$terms[$b]["term"]?></a></h5>
-									<span><?=$terms[$b]["country_en"]?> (<?=$terms[$b]["city_en"]?>)</span>
+								<div class="icon-content">
+									<h5 class="ttr-tilte"><?=$services[$a]["name_".$l]?></h5>
+									
+									<a href="?do=camps&type=<?=$services[$a]["id"]?>" class="readmore"><?=$lang["view"]?><i class="la la-arrow-right"></i></a>
 								</div>
-								<div class="cours-more-info">
-											<div class="review">
-											
-											<?=tarix($terms[$b]["startdate"])?>
-                                            <?=tarix($terms[$b]["enddate"])?>
-											</div>
-											<div class="price">	<span><?=$terms[$b]["count"]?> <?=$lang["person"]?></span>
-												<h5><?=$terms[$b]["price"]?> &#8364;</h5>
-											</div>
-										</div>
+								<div class="service-no">0<?=$i?></div>
 							</div>
 						</div>
-						<?php } ?>
-						
+						<?php
+					$i++;
+					 } ?>
 						
 					</div>
-					</div>
-				</div>
+					
 			</div>
-			*/ ?>
+	
 			<!-- Popular CAMPS END -->
 			<?php if($userid == ""){ ?>
 			<!-- Form -->
