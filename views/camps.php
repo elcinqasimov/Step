@@ -32,8 +32,29 @@
 			<div class="section-area section-sp1">
                 <div class="container">
 					 <div class="row">
+                    
+                                <?php if($type == ""){ 
+                                    $types = $db->query("SELECT * from camp_type");
+                                    for($a = 0;$a < count($types);$a++){ 
+                                    ?>
+                                    <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+									<div class="cours-bx">
+										<div class="action-box">
+											<img src="assets/images/camp.jpg" alt="">
+											<a href="?do=camps<?=$r_link?>&type=<?=$types[$a]["id"]?>" class="btn"><?=$lang["view"]?></a>
+										</div>
+										<div class="info-bx text-center">
+											<h5><a href="?do=camps<?=$r_link?>&type=<?=$types[$a]["id"]?>"><?=$types[$a]["name_$l"]?></a></h5>
+											<span><?=$types[$a]["about_$l"]?></span>
+										</div>
+
+									</div>
+								    </div>
+                                <?php
+                            } } ?>
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
 							<div class="widget courses-search-bx placeani">
+                            <?php if($type != ""){ ?>
                             <form method="GET" action="?do=camps">
 								<div class="form-group">
 									<div class="input-group">
@@ -46,7 +67,9 @@
 									</div>
 								</div>
                                 </form>
+                                <?php } ?>
 							</div>
+                            <?php if($type != ""){ ?>
 							<div class="widget widget_archive">
                                 <h5 class="widget-title style-1"><?=$lang["countries"]?></h5>
                                 <ul>
@@ -64,6 +87,7 @@
                                     <?php } ?>
                                 </ul>
                             </div>
+                            <?php } ?>
 							<div class="widget">
 								<!--REKLAM-->
 							</div>
@@ -71,6 +95,7 @@
 						</div>
 						<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
+                            <?php if($type != ""){ ?>
                                 <?php 
                                 if(!isset($_GET["country"]) OR $_GET["country"] == "all"){
                                     $where = "";
@@ -83,13 +108,14 @@
                                         camps
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id 
+                                        WHERE camps.type = $type
                                     $where $search";
                                     $termsql = "
                                     SELECT camps.id as 'id',camps.country_id as 'country_id',camps.name,city.name_$l as 'city',countries.country_$l as'country' FROM
                                         camps
                                         INNER JOIN city ON camps.city_id = city.id
                                         INNER JOIN countries ON camps.country_id = countries.id  
-                                        WHERE camps.id $where $search order by name ASC LIMIT $offset, $total_records_per_page";
+                                        WHERE camps.type = $type $where $search order by name ASC LIMIT $offset, $total_records_per_page";
                                         
                                     $terms = $db->query($termsql);
 
@@ -118,6 +144,7 @@
                                 <?php } 
                                     pagination($counts[0]["count(*)"]);
                                 ?>
+                                <?php } ?>
 							</div>
 						</div>
 					</div>
