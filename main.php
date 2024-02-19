@@ -77,7 +77,7 @@
         <!-- Main Slider -->
 		<div class="content-block">
 			<!-- Popular CAMPS -->
-			<div class="section-area section-sp2 popular-courses-bx" style="background-image:url(assets/images/background/bg4.jpg); background-size:cover;">
+			<div class="section-area section-sp2 popular-courses-bx" ">
                 <div class="container">
 					<div class="row">
 						<div class="col-md-12 heading-bx style1 text-center">

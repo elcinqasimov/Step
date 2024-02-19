@@ -83,7 +83,7 @@
                                     <li class="active"><a href="?do=camps&country=all"><?=$lang["all"]?></a></li>
                                     <?php 
                                     for($a = 0;$a < count($country);$a++){ ?>
-                                    <li><a href="?do=camps&country=<?=$country[$a]["id"]?>"><?=$country[$a]["country_".$l]?></a></li>
+                                    <li><a href="?do=camps&type=<?=$type?>&country=<?=$country[$a]["id"]?>"><?=$country[$a]["country_".$l]?></a></li>
                                     <?php } ?>
                                 </ul>
                             </div>
