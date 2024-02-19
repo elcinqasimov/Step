@@ -35,7 +35,16 @@
 									<div class="mail-search-bar">
 										<form method="POST" action="">
 										<input type="text" name="name" class="form-control" style="width:200px;float:left;margin-right:20px;" placeholder="Düşərgə qrup adı"/> &nbsp; 
-										<select name="country_id" class="form-control" style="width:300px;float:left;margin-right:20px;">
+										<select name="type" class="form-control" style="width:300px;float:left;margin-right:20px;">
+											<?php 
+												$country = $db->query("SELECT * FROM camp_type");
+												for($b=0;$b<count($country);$b++){
+											?>
+											<option value="<?=$country[$b]["id"]?>"><?=$country[$b]["name_az"]?> </option>
+											<?php } ?>
+												</select>
+
+												<select name="country_id" class="form-control" style="width:300px;float:left;margin-right:20px;">
 											<?php 
 												$country = $db->query("SELECT * FROM countries");
 												for($b=0;$b<count($country);$b++){
