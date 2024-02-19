@@ -48,15 +48,12 @@ $title_en		=	$regsiyahi[0]["title_en"];
 		<div class="container-fluid">
 		<?=$text?>
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Düşərgə məlumatları </h4>
+				<h4 class="breadcrumb-title">Saytın düzəlişi</h4>
 			</div>	
 			<div class="row">
 				<!-- Your Profile Views Chart -->
 				<div class="col-lg-12 m-b30">
 					<div class="widget-box">
-						<div class="wc-title">
-							<h4>Saytın düzəlişi</h4>
-						</div>
 						<div class="widget-inner">
 							<form class="mail-compose"  enctype="multipart/form-data" method="POST" action="">
 								<div class="row">

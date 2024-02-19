@@ -245,4 +245,12 @@ $title	      = $settings[0]["title_$l"];
 $term	      = $settings[0]["term_$l"];
 $_POST = str_replace("'","\'",$_POST);
 $_POST = str_replace('"','\"',$_POST);
+foreach ($_GET as $key=>$val) {
+  if ($val === null)
+     unset($_GET[$key]);
+}
+foreach ($_POST as $key=>$val) {
+  if ($val === null)
+     unset($_POST[$key]);
+}
 ?>
