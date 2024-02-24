@@ -139,9 +139,6 @@ tbody>tr:nth-of-type(odd) {
     <button class="nav-link" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Qalereya</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-security-tab" data-toggle="pill" data-target="#pills-security" type="button" role="tab" aria-controls="pills-security" aria-selected="false">Təhlükəsizlik tədbirləri</button>
-  </li>
-  <li class="nav-item" role="presentation">
     <button class="nav-link" id="pills-programs-tab" data-toggle="pill" data-target="#pills-programs" type="button" role="tab" aria-controls="pills-programs" aria-selected="false">Daxil olan proqramlar</button>
   </li>
 
