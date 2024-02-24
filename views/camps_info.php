@@ -138,6 +138,13 @@ tbody>tr:nth-of-type(odd) {
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Qalereya</button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-security-tab" data-toggle="pill" data-target="#pills-security" type="button" role="tab" aria-controls="pills-security" aria-selected="false">Təhlükəsizlik tədbirləri</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-programs-tab" data-toggle="pill" data-target="#pills-programs" type="button" role="tab" aria-controls="pills-programs" aria-selected="false">Daxil olan proqramlar</button>
+  </li>
+
 </ul>
 <hr/>
 <div class="tab-content" id="pills-tabContent">
@@ -197,7 +204,19 @@ for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
 						</ul>
 						</div>
   </div>
+
+
+
+<div class="tab-pane fade" id="pills-programs" role="tabpanel" aria-labelledby="pills-programs-tab">
+<ul class="magnific-image">
+							<?php $gallery_programs = $db->query("SELECT * FROM gallery_programs where term_id = ".$term[0]["term_id"]." AND group_id = 0");
+									for($a=0;$a<count($gallery_programs_programs);$a++){ ?>
+											
+												<li><a href="<?=$gallery_programs[$a]["path"]?>" class="magnific-anchor"><img src="<?=$gallery_programs[$a]["path"]?>" alt=""></a></li>
+							<?php } ?>
 </div>
+</div>
+
 <hr/>
 <?php } ?>
 									

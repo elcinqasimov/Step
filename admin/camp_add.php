@@ -31,7 +31,9 @@ if($_POST["description_en"] == ""){
 }
 $allowed =  array('php','PHP');
 $upload_id = array();
+$upload_id_programs = array();
 $countfile  = count(array_filter($_FILES["file"]["name"]));
+$countfile_programs  = count(array_filter($_FILES["file_programs"]["name"]));
 if($countfile > 0){
 	for ($i=0; $i < $countfile; $i++) {
 		$filename2 = $_FILES['file']['name'][$i];
@@ -56,6 +58,30 @@ if($countfile > 0){
 		}
 	}
 }
+if($countfile_programs > 0){
+	for ($i=0; $i < $countfile_programs; $i++) {
+		$filename2_programs = $_FILES['file_programs']['name'][$i];
+		$ext2_programs = pathinfo($filename2_programs, PATHINFO_EXTENSION);
+		if(!in_array($ext2_programs,$allowed) ) {
+			for ($i=0; $i < $countfile_programs; $i++) {
+				$file_parts_programs = pathinfo($_FILES["file_programs"]["name"][$i]);
+				$explode_programs = explode('.',$_FILES["file_programs"]["name"][$i]);
+				$olcu_programs = filesize($_FILES["file_programs"]["tmp_name"][$i]);
+				$olcu_programs = Olcu($olcu_programs);
+				$tezead_programs = sifrele($explode_programs[0].time().strtoupper(chr(rand(65, 90)) . chr(rand(65, 90)) . rand(100, 999))).".".end($explode_programs);
+				$sened_programs["name"] = $_POST["name"];
+				$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+				$sened_programs["path2"] = "../assets/images/gallery/".$tezead;
+				move_uploaded_file($_FILES["file_programs"]["tmp_name"][$i], $sened_programs["path2"]);
+				unset($sened_programs["path2"]);
+				$db->insert("gallery_programs",$sened_programs);
+				$upload_id_programs[] = $db->id();
+			}
+		}else{
+			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
+		}
+	}
+}
 	if($error == ""){
 		unset($_POST["submit"]);
 		unset($_POST["undefined"]);
@@ -68,6 +94,11 @@ if($countfile > 0){
 			$wheref = "id = ".$upload_id[$f];
 			$finishf["term_id"] = $lastid_term;
 			$db->update("gallery",$finishf,$wheref);
+		}
+		for($f=0;$f<count($upload_id_programs);$f++){
+			$wheref_programs = "id = ".$upload_id_programs[$f];
+			$finishf_programs["term_id"] = $lastid_term;
+			$db->update("gallery_programs",$finishf_programs,$wheref_programs);
 		}
 	echo '<script>location.href = "?do=camps";</script>';
 	}else{
@@ -84,7 +115,9 @@ if(isset($_POST["submit"]) && $_POST["submit"]  == "finish"){
 if(isset($_POST["submit"]) && $_POST["submit"]  == "edit"){
 $allowed =  array('php','PHP');
 $upload_id = array();
+$upload_id_programs = array();
 $countfile  = count(array_filter($_FILES["file"]["name"]));
+$countfile_programs  = count(array_filter($_FILES["file_programs"]["name"]));
 if($countfile > 0){
 	for ($i=0; $i < $countfile; $i++) {
 		$filename2 = $_FILES['file']['name'][$i];
@@ -104,6 +137,31 @@ if($countfile > 0){
 				unset($sened["path2"]);
 				$sened["term_id"] = $id;
 				$db->insert("gallery",$sened);
+			}
+		}else{
+			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
+		}
+	}
+}
+if($countfile_programs > 0){
+	for ($i=0; $i < $countfile_programs; $i++) {
+		$filename2_programs = $_FILES['file_programs']['name'][$i];
+		$ext2_programs = pathinfo($filename2_programs, PATHINFO_EXTENSION);
+		if(!in_array($ext2_programs,$allowed) ) {
+			$db->query("DELETE FROM gallery_programs WHERE term_id = $id");
+			for ($i=0; $i < $countfile_programs; $i++) {
+				$file_parts_programs = pathinfo($_FILES["file_programs"]["name"][$i]);
+				$explode_programs = explode('.',$_FILES["file_programs"]["name"][$i]);
+				$olcu_programs = filesize($_FILES["file_programs"]["tmp_name"][$i]);
+				$olcu_programs = Olcu($olcu_programs);
+				$tezead_programs = sifrele($explode_programs[0].time().strtoupper(chr(rand(65, 90)) . chr(rand(65, 90)) . rand(100, 999))).".".end($explode_programs);
+				$sened_programs["name"] = $_POST["name"];
+				$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+				$sened_programs["path2"] = "../assets/images/gallery/".$tezead_programs;
+				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened_programs["path2"]);
+				unset($sened_programs["path2"]);
+				$sened_programs["term_id"] = $id;
+				$db->insert("gallery_programs",$sened_programs);
 			}
 		}else{
 			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
@@ -283,19 +341,25 @@ if(isset($_GET["mod"]) && $_GET["mod"] == "edit"){
 										</select>
 										</div>
 									</div>
-									<div class="form-group col-4">
+									<div class="form-group col-3">
 										<label class="col-form-label"> Başlanma tarixi</label>
 										<div>
 											<input class="form-control" type="text" name="startdate" value="<?=$startdate?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-4">
+									<div class="form-group col-3">
 										<label class="col-form-label"> Bitmə tarixi</label>
 										<div>
 											<input class="form-control" type="text" name="enddate" value="<?=$enddate?>" <?=$disabled?>>
 										</div>
 									</div>
-									<div class="form-group col-4">
+									<div class="form-group col-3">
+										<label class="col-form-label">Proqramlar</label>
+										<div>
+											<input class="form-control" type="file" multiple="multiple" name="file_programs[]" <?=$disabled?>>
+										</div>
+									</div>
+									<div class="form-group col-3">
 										<label class="col-form-label">Şəkillər</label>
 										<div>
 											<input class="form-control" type="file" multiple="multiple" name="file[]" <?=$disabled?>>
