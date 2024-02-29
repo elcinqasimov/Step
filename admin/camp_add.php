@@ -158,7 +158,8 @@ if($countfile_programs > 0){
 				$sened_programs["name"] = $_POST["name"];
 				$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
 				$sened_programs["path2"] = "../assets/images/gallery/".$tezead_programs;
-				move_uploaded_file($_FILES["file"]["tmp_name"][$i], $sened_programs["path2"]);
+				echo $_FILES["file_programs"]["tmp_name"][$i];
+				move_uploaded_file($_FILES["file_programs"]["tmp_name"][$i], $sened_programs["path2"]);
 				unset($sened_programs["path2"]);
 				$sened_programs["term_id"] = $id;
 				$db->insert("gallery_programs",$sened_programs);
