@@ -98,7 +98,18 @@ $title_en		=	$regsiyahi[0]["title_en"];
 											<textarea id="term_en" name="term_en" ><?=$term_en?></textarea>	
 										</div>
 									</div>
-
+									<div class="form-group col-6">
+										<label class="col-form-label">Təhlükəsizlik (AZ)</label>
+										<div>
+											<textarea id="sec_az" name="sec_az" ><?=$sec_az?></textarea>	
+										</div>
+									</div>
+									<div class="form-group col-6">
+										<label class="col-form-label">Təhlükəsizlik (EN)</label>
+										<div>
+											<textarea id="sec_az" name="sec_az" ><?=$sec_az?></textarea>	
+										</div>
+									</div>
 									<div class="col-12">
 
 										<button type="submit" name="submit" value="save" class="btn blue">Yadda saxla</button>

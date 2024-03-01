@@ -512,6 +512,16 @@ Theme Version:	1.0.0
         name: "terms_en",
         tabsize: 2
 	});
+	$('#sec_az').summernote({
+        height: 300,
+        name: "sec_az",
+        tabsize: 2
+	});
+	$('#sec_en').summernote({
+        height: 300,
+        name: "sec_en",
+        tabsize: 2
+	});
 	<?php } ?>
 	<?php if($do == "camp_add"){ ?>
       $('#desc_az').summernote({
