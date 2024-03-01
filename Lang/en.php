@@ -61,5 +61,6 @@ $lang = array(
     'agree'               => "I agree to the <a href=\"term.php\"  target=\"_blank\">Terms and Conditions</a>",
     'term'                  => '',
     'view'               => 'View list',
+    'sec'               => 'Camps security',
 );
 ?>

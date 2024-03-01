@@ -64,4 +64,5 @@ $lang = array(
     'agree'               => "Mən <a href=\"term.php\"  target=\"_blank\">Şərtləri və Qaydaları</a> qəbul edirəm",
     'term'               => '',
     'view'               => 'Siyahıya bax',
+    'sec'               => 'Düşərgələrin təhlükəsizliyi',
 );
