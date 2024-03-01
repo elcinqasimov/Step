@@ -107,7 +107,7 @@ $title_en		=	$regsiyahi[0]["title_en"];
 									<div class="form-group col-6">
 										<label class="col-form-label">Təhlükəsizlik (EN)</label>
 										<div>
-											<textarea id="sec_az" name="sec_az" ><?=$sec_az?></textarea>	
+											<textarea id="sec_en" name="sec_en" ><?=$sec_en?></textarea>	
 										</div>
 									</div>
 									<div class="col-12">
