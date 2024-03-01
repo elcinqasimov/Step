@@ -35,9 +35,12 @@ if($_POST["term_en"] == ""){
 
 $regsiyahi = $db->query("SELECT * FROM settings WHERE id = '1'");
 $term_az	=	$regsiyahi[0]["term_az"];
-$term_en		=	$regsiyahi[0]["term_en"];
-$title_az		=	$regsiyahi[0]["title_az"];
-$title_en		=	$regsiyahi[0]["title_en"];
+$term_az	=	$regsiyahi[0]["term_az"];
+$term_en	=	$regsiyahi[0]["term_en"];
+$title_az	=	$regsiyahi[0]["title_az"];
+$title_en	=	$regsiyahi[0]["title_en"];
+$sec_en		=	$regsiyahi[0]["sec_en"];
+$sec_az		=	$regsiyahi[0]["sec_az"];
 
 
 
