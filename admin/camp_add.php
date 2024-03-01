@@ -74,8 +74,14 @@ if($countfile_programs > 0){
 				$sened_programs["path2"] = "../assets/images/gallery/".$tezead;
 				move_uploaded_file($_FILES["file_programs"]["tmp_name"][$i], $sened_programs["path2"]);
 				unset($sened_programs["path2"]);
-				$db->insert("gallery_programs",$sened_programs);
-				$upload_id_programs[] = $db->id();
+				$term_group = $db->query("SELECT camp_id FROM term WHERE id = $id");
+				for($a=0;$a<count($term_group);$a++){
+					$sened_programs["name"] = $_POST["name"];
+					$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+					$sened_programs["term_id"] = $_POST["camp_id"];
+					$db->insert("gallery_programs",$sened_programs);
+				}
+
 			}
 		}else{
 			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
@@ -97,7 +103,7 @@ if($countfile_programs > 0){
 		}
 		for($f=0;$f<count($upload_id_programs);$f++){
 			$wheref_programs = "id = ".$upload_id_programs[$f];
-			$finishf_programs["term_id"] = $lastid_term;
+			$finishf_programs["term_id"] = $_POST["camp_id"];
 			$db->update("gallery_programs",$finishf_programs,$wheref_programs);
 		}
 	echo '<script>location.href = "?do=camps";</script>';
@@ -155,14 +161,19 @@ if($countfile_programs > 0){
 				$olcu_programs = filesize($_FILES["file_programs"]["tmp_name"][$i]);
 				$olcu_programs = Olcu($olcu_programs);
 				$tezead_programs = sifrele($explode_programs[0].time().strtoupper(chr(rand(65, 90)) . chr(rand(65, 90)) . rand(100, 999))).".".end($explode_programs);
-				$sened_programs["name"] = $_POST["name"];
-				$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+
 				$sened_programs["path2"] = "../assets/images/gallery/".$tezead_programs;
-				echo $_FILES["file_programs"]["tmp_name"][$i];
+
 				move_uploaded_file($_FILES["file_programs"]["tmp_name"][$i], $sened_programs["path2"]);
 				unset($sened_programs["path2"]);
-				$sened_programs["term_id"] = $id;
-				$db->insert("gallery_programs",$sened_programs);
+
+				$term_group = $db->query("SELECT camp_id FROM term WHERE id = $id");
+				for($a=0;$a<count($term_group);$a++){
+					$sened_programs["name"] = $_POST["name"];
+					$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+					$sened_programs["term_id"] = $_POST["camp_id"];
+					$db->insert("gallery_programs",$sened_programs);
+				}
 			}
 		}else{
 			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
