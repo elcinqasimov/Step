@@ -208,7 +208,7 @@ for($a=0;$a<count($term);$a++){ $b = $a+1; ?>
 <div class="widget widget_gallery gallery-grid-4">
 <ul class="magnific-image">
 							<?php
-							$gallery_programs = $db->query("SELECT * FROM gallery_programs where term_id = ".$term[2]["term_id"]." AND group_id = 0");
+							$gallery_programs = $db->query("SELECT * FROM gallery_programs where term_id = '".$term[2]["term_id"]."' AND group_id = 0");
 									for($a=0;$a<count($gallery_programs);$a++){ ?>
 											
 												<li><a href="<?=$gallery_programs[$a]["path"]?>" class="magnific-anchor"><img src="<?=$gallery_programs[$a]["path"]?>" alt=""></a></li>
