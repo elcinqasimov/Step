@@ -20,8 +20,6 @@
 							$about = $db->query("SELECT * FROM settings");
 						?>
 						<div class="col-lg-12">
-
-									<center><h4 class="ttr-tilte"><?=$lang["sec"]?></h4></center>
 									<p><?=$about[0]["sec_".$l]?></p>
 
 						</div>
