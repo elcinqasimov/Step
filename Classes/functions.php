@@ -151,33 +151,43 @@ function pagination($total_records){
 	if($page_no <= 4) {			
 	 for ($counter = 1; $counter < 8; $counter++){		 
 			if ($counter == $page_no) {
+                
 		   echo "<li class='active'><a>$counter</a></li>";	
 				}else{
+                    
            echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
 				}
         }
 		echo "<li><a>...</a></li>";
-		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$second_last'>$second_last</a></li>";
+        
+
 		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
 		}
 
 	 elseif($page_no > 4 && $page_no < $total_no_of_pages - 4) {		 
 		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=1'>1</a></li>";
 		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=2'>2</a></li>";
-        echo "<li><a>...</a></li>";
+
+
         for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {			
            if ($counter == $page_no) {
+            
 		   echo "<li class='active'><a>$counter</a></li>";	
+           
 				}else{
            echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
-				}                  
+
+				}             
+                     
        }
        echo "<li><a>...</a></li>";
-	   echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$second_last'>$second_last</a></li>";
-	   echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";      
+        
+
+       echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
             }
 		
 		else {
+            
         echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=1'>1</a></li>";
 		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=2'>2</a></li>";
         echo "<li><a>...</a></li>";
@@ -186,6 +196,7 @@ function pagination($total_records){
           if ($counter == $page_no) {
 		   echo "<li class='active'><a>$counter</a></li>";	
 				}else{
+                    
            echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$counter'>$counter</a></li>";
 				}                   
                 }
@@ -193,10 +204,12 @@ function pagination($total_records){
 	}
     echo '<li class"next">';
 	if($page_no < $total_no_of_pages) { echo "<a href='".$_SERVER['REQUEST_URI']."&page_no=$next_page'>".$lang['next']." <i class='ti-arrow-right'></i>"; }else{
+        
         echo "<a href='javascript:;'>".$lang['next']." <i class='ti-arrow-right'></i>";
     } 
 	echo '</li>';
     if($page_no < $total_no_of_pages){
+
 		echo "<li><a href='".$_SERVER['REQUEST_URI']."&page_no=$total_no_of_pages'>".$lang['last']." &rsaquo;&rsaquo;</a></li>";
 		}
     echo '</ul></center></div></div>';
