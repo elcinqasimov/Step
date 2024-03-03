@@ -78,38 +78,7 @@
 		<div class="content-block">
 			<!-- Popular CAMPS -->
 			<?php /*
-			<div class="section-area section-sp2 popular-courses-bx" ">
-                <div class="container">
-					<div class="row">
-						<div class="col-md-12 heading-bx style1 text-center">
-							<h2 class="title-head"><?=$lang["our_services"]?></h2>
-						</div>
-					</div>
-					<div class="row m-b50">
-					<?php 
-						$services = $db->select("pages","`show` = 1");
-						$i =1;
-						for($a = 0; $a < count($services); $a++){ 
-							?>
-						<div class="col-lg-4 col-md-6">
-							<div class="services-bx text-left m-b30">
-								<div class="feature-lg text-white m-b30">
-									<span class="icon-cell"><img width="100px" src="<?=$services[$a]["icon"]?>"/> </span> 
-								</div>
-								<div class="icon-content">
-									<h5 class="ttr-tilte"><?=$services[$a]["name_".$l]?></h5>
-									
-									<a href="?do=<?=$services[$a]["url"]?>" class="readmore"><?=$lang["learn_more"]?><i class="la la-arrow-right"></i></a>
-								</div>
-								<div class="service-no">0<?=$i?></div>
-							</div>
-						</div>
-						<?php
-					$i++;
-					 } ?>
-						
-					</div>
-				</div>
+			
 				*/ ?>
 				<br/>
 				<div class="container-fluid">	
@@ -145,7 +114,38 @@
 					</div>
 					
 			</div>
-	
+			<div class="section-area section-sp2 popular-courses-bx" ">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12 heading-bx style1 text-center">
+							<h2 class="title-head"><?=$lang["our_services"]?></h2>
+						</div>
+					</div>
+					<div class="row m-b50">
+					<?php 
+						$services = $db->select("pages","`show` = 1");
+						$i =1;
+						for($a = 0; $a < count($services); $a++){ 
+							?>
+						<div class="col-lg-4 col-md-6">
+							<div class="services-bx text-left m-b30">
+								<div class="feature-lg text-white m-b30">
+									<span class="icon-cell"><img width="100px" src="<?=$services[$a]["icon"]?>"/> </span> 
+								</div>
+								<div class="icon-content">
+									<h5 class="ttr-tilte"><?=$services[$a]["name_".$l]?></h5>
+									
+									<a href="?do=<?=$services[$a]["url"]?>" class="readmore"><?=$lang["learn_more"]?><i class="la la-arrow-right"></i></a>
+								</div>
+								<div class="service-no">0<?=$i?></div>
+							</div>
+						</div>
+						<?php
+					$i++;
+					 } ?>
+						
+					</div>
+				</div>
 			<!-- Popular CAMPS END -->
 			<?php if($userid == ""){ ?>
 			<!-- Form -->
