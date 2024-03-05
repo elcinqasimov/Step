@@ -74,14 +74,10 @@ if($countfile_programs > 0){
 				$sened_programs["path2"] = "../assets/images/gallery/".$tezead;
 				move_uploaded_file($_FILES["file_programs"]["tmp_name"][$i], $sened_programs["path2"]);
 				unset($sened_programs["path2"]);
-				$term_group = $db->query("SELECT camp_id FROM term WHERE id = $id");
-				for($a=0;$a<count($term_group);$a++){
-					$sened_programs["name"] = $_POST["name"];
-					$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
-					$sened_programs["term_id"] = $_POST["camp_id"];
-					$db->insert("gallery_programs",$sened_programs);
-				}
-
+				$sened_programs["name"] = $_POST["name"];
+				$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+				$sened_programs["term_id"] = $_POST["camp_id"];
+				$db->insert("gallery_programs",$sened_programs);
 			}
 		}else{
 			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
@@ -166,14 +162,10 @@ if($countfile_programs > 0){
 
 				move_uploaded_file($_FILES["file_programs"]["tmp_name"][$i], $sened_programs["path2"]);
 				unset($sened_programs["path2"]);
-
-				$term_group = $db->query("SELECT camp_id FROM term WHERE id = $id");
-				for($a=0;$a<count($term_group);$a++){
-					$sened_programs["name"] = $_POST["name"];
-					$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
-					$sened_programs["term_id"] = $_POST["camp_id"];
-					$db->insert("gallery_programs",$sened_programs);
-				}
+				$sened_programs["name"] = $_POST["name"];
+				$sened_programs["path"] = "assets/images/gallery/".$tezead_programs;
+				$sened_programs["term_id"] = $_POST["camp_id"];
+				$db->insert("gallery_programs",$sened_programs);
 			}
 		}else{
 			$error.= "<div style=\"border:1px solid #128540;border-radius:3px;padding:5px 5px 5px 15px;background-color:#5cb85c;color:#fff;margin-bottom:10px;\">Fayl formatı düzgün deyil. İcazə verilməyən format : 'php'</div>";
