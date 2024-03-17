@@ -198,8 +198,8 @@ if($countfile_programs > 0){
 	}
 	$_POST["startdate"] = ekstarix($_POST["startdate"]);
 	$_POST["enddate"] = ekstarix($_POST["enddate"]);
-	$_POST["description_az"] = str_replace("'","\'",$_POST["description_az"]);
-	$_POST["description_en"] = str_replace("'","\'",$_POST["description_en"]);
+	$_POST["description_az"] = str_replace("'","&apos;",$_POST["description_az"]);
+	$_POST["description_en"] = str_replace("'","&apos;",$_POST["description_en"]);
 	unset($_POST["submit"]);
 	unset($_POST["undefined"]);
 	unset($_POST["files"]);
