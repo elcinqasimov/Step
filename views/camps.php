@@ -77,7 +77,7 @@
 
                                 <?php
                                 
-                                    $country = $db->query("SELECT * from countries  order by `country_$l` ASC LIMIT");
+                                    $country = $db->query("SELECT * from countries  order by `country_$l` ASC");
                                     
                                     ?>
                                     <li class="active"><a href="?do=camps&country=all"><?=$lang["all"]?></a></li>
